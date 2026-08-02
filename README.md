@@ -16,9 +16,14 @@ Unlike a template generator, the project first builds a traceable fact sheet, co
 6. Run bounded draft, audit, and compression loops.
 7. Deliver the letter, optional DOCX, audit report, unresolved items, and readiness status.
 
-## Version 1.0
+## Current version: v2.0
 
-This release establishes the fact-grounded `1-5-1-1` workflow: one central problem, up to five layered contributions, one bounded implication, and one journal-specific reader-value claim.
+Version 2.0 routes manuscripts by article type:
+
+- **Original Research:** important problem → knowledge gap → design advantage → central finding → defensible meaning → reader relevance.
+- **Review/Synthesis:** field problem → evidence base → synthesis innovation → new framework or insight → evidence boundary → implications.
+
+It also adds story selection, persuasion calibration, and bounded state-based loops. Version 1.0 remains available as a Legacy release with the unified `1-5-1-1` workflow.
 
 ## Install
 

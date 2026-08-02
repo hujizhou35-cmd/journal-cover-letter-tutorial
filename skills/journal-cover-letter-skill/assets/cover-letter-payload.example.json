@@ -10,5 +10,9 @@
   "corresponding_author": "Alex Morgan",
   "affiliation": "Example Institute for Learning Research",
   "contact": "contact@example.invalid",
+  "article_type": "ORIGINAL_RESEARCH",
+  "submission_branch": "INITIAL_SUBMISSION",
+  "previous_letter_permission": "NONE",
+  "selected_story_angle": "Structured feedback improves calibration without overstating certainty.",
   "status": "SUBMISSION_READY"
 }

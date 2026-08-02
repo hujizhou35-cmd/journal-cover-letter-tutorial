@@ -1,103 +1,100 @@
 ---
 name: journal-cover-letter-skill
-description: Create, revise, or audit a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. Do not use for job applications, recommendation letters, or non-academic business correspondence.
+description: Create, revise, or audit a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. Route original research and review/synthesis manuscripts through different editor-facing narratives. Do not use for job applications, recommendation letters, or non-academic business correspondence.
 ---
 
-# Journal Cover Letter Skill v1.0
+# Journal Cover Letter Skill v2.0
 
-Produce an editor-facing submission letter grounded in the manuscript, current official journal information, and the user's permissions. Default to English unless the user requests another language.
+Produce an editor-facing submission argument grounded in verified manuscript facts, current official journal information, and user-authorized benchmark material. Default to English unless another language is requested.
 
-## Operating principles
+## Core commitments
 
-- Treat manuscript files as the factual source of truth. Never invent a title, result, registration number, declaration, author detail, or journal requirement.
-- Separate verified facts, conflicts, and missing information before drafting.
-- Research current journal information only after the user confirms the fact sheet and contribution candidates.
-- Prefer official journal and publisher sources. Record the access date and distinguish requirements from informed editorial inferences.
-- Treat a previous cover letter as user-controlled material. Ask how it may be used before extracting wording, style, or formatting.
-- Write an editorial decision summary, not a shortened abstract or a list of everything in the manuscript.
-- Use the strongest wording the evidence permits, with explicit boundaries where overclaiming is plausible.
-- Never promise acceptance. The author remains responsible for factual, declaration, and submission compliance.
+- Treat manuscript files as the factual source of truth. Never invent facts, declarations, authorship details, or journal requirements.
+- Use the strongest wording the evidence permits. Accuracy is not a reason to write a flat, defensive letter.
+- Route `ORIGINAL_RESEARCH` and `REVIEW_SYNTHESIS` through different narratives. Never silently force other formats into either route.
+- Treat any previous letter as user-controlled material. Obtain a permission mode before learning from it.
+- Research current official journal information after the user confirms the factual foundation and route.
+- Use bounded, state-based loops. Do not claim readiness merely because the loop limit was reached.
+- Use deterministic scripts for extraction, payload validation, DOCX work, placeholders, and risk flags. Keep scientific interpretation and story selection in model judgment.
 
-## Required workflow
+## Workflow
 
-### 1. Inventory the inputs
+### 1. Intake and fact loop
 
-Identify the main manuscript, title page, supplementary files, previous cover letter, revision correspondence, and any user-provided journal instructions. Read `references/intake-and-fact-sheet.md` and build the fact sheet defined there.
+Read `references/intake-and-fact-sheet.md`. Inventory the manuscript, title page, supplements, previous letter, correspondence, and user-provided instructions. Build a source-traceable fact sheet with `verified`, `conflict`, `missing`, and `not_applicable` states.
 
-If the article type, title, core design, central findings, submission branch, or authorship/declaration information conflicts across files, pause and ask only the questions needed to resolve the conflict.
+Classify `article_type` as `ORIGINAL_RESEARCH`, `REVIEW_SYNTHESIS`, or `OTHER_OR_UNRESOLVED`. Classify the submission branch. Resolve hard conflicts; never guess.
 
-### 2. Confirm target and prior-letter permissions
+### 2. Previous-letter permission
 
-Confirm the target journal's full name and the submission branch. Ask whether a previous cover letter exists and, if so, obtain one permission mode:
+Ask whether a previous cover letter exists. Record exactly one permission:
 
-1. format only;
-2. format and tone;
-3. preserve wording where suitable;
-4. fact checking only;
-5. anonymous expert benchmark analysis.
+1. `FORMAT_ONLY`;
+2. `FORMAT_AND_TONE`;
+3. `MAXIMUM_SUITABLE_WORDING`;
+4. `FACT_CHECK_ONLY`;
+5. `ANONYMOUS_EXPERT_BENCHMARK`;
+6. `NONE`.
 
-Do not reuse wording or style when permission is absent or narrower than the proposed use.
+Do not reuse wording, style, or layout outside the granted scope. A human-authored benchmark is a source of decisions to analyze, not a gold standard.
 
-### 3. Present a confirmation checkpoint
+### 3. Human confirmation gate
 
-Show the user:
+Present the fact sheet, article type, submission branch, up to six contribution candidates, up to three candidate story angles, declaration gaps, and previous-letter permission. Wait for confirmation before journal research or final drafting.
 
-- the fact sheet with `verified`, `conflict`, and `missing` statuses;
-- up to six candidate contributions, ranked by editorial importance;
-- the article type and submission branch;
-- unresolved declarations or author details.
+### 4. Current journal research
 
-Wait for confirmation before journal research or final drafting.
+Read `references/journal-research-protocol.md`. Verify official author instructions, aims/scope, readership, accepted article type, cover-letter requirements, declarations, current editor name only when needed, and recent relevant journal conversation. Record sources, access date, and whether each item is a requirement or an inference.
 
-### 4. Research the target journal
+If official current information cannot be verified, use `NEEDS_JOURNAL_VERIFICATION`.
 
-Read `references/journal-research-protocol.md`. Find current official information about aims and scope, readership, accepted article type, explicit cover-letter requirements, relevant declarations, editorial contacts when required, and recent relevant scholarly conversations. Record sources and access date.
+### 5. Select the route and story
 
-If official current information cannot be verified, continue only with a clearly labeled best safe draft and set the status to `NEEDS_JOURNAL_VERIFICATION`.
+For `ORIGINAL_RESEARCH`, read `references/research-playbook.md`. Select one scientific decision story:
 
-### 5. Draft and iterate with 1-5-1-1
+> Important problem -> knowledge gap -> design advantage -> central finding -> defensible meaning -> journal-reader relevance
 
-Read `references/editorial-iteration-rubric.md`. Transform the evidence into:
+For `REVIEW_SYNTHESIS`, read `references/review-playbook.md`. Select one synthesis story:
 
-- one central problem or decision;
-- up to five layered contributions;
-- one practical or scholarly implication with a defensible boundary;
-- one journal-fit claim tied to readers or an ongoing conversation.
+> Field problem -> evidence base -> synthesis innovation -> new framework or insight -> evidence boundary -> implications
 
-Use contribution labels only when they improve scanning. Each contribution should state the output and why it matters. Merge secondary details into stronger contributions rather than listing them at equal weight.
+For `OTHER_OR_UNRESOLVED`, explain why neither route is reliable and request confirmation or use a clearly labeled fallback.
 
-### 6. Audit
+### 6. Draft with calibrated persuasion
 
-Run the deterministic payload validator and letter audit. Perform semantic checks that scripts cannot replace:
+Read `references/persuasion-calibration.md`. State concrete novelty and why the work deserves attention now. Put the central contribution before limitations. Use evidence boundaries where they prevent a plausible misreading; do not make every sentence timid.
 
-- Does every factual statement trace to a verified source?
-- Does the novelty claim describe a real advance rather than routine execution?
-- Is the causal, mechanistic, clinical, subgroup, and generalizability language justified?
-- Does the journal-fit paragraph explain reader value rather than flatter the journal?
-- Would removing a sentence change an editor's screening decision?
+### 7. Run bounded loops
 
-Revise only failed dimensions, then repeat the audit. Stop after three draft-audit rounds and two compression rounds. If a hard problem remains, return the best safe draft with unresolved items.
+Read `references/loop-controller.md` and maintain the state object. Use:
 
-### 7. Deliver
+- intake/fact loop until hard facts and route are stable;
+- story-selection loop for up to three candidate angles;
+- draft-audit-targeted-revision loop for at most three rounds;
+- compression loop for at most two rounds after content stabilizes.
 
-Read `references/output-and-docx.md`. Provide:
+Revise failed dimensions only. Stop on pass, required user input, missing current journal evidence, loop exhaustion, or diminishing returns.
 
-1. final cover-letter text;
-2. DOCX when requested or feasible;
-3. a concise fact and journal-compliance audit;
-4. items the author must confirm;
-5. one final status: `SUBMISSION_READY`, `NEEDS_AUTHOR_CONFIRMATION`, `NEEDS_JOURNAL_VERIFICATION`, or `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS`.
+### 8. Audit and deliver
 
-Never mark `SUBMISSION_READY` when facts conflict, declarations remain incomplete, or current official journal information was unavailable.
+Run deterministic validation and semantic gates. Check fact traceability, route fit, story clarity, claim strength, journal-reader value, required declarations, previous-letter permission, and editorial reading efficiency.
 
-## Resources
+Read `references/output-and-docx.md`. Deliver final text, optional verified DOCX, a concise audit, author-confirmation items, and exactly one status:
 
-- Intake and conflicts: `references/intake-and-fact-sheet.md`
-- Current journal research: `references/journal-research-protocol.md`
-- Editorial iteration: `references/editorial-iteration-rubric.md`
-- Submission declarations: `references/submission-branches-and-declarations.md`
+- `SUBMISSION_READY`;
+- `NEEDS_AUTHOR_CONFIRMATION`;
+- `NEEDS_JOURNAL_VERIFICATION`;
+- `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS`.
+
+Never mark `SUBMISSION_READY` when facts conflict, mandatory declarations are incomplete, article type is unresolved, previous-letter use exceeds permission, or official journal information was unavailable.
+
+## Resource routing
+
+- Intake, conflicts, and contribution candidates: `references/intake-and-fact-sheet.md`
+- Official journal research: `references/journal-research-protocol.md`
+- Original research narrative: `references/research-playbook.md`
+- Review/synthesis narrative: `references/review-playbook.md`
+- Persuasion and claim calibration: `references/persuasion-calibration.md`
+- State and bounded loops: `references/loop-controller.md`
+- Declarations and branches: `references/submission-branches-and-declarations.md`
 - Output and DOCX: `references/output-and-docx.md`
-- Markdown letter template: `assets/cover-letter-template.md`
-- Example structured payload: `assets/cover-letter-payload.example.json`
-
-Use scripts only for deterministic work. Do not delegate story selection, contribution ranking, or scientific interpretation to keyword rules.

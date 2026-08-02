@@ -22,6 +22,8 @@ def test_valid_payload():
         "paragraphs": ["Synthetic content."],
         "signoff": "Sincerely,",
         "corresponding_author": "Alex Morgan",
+        "article_type": "ORIGINAL_RESEARCH",
+        "previous_letter_permission": "NONE",
         "status": "SUBMISSION_READY",
     }
     assert validator.validate(payload) == []

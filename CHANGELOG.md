@@ -2,6 +2,15 @@
 
 All notable changes are documented here. Plugin manifests use semantic versions; Git tags use the public release labels.
 
+## [2.0.0] - 2026-08-03
+
+### Added
+
+- Separate Original Research and Review/Synthesis narratives.
+- Scientific story selection for original research.
+- Persuasion-preservation and claim-strength calibration.
+- Bounded intake, story, draft-audit, and compression loops with explicit stop reasons.
+
 ## [1.0.0] - 2026-08-03
 
 ### Added

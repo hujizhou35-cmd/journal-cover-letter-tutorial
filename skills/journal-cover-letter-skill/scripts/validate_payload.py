@@ -15,6 +15,15 @@ STATUSES = {
     "BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS",
 }
 REQUIRED = {"salutation", "paragraphs", "signoff", "corresponding_author", "status"}
+ARTICLE_TYPES = {"ORIGINAL_RESEARCH", "REVIEW_SYNTHESIS", "OTHER_OR_UNRESOLVED"}
+PERMISSIONS = {
+    "FORMAT_ONLY",
+    "FORMAT_AND_TONE",
+    "MAXIMUM_SUITABLE_WORDING",
+    "FACT_CHECK_ONLY",
+    "ANONYMOUS_EXPERT_BENCHMARK",
+    "NONE",
+}
 
 
 def validate(payload: dict) -> list[str]:
@@ -28,6 +37,10 @@ def validate(payload: dict) -> list[str]:
         errors.append("every paragraph must be a non-empty string")
     if payload.get("status") not in STATUSES:
         errors.append("status must be one of: " + ", ".join(sorted(STATUSES)))
+    if payload.get("article_type") not in ARTICLE_TYPES:
+        errors.append("article_type must be one of: " + ", ".join(sorted(ARTICLE_TYPES)))
+    if payload.get("previous_letter_permission") not in PERMISSIONS:
+        errors.append("previous_letter_permission must be one of: " + ", ".join(sorted(PERMISSIONS)))
     return errors
 
 
