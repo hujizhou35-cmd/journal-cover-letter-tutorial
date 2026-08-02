@@ -1,100 +1,144 @@
 ---
 name: journal-cover-letter-skill
-description: Create, revise, or audit a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. Route original research and review/synthesis manuscripts through different editor-facing narratives. Do not use for job applications, recommendation letters, or non-academic business correspondence.
+description: Create, revise, or audit a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. Route original research through a scientific discovery story and reviews/syntheses through a field diagnosis and editorial thesis. Do not use for job applications, recommendation letters, or non-academic business correspondence.
 ---
 
-# Journal Cover Letter Skill v2.0
+# Journal Cover Letter Skill v2.1
 
-Produce an editor-facing submission argument grounded in verified manuscript facts, current official journal information, and user-authorized benchmark material. Default to English unless another language is requested.
+Create an editor-facing submission argument from verified manuscript facts, current official journal information, and user-authorized benchmark material. Prioritize biomedical and life-science submissions while remaining discipline-general. Default to English unless the user requests another language.
 
-## Core commitments
+## Non-negotiable principles
 
-- Treat manuscript files as the factual source of truth. Never invent facts, declarations, authorship details, or journal requirements.
-- Use the strongest wording the evidence permits. Accuracy is not a reason to write a flat, defensive letter.
-- Route `ORIGINAL_RESEARCH` and `REVIEW_SYNTHESIS` through different narratives. Never silently force other formats into either route.
-- Treat any previous letter as user-controlled material. Obtain a permission mode before learning from it.
-- Research current official journal information after the user confirms the factual foundation and route.
-- Use bounded, state-based loops. Do not claim readiness merely because the loop limit was reached.
-- Use deterministic scripts for extraction, payload validation, DOCX work, placeholders, and risk flags. Keep scientific interpretation and story selection in model judgment.
+- Treat manuscript files as the factual source of truth. Never invent titles, results, registrations, declarations, author details, or journal requirements.
+- Separate verified facts, conflicts, missing items, and interpretive claims.
+- Use the strongest wording the evidence permits. Factual discipline should sharpen persuasion, not flatten it.
+- Route original research and evidence synthesis through different editor-facing narratives.
+- A review cover letter must sell a new interpretation, not merely report that a synthesis was performed.
+- Treat a prior letter as user-controlled. Analyze or reuse only within the recorded permission.
+- Treat an expert-authored or human-authored benchmark as evidence about editorial choices, not a gold standard.
+- Research current journal information after human confirmation and distinguish official requirements from reasoned inferences.
+- Use bounded loops with explicit state and stop reasons. Loop exhaustion never means success.
+- Use scripts only for deterministic work. Keep scientific meaning, story selection, field diagnosis, and editorial thesis in model judgment.
 
-## Workflow
+## Phase 1: Intake, routing, and permissions
 
-### 1. Intake and fact loop
+Read `references/intake-and-fact-sheet.md`. Inventory the manuscript, title page, supplements, previous letter, correspondence, and user instructions. Build a source-traceable fact sheet with `verified`, `conflict`, `missing`, and `not_applicable` states.
 
-Read `references/intake-and-fact-sheet.md`. Inventory the manuscript, title page, supplements, previous letter, correspondence, and user-provided instructions. Build a source-traceable fact sheet with `verified`, `conflict`, `missing`, and `not_applicable` states.
+Set:
 
-Classify `article_type` as `ORIGINAL_RESEARCH`, `REVIEW_SYNTHESIS`, or `OTHER_OR_UNRESOLVED`. Classify the submission branch. Resolve hard conflicts; never guess.
+- `article_type`: `ORIGINAL_RESEARCH`, `REVIEW_SYNTHESIS`, or `OTHER_OR_UNRESOLVED`;
+- `submission_branch`;
+- `fact_status`;
+- required declaration states.
 
-### 2. Previous-letter permission
+Ask whether a previous cover letter exists and record exactly one `previous_letter_permission`: `FORMAT_ONLY`, `FORMAT_AND_TONE`, `MAXIMUM_SUITABLE_WORDING`, `FACT_CHECK_ONLY`, `ANONYMOUS_EXPERT_BENCHMARK`, or `NONE`.
 
-Ask whether a previous cover letter exists. Record exactly one permission:
+If benchmark analysis is allowed, read `references/human-benchmark-protocol.md`. Extract decisions and reasoning patterns without importing private facts, outdated journal details, or unsupported wording.
 
-1. `FORMAT_ONLY`;
-2. `FORMAT_AND_TONE`;
-3. `MAXIMUM_SUITABLE_WORDING`;
-4. `FACT_CHECK_ONLY`;
-5. `ANONYMOUS_EXPERT_BENCHMARK`;
-6. `NONE`.
+## Phase 2: Human confirmation gate
 
-Do not reuse wording, style, or layout outside the granted scope. A human-authored benchmark is a source of decisions to analyze, not a gold standard.
+Present:
 
-### 3. Human confirmation gate
+- the fact sheet with sources and statuses;
+- article type and submission branch;
+- up to six candidate contributions;
+- up to three candidate Research story angles or Review editorial theses;
+- declaration gaps and evidence-boundary risks;
+- the prior-letter permission and proposed use.
 
-Present the fact sheet, article type, submission branch, up to six contribution candidates, up to three candidate story angles, declaration gaps, and previous-letter permission. Wait for confirmation before journal research or final drafting.
+Wait for the user to confirm or correct this foundation before researching the journal or drafting the final letter.
 
-### 4. Current journal research
+## Phase 3: Current journal research
 
-Read `references/journal-research-protocol.md`. Verify official author instructions, aims/scope, readership, accepted article type, cover-letter requirements, declarations, current editor name only when needed, and recent relevant journal conversation. Record sources, access date, and whether each item is a requirement or an inference.
+Read `references/journal-research-protocol.md`. Verify current official author instructions, aims/scope, readership, accepted article type, cover-letter requirements, required declarations, editor identity only when needed, and recent relevant content.
 
-If official current information cannot be verified, use `NEEDS_JOURNAL_VERIFICATION`.
+Build `journal_conversation`: what the journal's readers are currently discussing, where the conversation stops, and how this manuscript complements, challenges, reorganizes, or advances it. Cite direct official or journal sources in the working audit; do not use generic scope praise as fit.
 
-### 5. Select the route and story
+If current official information cannot be accessed, set `NEEDS_JOURNAL_VERIFICATION`. Never mark the output submission-ready.
 
-For `ORIGINAL_RESEARCH`, read `references/research-playbook.md`. Select one scientific decision story:
+## Phase 4A: Original Research route
 
-> Important problem -> knowledge gap -> design advantage -> central finding -> defensible meaning -> journal-reader relevance
+Read `references/research-playbook.md`. Select one `selected_story_angle`:
 
-For `REVIEW_SYNTHESIS`, read `references/review-playbook.md`. Select one synthesis story:
+> Important problem -> knowledge gap -> design advantage -> central finding -> defensible meaning -> journal conversation
 
-> Field problem -> evidence base -> synthesis innovation -> new framework or insight -> evidence boundary -> implications
+The design exists to make the finding credible; it is not the story by itself. Lead with one memorable discovery chain and use selective supporting results. Preserve causal, mechanistic, subgroup, proxy, and clinical boundaries.
 
-For `OTHER_OR_UNRESOLVED`, explain why neither route is reliable and request confirmation or use a clearly labeled fallback.
+## Phase 4B: Review/Synthesis route
 
-### 6. Draft with calibrated persuasion
+Read `references/review-playbook.md`. Diagnose whether the literature contains a genuine field misreading, unresolved tension, hidden pattern, inferential gap, or only a descriptive mapping need.
 
-Read `references/persuasion-calibration.md`. State concrete novelty and why the work deserves attention now. Put the central contribution before limitations. Use evidence boundaries where they prevent a plausible misreading; do not make every sentence timid.
+Set:
 
-### 7. Run bounded loops
+- `synthesis_intervention`: what the review does to existing evidence;
+- `editorial_thesis`: the memorable, evidence-supported interpretation the editor should retain;
+- `journal_conversation`: the discussion this thesis enters and advances.
 
-Read `references/loop-controller.md` and maintain the state object. Use:
+Use:
 
-- intake/fact loop until hard facts and route are stable;
-- story-selection loop for up to three candidate angles;
-- draft-audit-targeted-revision loop for at most three rounds;
-- compression loop for at most two rounds after content stabilizes.
+> Field misreading or unresolved tension -> synthesis intervention -> editorial thesis -> changed decision or research agenda -> journal conversation -> calibrated boundary
 
-Revise failed dimensions only. Stop on pass, required user input, missing current journal evidence, loop exhaustion, or diminishing returns.
+Do not manufacture controversy for a scoping or descriptive review. When the evidence supports mapping only, make the map, boundary, and research agenda concrete.
 
-### 8. Audit and deliver
+## Phase 5: Controlled editorial uplift
 
-Run deterministic validation and semantic gates. Check fact traceability, route fit, story clarity, claim strength, journal-reader value, required declarations, previous-letter permission, and editorial reading efficiency.
+Read `references/controlled-uplift.md`. Set `controlled_uplift_level` and separate three zones:
 
-Read `references/output-and-docx.md`. Deliver final text, optional verified DOCX, a concise audit, author-confirmation items, and exactly one status:
+- Zone A, scientific facts: no uplift;
+- Zone B, synthesis or study interpretation: calibrated strengthening with direct evidence support;
+- Zone C, editorial significance: the strongest reasonable language about changed understanding, decisions, or agenda.
+
+For every high-promotional sentence, record the source, zone, risk, and keep/strengthen/weaken decision. Do not self-award "groundbreaking," "definitive," "authoritative," or "perfectly aligned."
+
+## Phase 6: Bounded draft and audit loops
+
+Read `references/loop-controller.md`. Maintain all state fields and run:
+
+1. intake/fact loop until hard facts and routing stabilize;
+2. candidate story/thesis loop with at most three alternatives;
+3. draft-audit-targeted-revision loop with at most three rounds;
+4. adaptive-length loop with at most two rounds after content stabilizes.
+
+Revise failed dimensions only. Length priority is: explicit journal rule, explicit user request, submission-system limit, evidence-based journal convention, then the shortest length that completes the editorial job. Compress because of redundancy or diluted decision value, not an arbitrary universal word count.
+
+## Phase 7: Final gates and delivery
+
+Run the deterministic validators and perform semantic gates:
+
+- fact and declaration traceability;
+- current official journal verification;
+- article-route fit;
+- Research story clarity or Review thesis quality;
+- claim strength and controlled uplift;
+- specific journal-conversation value;
+- permission compliance for prior material;
+- editorial reading efficiency and non-duplication of the abstract.
+
+Read `references/output-and-docx.md`. Deliver:
+
+1. final cover-letter text;
+2. DOCX when requested or feasible;
+3. concise fact, journal, permission, story/thesis, and claim-strength audit;
+4. remaining author-confirmation items;
+5. exactly one final status.
+
+Allowed statuses:
 
 - `SUBMISSION_READY`;
 - `NEEDS_AUTHOR_CONFIRMATION`;
 - `NEEDS_JOURNAL_VERIFICATION`;
 - `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS`.
 
-Never mark `SUBMISSION_READY` when facts conflict, mandatory declarations are incomplete, article type is unresolved, previous-letter use exceeds permission, or official journal information was unavailable.
+Never set `SUBMISSION_READY` if current journal information was unavailable, a fact conflict remains, declarations are incomplete, the article type is unresolved, or prior-letter use exceeded permission.
 
 ## Resource routing
 
-- Intake, conflicts, and contribution candidates: `references/intake-and-fact-sheet.md`
-- Official journal research: `references/journal-research-protocol.md`
-- Original research narrative: `references/research-playbook.md`
-- Review/synthesis narrative: `references/review-playbook.md`
-- Persuasion and claim calibration: `references/persuasion-calibration.md`
-- State and bounded loops: `references/loop-controller.md`
-- Declarations and branches: `references/submission-branches-and-declarations.md`
-- Output and DOCX: `references/output-and-docx.md`
+- Facts and conflicts: `references/intake-and-fact-sheet.md`
+- Current journal evidence: `references/journal-research-protocol.md`
+- Research route: `references/research-playbook.md`
+- Review route and editorial thesis: `references/review-playbook.md`
+- Controlled persuasion: `references/controlled-uplift.md`
+- Human benchmark analysis: `references/human-benchmark-protocol.md`
+- State and stop conditions: `references/loop-controller.md`
+- Branches and declarations: `references/submission-branches-and-declarations.md`
+- Text, audit, and DOCX output: `references/output-and-docx.md`

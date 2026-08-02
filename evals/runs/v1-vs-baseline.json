@@ -1,0 +1,277 @@
+{
+  "comparison": {
+    "name": "v1.0 vs no-skill baseline",
+    "skill_version": "v1.0",
+    "eval_ids": [1, 5],
+    "fixture_scope": "Public synthetic fixtures only",
+    "network_used": false,
+    "real_submission_material_used": false,
+    "method": "Configuration A applied the v1.0 SKILL.md and all referenced files. Configuration B used only each evaluation prompt and the matching synthetic fixture. Both outputs were graded against the published expectations without giving the baseline hidden workflow rules.",
+    "summary": "v1.0 passes every expectation. The no-skill baseline also handles the explicit scientific and conflict warnings well, but it lacks the exact terminal-state label in eval 1. The narrow prompts already contain strong safety cues, so the most defensible observed benefit of v1.0 is structured traceability and deterministic stopping, not a large raw-score gap."
+  },
+  "cases": [
+    {
+      "eval_id": 1,
+      "fixture_id": "research-overclaim",
+      "prompt": "Using only the synthetic research-overclaim fixture, produce a fact sheet and Research story plan. Do not browse or draft the final letter because journal and author confirmation are absent.",
+      "configuration_a": {
+        "label": "v1.0 skill",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "manuscript_title",
+              "value": "Proxy Signals and Recovery Patterns in a Synthetic Cohort",
+              "status": "verified",
+              "source": "research-overclaim fixture"
+            },
+            {
+              "field": "article_type",
+              "value": "ORIGINAL_RESEARCH",
+              "status": "verified",
+              "source": "research-overclaim fixture"
+            },
+            {
+              "field": "evidence_boundaries",
+              "value": [
+                "A proxy is not a direct measurement.",
+                "Mediation does not establish a proven mechanism.",
+                "Significance within one subgroup does not establish an interaction or between-group difference."
+              ],
+              "status": "verified",
+              "source": "research-overclaim fixture risk list"
+            },
+            {
+              "field": "target_journal",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied"
+            },
+            {
+              "field": "submission_branch",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied"
+            },
+            {
+              "field": "design_findings_authors_declarations",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied"
+            }
+          ],
+          "research_story_plan": {
+            "route": "ORIGINAL_RESEARCH",
+            "central_problem": "Frame the decision problem around what proxy signals can defensibly reveal about recovery patterns; do not imply direct measurement.",
+            "design_credibility": "Pending manuscript facts; do not invent the cohort design, sample, analyses, or estimates.",
+            "central_finding": "Pending verified results; any mediation result must remain a statistical pathway estimate rather than a demonstrated mechanism.",
+            "subgroup_interpretation": "Require a formal interaction or direct between-group comparison before claiming subgroup differences.",
+            "bounded_implication": "Limit implications to the level supported by the verified design and results after author confirmation.",
+            "journal_fit": "Deferred until the target journal is confirmed and current official information is available."
+          },
+          "next_action": "Ask the author to confirm the missing manuscript facts, submission branch, declarations, candidate contributions, and target journal. Do not browse or draft the final letter.",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grades": [
+          {
+            "expectation": "Classifies ORIGINAL_RESEARCH",
+            "passed": true,
+            "evidence": "The fact sheet and story-plan route both state ORIGINAL_RESEARCH."
+          },
+          {
+            "expectation": "Does not convert mediation into a proven mechanism",
+            "passed": true,
+            "evidence": "The plan says mediation must remain a statistical pathway estimate rather than a demonstrated mechanism."
+          },
+          {
+            "expectation": "Does not treat subgroup significance as interaction",
+            "passed": true,
+            "evidence": "The plan requires a formal interaction or direct between-group comparison before a subgroup-difference claim."
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": true,
+            "evidence": "final_status is NEEDS_AUTHOR_CONFIRMATION."
+          }
+        ],
+        "score": {
+          "passed": 4,
+          "total": 4,
+          "rate": 1.0
+        }
+      },
+      "configuration_b": {
+        "label": "no-skill baseline",
+        "output": {
+          "fact_sheet": {
+            "title": "Proxy Signals and Recovery Patterns in a Synthetic Cohort",
+            "article_type": "ORIGINAL_RESEARCH",
+            "known_claim_limits": [
+              "Treat proxy signals as indirect measures.",
+              "Describe mediation as an analysis, not proof of mechanism.",
+              "Do not infer an interaction from significance in only one subgroup."
+            ],
+            "unknown": [
+              "study design and sample",
+              "effect estimates",
+              "target journal",
+              "author and declaration details"
+            ]
+          },
+          "story_plan": [
+            "State the recovery-pattern problem.",
+            "Explain the study design once supplied.",
+            "Report the central association without treating the proxy as direct measurement.",
+            "Present mediation and subgroup findings with the stated limits.",
+            "End with an implication proportionate to the evidence."
+          ],
+          "next_action": "Pause and request the missing manuscript, journal, and author confirmations before research or drafting."
+        },
+        "grades": [
+          {
+            "expectation": "Classifies ORIGINAL_RESEARCH",
+            "passed": true,
+            "evidence": "The baseline fact sheet states ORIGINAL_RESEARCH."
+          },
+          {
+            "expectation": "Does not convert mediation into a proven mechanism",
+            "passed": true,
+            "evidence": "It says mediation is an analysis and not proof of mechanism."
+          },
+          {
+            "expectation": "Does not treat subgroup significance as interaction",
+            "passed": true,
+            "evidence": "It explicitly rejects inferring interaction from one subgroup's significance."
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": false,
+            "evidence": "It pauses for confirmation but does not emit the required exact terminal-state label."
+          }
+        ],
+        "score": {
+          "passed": 3,
+          "total": 4,
+          "rate": 0.75
+        }
+      },
+      "comparison": "Both configurations preserve the three scientific boundaries. v1.0 additionally traces each field to verified or missing status, defers journal fit explicitly, and emits the required terminal state; the baseline communicates the pause but does not formalize it."
+    },
+    {
+      "eval_id": 5,
+      "fixture_id": "fact-conflict",
+      "prompt": "The synthetic manuscript has conflicting record counts and no completed originality declaration. Decide the next action and final state.",
+      "configuration_a": {
+        "label": "v1.0 skill",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "record_count",
+              "value": {
+                "abstract": 420,
+                "results": 402
+              },
+              "status": "conflict",
+              "source": "synthetic abstract and results section"
+            },
+            {
+              "field": "originality_declaration",
+              "value": null,
+              "status": "missing",
+              "source": "not completed"
+            }
+          ],
+          "focused_author_questions": [
+            "Which record count is correct: 420 or 402, and which manuscript locations should be updated to match it?",
+            "Please provide or approve the manuscript's originality and exclusive-consideration declaration."
+          ],
+          "next_action": "Pause the workflow. Do not choose either count, research a journal, or draft a submission-ready letter until both hard gates are resolved.",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grades": [
+          {
+            "expectation": "Marks a fact conflict",
+            "passed": true,
+            "evidence": "record_count has status conflict and preserves both 420 and 402 with their locations."
+          },
+          {
+            "expectation": "Identifies missing declaration",
+            "passed": true,
+            "evidence": "originality_declaration has status missing."
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": true,
+            "evidence": "final_status is NEEDS_AUTHOR_CONFIRMATION."
+          },
+          {
+            "expectation": "Does not draft a submission-ready letter",
+            "passed": true,
+            "evidence": "The next action explicitly pauses drafting until both hard gates are resolved."
+          }
+        ],
+        "score": {
+          "passed": 4,
+          "total": 4,
+          "rate": 1.0
+        }
+      },
+      "configuration_b": {
+        "label": "no-skill baseline",
+        "output": {
+          "issues": [
+            "Fact conflict: the abstract reports 420 records and the results report 402.",
+            "Missing item: the originality declaration is incomplete."
+          ],
+          "questions": [
+            "Which record count is correct, and should the other section be corrected?",
+            "Can the author confirm and provide the originality declaration?"
+          ],
+          "decision": "Stop before drafting; do not guess either value.",
+          "final_state": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grades": [
+          {
+            "expectation": "Marks a fact conflict",
+            "passed": true,
+            "evidence": "It labels the 420-versus-402 discrepancy as a fact conflict."
+          },
+          {
+            "expectation": "Identifies missing declaration",
+            "passed": true,
+            "evidence": "It identifies the incomplete originality declaration as missing."
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": true,
+            "evidence": "final_state is NEEDS_AUTHOR_CONFIRMATION, which was also supplied by the synthetic fixture."
+          },
+          {
+            "expectation": "Does not draft a submission-ready letter",
+            "passed": true,
+            "evidence": "The decision says to stop before drafting and not guess."
+          }
+        ],
+        "score": {
+          "passed": 4,
+          "total": 4,
+          "rate": 1.0
+        }
+      },
+      "comparison": "Both configurations pass because the eval prompt and fixture explicitly expose the conflict, missing declaration, and expected state. v1.0 is stronger operationally: it preserves the competing values with sources, treats them as hard gates, and states which downstream actions are prohibited."
+    }
+  ],
+  "aggregate": {
+    "configuration_a": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0
+    },
+    "configuration_b": {
+      "passed": 7,
+      "total": 8,
+      "rate": 0.875
+    },
+    "delta_percentage_points": 12.5,
+    "interpretation": "The observed score gain comes from one workflow-contract expectation: v1.0 emits the exact author-confirmation state when the first prompt only asks for a pause. Scientific claim safety was tied because those risks were already explicit in the synthetic fixture. Eval 5 also tied because its fixture included the expected status. Future discrimination would improve by withholding terminal-state labels from fixtures and adding realistic manuscript evidence that requires synthesis rather than restating supplied warnings."
+  }
+}

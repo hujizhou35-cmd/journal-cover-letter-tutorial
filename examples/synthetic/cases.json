@@ -1,0 +1,41 @@
+[
+  {
+    "id": "research-overclaim",
+    "article_type": "ORIGINAL_RESEARCH",
+    "fictional_title": "Proxy Signals and Recovery Patterns in a Synthetic Cohort",
+    "risk": ["proxy_is_not_direct_measurement", "mediation_is_not_proven_mechanism", "subgroup_significance_is_not_interaction"]
+  },
+  {
+    "id": "systematic-review-thesis",
+    "article_type": "REVIEW_SYNTHESIS",
+    "fictional_title": "From Agreement to Decision Validity: A Synthetic Evidence Review",
+    "supported_move": "distinguish surface agreement from decision validity"
+  },
+  {
+    "id": "scoping-review-map",
+    "article_type": "REVIEW_SYNTHESIS",
+    "fictional_title": "A Map of Feedback Tools in Fictional Training Programs",
+    "supported_move": "descriptive map and research agenda only"
+  },
+  {
+    "id": "prior-letter-permission",
+    "permission": "FACT_CHECK_ONLY",
+    "forbidden": ["reuse_wording", "imitate_tone", "inherit_layout"]
+  },
+  {
+    "id": "fact-conflict",
+    "fact_status": "conflict",
+    "conflict": "The abstract reports 420 records while the results section reports 402.",
+    "expected_status": "NEEDS_AUTHOR_CONFIRMATION"
+  },
+  {
+    "id": "journal-unavailable",
+    "official_information_available": false,
+    "expected_status": "NEEDS_JOURNAL_VERIFICATION"
+  },
+  {
+    "id": "docx-output",
+    "fictional_author": "Alex Morgan",
+    "expected": ["clean_layout", "no_unresolved_placeholder", "scrubbed_personal_metadata"]
+  }
+]

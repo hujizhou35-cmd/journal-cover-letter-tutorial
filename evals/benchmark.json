@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "skill_name": "journal-cover-letter-skill",
+    "skill_path": "skills/journal-cover-letter-skill",
+    "executor_model": "independent Codex evaluation agents",
+    "analyzer_model": "independent Codex evaluation agents",
+    "timestamp": "2026-08-03T03:20:00+08:00",
+    "evals_run": ["v1.0 vs no Skill", "v2.0 vs v1.0", "v2.1 vs v2.0"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 101,
+      "eval_name": "v1.0 vs no Skill",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["v1.0 emitted the exact author-confirmation state and a traceable hard-gate workflow."]
+    },
+    {
+      "eval_id": 101,
+      "eval_name": "v1.0 vs no Skill",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 0.875, "passed": 7, "failed": 1, "total": 8, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["The baseline preserved most explicit safety boundaries but missed one workflow-state expectation."]
+    },
+    {
+      "eval_id": 102,
+      "eval_name": "v2.0 vs v1.0",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["v2.0 qualitative score: 16/16 for explicit routing, story selection, safety, and stop-state discipline."]
+    },
+    {
+      "eval_id": 102,
+      "eval_name": "v2.0 vs v1.0",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["v1.0 qualitative score: 13/16; equally safe but less article-type-specific."]
+    },
+    {
+      "eval_id": 103,
+      "eval_name": "v2.1 vs v2.0",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 1.0, "passed": 7, "failed": 0, "total": 7, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["v2.1 quality score: 5.0/5 for thesis structure, consequence, uplift, and auditability."]
+    },
+    {
+      "eval_id": 103,
+      "eval_name": "v2.1 vs v2.0",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {"pass_rate": 1.0, "passed": 7, "failed": 0, "total": 7, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0},
+      "expectations": [],
+      "notes": ["v2.0 quality score: 4.3/5; safe, but its Review thesis and persuasion audit are less explicit."]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 0, "stddev": 0, "min": 0, "max": 0},
+      "tokens": {"mean": 0, "stddev": 0, "min": 0, "max": 0}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.958, "stddev": 0.059, "min": 0.875, "max": 1.0},
+      "time_seconds": {"mean": 0, "stddev": 0, "min": 0, "max": 0},
+      "tokens": {"mean": 0, "stddev": 0, "min": 0, "max": 0}
+    },
+    "delta": {"pass_rate": "+0.042", "time_seconds": "not recorded", "tokens": "not recorded"}
+  },
+  "notes": [
+    "These are small synthetic design checks, not statistical performance estimates.",
+    "Binary expectations saturated for the later comparisons; qualitative rubric scores distinguish the routed and thesis-driven behavior.",
+    "The fixtures intentionally exclude live journal research and confidential manuscript content.",
+    "Execution timing and token metrics were not persisted and are reported as unmeasured rather than estimated."
+  ]
+}

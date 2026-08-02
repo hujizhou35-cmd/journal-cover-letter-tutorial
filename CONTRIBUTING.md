@@ -10,6 +10,8 @@ Published articles and their related cover letters can help improve this project
 
 Prefer synthetic fixtures or carefully anonymized, already-public materials. Never submit unpublished manuscripts, active submission correspondence, private reviewer/editor messages, personal contact details, submission IDs, or confidential journal instructions.
 
+A published article and cover letter may be proposed as a human-authored benchmark only when you can demonstrate the right to redistribute both. The project will analyze editorial choices and claim boundaries; it will not treat any single letter as a gold standard.
+
 ## Development
 
 1. Open an issue describing the behavior or article type involved.

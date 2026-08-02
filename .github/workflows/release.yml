@@ -1,0 +1,36 @@
+name: Build release packages
+
+on:
+  push:
+    tags:
+      - "v1.0"
+      - "v2.0"
+      - "v2.1"
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: "Public release label"
+        required: true
+        type: choice
+        options: ["v1.0", "v2.0", "v2.1"]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Select release
+        id: release
+        shell: bash
+        run: echo "ref=${{ inputs.release_ref || github.ref_name }}" >> "$GITHUB_OUTPUT"
+      - run: python scripts/build_release.py --ref "${{ steps.release.outputs.ref }}"
+      - run: python scripts/privacy_scan_history.py --archives dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: journal-cover-letter-${{ steps.release.outputs.ref }}
+          path: dist/*${{ steps.release.outputs.ref }}*

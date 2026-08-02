@@ -1,0 +1,465 @@
+{
+  "comparison": {
+    "name": "v2.0 versus v1.0",
+    "configuration_a": {
+      "label": "A",
+      "version": "v2.0",
+      "skill_path": "tmp/eval-skills/v2/SKILL.md"
+    },
+    "configuration_b": {
+      "label": "B",
+      "version": "v1.0",
+      "skill_path": "tmp/eval-skills/v1/SKILL.md"
+    },
+    "scope": "Public synthetic fixtures only; eval definitions 1 and 2; no browsing and no real material.",
+    "method": "Each configuration was applied independently to the same fixture-limited prompts. Outputs were then graded against every declared expectation using quoted evidence from that configuration's output.",
+    "headline": "Both versions pass all eight declared expectations. v2.0 is preferred because it makes route selection, scientific-story construction, and bounded story selection explicit; v1.0 remains fact-safe but its unified 1-5-1-1 plan is less tailored to original research and reviews."
+  },
+  "cases": [
+    {
+      "eval_id": 1,
+      "fixture_id": "research-overclaim",
+      "prompt": "Using only the synthetic research-overclaim fixture, produce a fact sheet and Research story plan. Do not browse or draft the final letter because journal and author confirmation are absent.",
+      "configuration_a": {
+        "version": "v2.0",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "manuscript_title",
+              "value": "Proxy Signals and Recovery Patterns in a Synthetic Cohort",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim"
+            },
+            {
+              "field": "article_type",
+              "value": "ORIGINAL_RESEARCH",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim"
+            },
+            {
+              "field": "study_question_design_population_data_source_sample_size",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "central_findings",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "target_journal_and_current_requirements",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied; browsing prohibited by prompt"
+            },
+            {
+              "field": "author_and_submission_declarations",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "claim_boundaries",
+              "value": [
+                "A proxy is not direct measurement.",
+                "Statistical mediation is not a proven mechanism.",
+                "Significance within one subgroup is not evidence of an interaction."
+              ],
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim.risk"
+            }
+          ],
+          "route": "ORIGINAL_RESEARCH",
+          "candidate_story_angles": [
+            {
+              "angle": "Interpretation before extrapolation",
+              "plan": "Center the eventual story on what proxy signals add to understanding recovery patterns while keeping them explicitly indirect.",
+              "status": "provisional"
+            },
+            {
+              "angle": "Statistical pathway without mechanism inflation",
+              "plan": "If the missing manuscript facts confirm a mediation analysis, present it as a statistical pathway that informs interpretation, not as proof of biology.",
+              "status": "provisional"
+            },
+            {
+              "angle": "Subgroup context without a false interaction claim",
+              "plan": "If subgroup estimates are confirmed, use them as context and require a formal interaction result before claiming effect modification.",
+              "status": "provisional"
+            }
+          ],
+          "selected_story_angle": "Interpretation before extrapolation",
+          "selection_reason": "It is most central to the verified title and proxy boundary; the other angles depend on analytical details that remain missing.",
+          "research_story_plan": {
+            "important_problem": "Proxy signals can be useful yet easily misread as direct measurements of recovery.",
+            "knowledge_gap": "The defensible interpretation of proxy-linked recovery patterns remains to be established from the missing manuscript facts.",
+            "design_advantage": "Missing; author must confirm the cohort design, measures, analysis, and comparison strategy.",
+            "central_finding": "Missing; no direction, magnitude, uncertainty, or interaction test was supplied.",
+            "defensible_meaning": "If the manuscript confirms the proposed association, the result may support calibrated use of the proxy for association or prediction; it cannot by itself establish direct measurement or mechanism.",
+            "journal_reader_relevance": "Deferred until the target journal and its current official information are confirmed."
+          },
+          "author_questions": [
+            "What are the exact study design, population, sample size, and proxy definition?",
+            "What is the central result, including direction, magnitude, uncertainty, mediation specification, and any formal interaction test?",
+            "What are the target journal, submission branch, authorship details, and required declarations?"
+          ],
+          "stop_reason": "Required author confirmation and verified facts are absent; journal research and final drafting must not begin.",
+          "status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grading": [
+          {
+            "expectation": "Classifies ORIGINAL_RESEARCH",
+            "passed": true,
+            "evidence": "The output sets route to 'ORIGINAL_RESEARCH'."
+          },
+          {
+            "expectation": "Does not convert mediation into a proven mechanism",
+            "passed": true,
+            "evidence": "The verified boundary says 'Statistical mediation is not a proven mechanism,' and the provisional angle says it is 'not ... proof of biology.'"
+          },
+          {
+            "expectation": "Does not treat subgroup significance as interaction",
+            "passed": true,
+            "evidence": "The output requires 'a formal interaction result before claiming effect modification.'"
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": true,
+            "evidence": "The final status is 'NEEDS_AUTHOR_CONFIRMATION'."
+          }
+        ],
+        "passed_expectations": 4,
+        "total_expectations": 4
+      },
+      "configuration_b": {
+        "version": "v1.0",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "manuscript_title",
+              "value": "Proxy Signals and Recovery Patterns in a Synthetic Cohort",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim"
+            },
+            {
+              "field": "article_type",
+              "value": "ORIGINAL_RESEARCH",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim"
+            },
+            {
+              "field": "study_question_design_population_data_source_sample_size",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "central_findings",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "target_journal",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied; browsing prohibited by prompt"
+            },
+            {
+              "field": "author_and_declarations",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "claim_boundaries",
+              "value": [
+                "The proxy cannot be described as a direct measurement.",
+                "Mediation cannot be described as a proven mechanism.",
+                "Within-subgroup significance cannot be described as a between-group interaction."
+              ],
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#research-overclaim.risk"
+            }
+          ],
+          "editorial_plan_1_5_1_1": {
+            "one_central_problem": "Whether proxy signals can inform recovery-pattern interpretation without being mistaken for direct measurement.",
+            "layered_contributions": [
+              "Design credibility cannot yet be stated because the cohort, measurements, and analyses are missing.",
+              "The empirical relation between the proxy and recovery is not yet verified because no effect estimate or uncertainty was supplied.",
+              "Any mediation result must remain a statistical interpretation rather than a biological mechanism claim.",
+              "Any subgroup pattern must remain descriptive unless a formal interaction test is supplied."
+            ],
+            "one_bounded_implication": "If confirmed, the work could support calibrated use of a proxy for association or prediction, but not direct measurement, mechanism, or subgroup effect modification.",
+            "one_journal_fit_claim": "Withheld until the target journal and current official information are verified."
+          },
+          "author_questions": [
+            "Please confirm the study design, cohort, proxy definition, sample size, and primary analysis.",
+            "Please supply the central effect estimate, uncertainty, mediation details, and formal interaction result if one exists.",
+            "Please confirm the target journal, submission branch, authorship block, and declarations."
+          ],
+          "stop_reason": "The factual foundation and author checkpoint are incomplete, so no journal research or final letter is permitted.",
+          "status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grading": [
+          {
+            "expectation": "Classifies ORIGINAL_RESEARCH",
+            "passed": true,
+            "evidence": "The fact sheet records article_type as 'ORIGINAL_RESEARCH'."
+          },
+          {
+            "expectation": "Does not convert mediation into a proven mechanism",
+            "passed": true,
+            "evidence": "The output states that mediation must remain 'a statistical interpretation rather than a biological mechanism claim.'"
+          },
+          {
+            "expectation": "Does not treat subgroup significance as interaction",
+            "passed": true,
+            "evidence": "The output says subgroup patterns remain descriptive unless a formal interaction test is supplied."
+          },
+          {
+            "expectation": "Returns NEEDS_AUTHOR_CONFIRMATION",
+            "passed": true,
+            "evidence": "The final status is 'NEEDS_AUTHOR_CONFIRMATION'."
+          }
+        ],
+        "passed_expectations": 4,
+        "total_expectations": 4
+      },
+      "comparison": {
+        "expectation_result": "tie",
+        "preferred_configuration": "A",
+        "reason": "Both are fact-safe and stop correctly. A adds explicit Research routing, bounded candidate-angle selection, and the required problem-gap-design-finding-meaning-reader chain. B organizes the same limits safely but treats the research plan through the generic 1-5-1-1 structure."
+      }
+    },
+    {
+      "eval_id": 2,
+      "fixture_id": "systematic-review-thesis",
+      "prompt": "Use the synthetic systematic-review-thesis fixture to propose up to three editorial theses and select one. Explain the synthesis intervention and consequence without inventing journal facts.",
+      "configuration_a": {
+        "version": "v2.0",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "manuscript_title",
+              "value": "From Agreement to Decision Validity: A Synthetic Evidence Review",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis"
+            },
+            {
+              "field": "article_type",
+              "value": "REVIEW_SYNTHESIS",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis"
+            },
+            {
+              "field": "supported_synthesis_move",
+              "value": "distinguish surface agreement from decision validity",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis.supported_move"
+            },
+            {
+              "field": "evidence_base_review_method_and_results",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            },
+            {
+              "field": "target_journal_and_current_conversation",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied; journal claims prohibited by prompt"
+            },
+            {
+              "field": "author_and_declarations",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            }
+          ],
+          "route": "REVIEW_SYNTHESIS",
+          "candidate_editorial_theses": [
+            {
+              "thesis": "Agreement is not decision validity: this review reorganizes the evidence around the inferential step between them.",
+              "editorial_importance": 5,
+              "manuscript_centrality": 5,
+              "evidential_support": 5,
+              "distinctiveness": 4,
+              "journal_reader_relevance": null,
+              "journal_reader_relevance_note": "Not scored without current journal evidence."
+            },
+            {
+              "thesis": "The central question is not merely whether assessments agree, but what decisions that agreement can defend.",
+              "editorial_importance": 5,
+              "manuscript_centrality": 5,
+              "evidential_support": 5,
+              "distinctiveness": 5,
+              "journal_reader_relevance": null,
+              "journal_reader_relevance_note": "Not scored without current journal evidence."
+            },
+            {
+              "thesis": "Evidence of agreement and evidence for consequential decisions belong to different inferential levels; the review makes that separation explicit.",
+              "editorial_importance": 4,
+              "manuscript_centrality": 5,
+              "evidential_support": 5,
+              "distinctiveness": 4,
+              "journal_reader_relevance": null,
+              "journal_reader_relevance_note": "Not scored without current journal evidence."
+            }
+          ],
+          "selected_editorial_thesis": "The central question is not merely whether assessments agree, but what decisions that agreement can defend.",
+          "selection_reason": "It converts the verified distinction into one concise decision question without asserting an unverified prevalence, direction, or journal preference.",
+          "synthesis_intervention": "Proposed and awaiting manuscript confirmation: organize each included claim by whether it concerns surface agreement or the validity of a downstream decision, then examine whether the evidence actually supports the transition between those levels.",
+          "consequence": "This organization would let readers distinguish what agreement evidence can establish from what still requires decision-validity evidence, creating a more precise basis for interpretation and future validation.",
+          "evidence_boundary": "The fixture does not establish how many studies occupy either level, whether decision-validity evidence is weak, or whether any practice should change; those claims must wait for the review data.",
+          "journal_fit": "No journal-fit claim is made because no target journal or current official journal evidence was supplied.",
+          "stop_reason": "The thesis can be selected provisionally, but evidence-base details and author confirmation remain necessary before journal research or drafting.",
+          "status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grading": [
+          {
+            "expectation": "Classifies REVIEW_SYNTHESIS",
+            "passed": true,
+            "evidence": "The output sets route to 'REVIEW_SYNTHESIS'."
+          },
+          {
+            "expectation": "States a synthesis intervention",
+            "passed": true,
+            "evidence": "The intervention organizes claims by surface agreement versus downstream decision validity and examines the transition between them."
+          },
+          {
+            "expectation": "Selects one memorable editorial thesis",
+            "passed": true,
+            "evidence": "It selects: 'The central question is not merely whether assessments agree, but what decisions that agreement can defend.'"
+          },
+          {
+            "expectation": "Does not claim journal fit without current evidence",
+            "passed": true,
+            "evidence": "The output explicitly states: 'No journal-fit claim is made because no target journal or current official journal evidence was supplied.'"
+          }
+        ],
+        "passed_expectations": 4,
+        "total_expectations": 4
+      },
+      "configuration_b": {
+        "version": "v1.0",
+        "output": {
+          "fact_sheet": [
+            {
+              "field": "manuscript_title",
+              "value": "From Agreement to Decision Validity: A Synthetic Evidence Review",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis"
+            },
+            {
+              "field": "article_type",
+              "value": "REVIEW_SYNTHESIS",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis"
+            },
+            {
+              "field": "supported_synthesis_move",
+              "value": "distinguish surface agreement from decision validity",
+              "status": "verified",
+              "source": "examples/synthetic/cases.json#systematic-review-thesis.supported_move"
+            },
+            {
+              "field": "evidence_base_review_method_results_target_journal_and_declarations",
+              "value": null,
+              "status": "missing",
+              "source": "not supplied in fixture"
+            }
+          ],
+          "candidate_editorial_theses": [
+            "Agreement is evidence about scores, not yet evidence about decisions.",
+            "A defensible decision requires an inferential bridge that surface agreement alone cannot provide.",
+            "The review moves the question from whether assessments agree to whether their use in decisions is valid."
+          ],
+          "selected_editorial_thesis": "Agreement is evidence about scores, not yet evidence about decisions.",
+          "selection_reason": "It is the shortest faithful expression of the fixture's verified distinction and does not add an unverified result.",
+          "editorial_plan_1_5_1_1": {
+            "one_central_problem": "Surface agreement and decision validity answer different questions, yet the evidentiary bridge between them must be examined rather than assumed.",
+            "layered_contributions": [
+              "Credibility details for the evidence base remain missing and cannot yet be claimed.",
+              "The proposed synthesis intervention separates claims about surface agreement from claims about decision validity.",
+              "The resulting interpretive lens asks whether evidence supports the move from score-level agreement to decision-level use."
+            ],
+            "one_bounded_implication": "If confirmed by the review data, this organization can clarify which interpretations are supported and define the next validation questions; it does not yet justify a claim that current decisions are invalid.",
+            "one_journal_fit_claim": "Withheld because no current official journal evidence was supplied."
+          },
+          "synthesis_intervention": "Proposed and awaiting manuscript confirmation: sort the reviewed evidence into surface-agreement claims and decision-validity claims, then assess whether each decision claim has the necessary inferential support.",
+          "consequence": "The synthesis would separate score-level evidence from decision-level justification and make remaining validation needs explicit.",
+          "evidence_boundary": "No claim is made about study counts, evidence quality, prevalence of conflation, or journal fit because the fixture does not provide those facts.",
+          "stop_reason": "Author confirmation and the evidence base are missing; no journal research or final drafting is permitted.",
+          "status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "grading": [
+          {
+            "expectation": "Classifies REVIEW_SYNTHESIS",
+            "passed": true,
+            "evidence": "The fact sheet records article_type as 'REVIEW_SYNTHESIS'."
+          },
+          {
+            "expectation": "States a synthesis intervention",
+            "passed": true,
+            "evidence": "The output proposes sorting the evidence into surface-agreement and decision-validity claims and assessing inferential support."
+          },
+          {
+            "expectation": "Selects one memorable editorial thesis",
+            "passed": true,
+            "evidence": "It selects: 'Agreement is evidence about scores, not yet evidence about decisions.'"
+          },
+          {
+            "expectation": "Does not claim journal fit without current evidence",
+            "passed": true,
+            "evidence": "The journal-fit claim is explicitly withheld, and the boundary says no journal-fit claim is made."
+          }
+        ],
+        "passed_expectations": 4,
+        "total_expectations": 4
+      },
+      "comparison": {
+        "expectation_result": "tie",
+        "preferred_configuration": "A",
+        "reason": "Both produce a safe, memorable thesis. A makes the Review route and candidate scoring explicit and connects the thesis to a field-problem/evidence-base/intervention/insight/boundary sequence. B reaches a strong answer through the generic contribution hierarchy but does not provide a dedicated Review control structure."
+      }
+    }
+  ],
+  "aggregate": {
+    "cases_evaluated": 2,
+    "declared_expectations": 8,
+    "configuration_a": {
+      "version": "v2.0",
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "qualitative_scores": {
+        "fact_and_claim_boundaries": 4,
+        "route_specificity": 4,
+        "story_selection_explicitness": 4,
+        "stop_state_discipline": 4,
+        "total_out_of_16": 16
+      }
+    },
+    "configuration_b": {
+      "version": "v1.0",
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "qualitative_scores": {
+        "fact_and_claim_boundaries": 4,
+        "route_specificity": 2,
+        "story_selection_explicitness": 3,
+        "stop_state_discipline": 4,
+        "total_out_of_16": 13
+      }
+    },
+    "verdict": "v2.0 is a genuine structural improvement over v1.0, not because v1.0 fails the safety expectations, but because v2.0 turns article-type routing and story selection into explicit, auditable workflow state. The two synthetic cases are too small to establish a broad performance effect; they support only this scoped conclusion.",
+    "limitations": [
+      "Only two fixture-limited planning tasks were evaluated.",
+      "No journal research, full manuscript extraction, final letter drafting, DOCX rendering, or human preference study was part of this comparison.",
+      "The qualitative scores describe workflow evidence in these outputs and are not statistical estimates."
+    ]
+  }
+}

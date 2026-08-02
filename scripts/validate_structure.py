@@ -14,6 +14,15 @@ REQUIRED = [
     "README.zh-CN.md",
     "PRIVACY.md",
     "LICENSE",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "docs/evolution.md",
+    "docs/architecture.md",
+    "docs/specs/v1.0-product-spec.md",
+    "docs/specs/v2.0-product-spec.md",
+    "docs/specs/v2.1-product-spec.md",
+    "examples/synthetic/cases.json",
+    "evals/evals.json",
 ]
 
 
@@ -25,6 +34,10 @@ def main() -> int:
         errors.append("plugin name must match the repository/plugin directory")
     if "skills" not in manifest:
         errors.append("plugin manifest must declare skills")
+    if manifest.get("version") not in {"1.0.0", "2.0.0", "2.1.0"}:
+        errors.append("plugin version must be a released semantic version")
+    if manifest.get("author", {}).get("name") != "Jizhou Hu":
+        errors.append("authorized public author metadata is missing")
     errors.extend(f"missing: {item}" for item in missing)
     if errors:
         print("\n".join(errors), file=sys.stderr)

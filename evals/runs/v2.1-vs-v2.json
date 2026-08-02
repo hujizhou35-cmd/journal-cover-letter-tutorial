@@ -1,0 +1,306 @@
+{
+  "comparison": {
+    "name": "v2.1 versus v2.0 on Review/Synthesis routing",
+    "configuration_a": {
+      "label": "v2.1",
+      "skill": "skills/journal-cover-letter-skill/SKILL.md",
+      "relevant_references": [
+        "references/intake-and-fact-sheet.md",
+        "references/review-playbook.md",
+        "references/controlled-uplift.md",
+        "references/loop-controller.md"
+      ]
+    },
+    "configuration_b": {
+      "label": "v2.0",
+      "skill": "tmp/eval-skills/v2/SKILL.md",
+      "relevant_references": [
+        "references/intake-and-fact-sheet.md",
+        "references/review-playbook.md",
+        "references/persuasion-calibration.md",
+        "references/loop-controller.md"
+      ]
+    },
+    "method": "Independent, instruction-following generation from the public synthetic fixture only, followed by expectation grading and a five-point quality assessment. No browsing, real manuscript material, journal facts, or private examples were used.",
+    "quality_scale": "1 = materially inadequate, 3 = adequate, 5 = unusually clear and well controlled"
+  },
+  "cases": [
+    {
+      "eval_id": 2,
+      "fixture_id": "systematic-review-thesis",
+      "prompt": "Use the synthetic systematic-review-thesis fixture to propose up to three editorial theses and select one. Explain the synthesis intervention and consequence without inventing journal facts.",
+      "fixture_evidence": {
+        "article_type": "REVIEW_SYNTHESIS",
+        "fictional_title": "From Agreement to Decision Validity: A Synthetic Evidence Review",
+        "supported_move": "distinguish surface agreement from decision validity"
+      },
+      "configuration_a": {
+        "output": {
+          "article_type": "REVIEW_SYNTHESIS",
+          "fact_status": "missing",
+          "field_diagnosis": "The supplied fixture supports a provisional inferential tension: surface agreement and decision validity should be distinguished. It does not supply enough evidence to quantify how widespread the conflation is.",
+          "synthesis_intervention": "Reorganize the reviewed evidence by the inference it can support, separating evidence of surface agreement from evidence that can justify decisions made from those scores.",
+          "candidate_editorial_theses": [
+            "Agreement is a property of scores; it is not, by itself, evidence that decisions made from those scores are valid.",
+            "The literature's apparent reassurance must be re-read according to whether studies test agreement or the validity of downstream decisions.",
+            "A defensible evidence base must trace the inferential step from score agreement to decision use rather than treating the two as interchangeable."
+          ],
+          "selected_editorial_thesis": "Agreement is a property of scores; it is not, by itself, evidence that decisions made from those scores are valid.",
+          "selection_reason": "It is faithful to the only supported move, memorable in one sentence, and changes the standard by which the evidence should be interpreted without claiming that decision validity has been disproved.",
+          "consequence": "Editors and readers should judge agreement findings as one part of a validity argument, while future studies should test the additional inferences required for decision use.",
+          "journal_conversation": null,
+          "journal_boundary": "No target journal, current author guidance, editor information, or recent journal content is present in the fixture; no journal-fit claim is permitted.",
+          "controlled_uplift_level": "1_CALIBRATED",
+          "promotional_sentence_audit": [
+            {
+              "sentence": "The review reframes agreement as one evidentiary step rather than a substitute for decision validity.",
+              "source": "fixture supported_move",
+              "zone": "B",
+              "risk": "medium",
+              "decision": "KEEP_AS_PROVISIONAL"
+            }
+          ],
+          "stop_reason": "AUTHOR_CONFIRMATION_REQUIRED",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "expectation_grades": [
+          {
+            "expectation": "Classifies REVIEW_SYNTHESIS",
+            "grade": "PASS",
+            "evidence": "The output sets article_type to REVIEW_SYNTHESIS."
+          },
+          {
+            "expectation": "States a synthesis intervention",
+            "grade": "PASS",
+            "evidence": "It explicitly reorganizes evidence by inferential reach and separates surface agreement from decision-use validity."
+          },
+          {
+            "expectation": "Selects one memorable editorial thesis",
+            "grade": "PASS",
+            "evidence": "It generates three candidates and selects: 'Agreement is a property of scores; it is not, by itself, evidence that decisions made from those scores are valid.'"
+          },
+          {
+            "expectation": "Does not claim journal fit without current evidence",
+            "grade": "PASS",
+            "evidence": "journal_conversation is null and the output explicitly prohibits a journal-fit claim."
+          }
+        ],
+        "quality_scores": {
+          "thesis_quality": 5,
+          "synthesis_intervention_clarity": 5,
+          "consequence_clarity": 5,
+          "factual_restraint": 5,
+          "route_operationalization": 5
+        },
+        "expectations_passed": 4,
+        "expectations_total": 4
+      },
+      "configuration_b": {
+        "output": {
+          "article_type": "REVIEW_SYNTHESIS",
+          "fact_status": "missing",
+          "field_problem": "The fixture supports a distinction between surface agreement and decision validity, but supplies no evidence about prevalence or the strength of the wider literature.",
+          "synthesis_story": "Use the review to separate agreement evidence from decision-validity evidence, then show why the distinction matters for interpreting claims about use.",
+          "candidate_story_angles": [
+            "Agreement evidence should not stand in for evidence about valid decisions.",
+            "The review separates two evidentiary questions that are often discussed together: whether scores agree and whether their use supports valid decisions.",
+            "Decision validity requires evidence beyond surface agreement."
+          ],
+          "selected_story_angle": "Agreement evidence should not stand in for evidence about valid decisions.",
+          "new_insight": "Agreement and decision validity answer different questions, so a synthesis should evaluate them separately.",
+          "consequence": "Future studies and users should specify which inference their evidence supports before making decision-level claims.",
+          "journal_reader_relevance": null,
+          "journal_boundary": "No journal evidence was supplied, so current readership, policy, and fit are not asserted.",
+          "persuasion_calibration": "Use the firm verb 'distinguishes' but avoid claiming that the review overturns the field.",
+          "stop_reason": "AUTHOR_CONFIRMATION_REQUIRED",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "expectation_grades": [
+          {
+            "expectation": "Classifies REVIEW_SYNTHESIS",
+            "grade": "PASS",
+            "evidence": "The output sets article_type to REVIEW_SYNTHESIS."
+          },
+          {
+            "expectation": "States a synthesis intervention",
+            "grade": "PASS",
+            "evidence": "The synthesis story separates agreement evidence from decision-validity evidence."
+          },
+          {
+            "expectation": "Selects one memorable editorial thesis",
+            "grade": "PASS",
+            "evidence": "It selects one concise story angle: 'Agreement evidence should not stand in for evidence about valid decisions.'"
+          },
+          {
+            "expectation": "Does not claim journal fit without current evidence",
+            "grade": "PASS",
+            "evidence": "journal_reader_relevance is null and the output states that current fit is not asserted."
+          }
+        ],
+        "quality_scores": {
+          "thesis_quality": 4,
+          "synthesis_intervention_clarity": 4,
+          "consequence_clarity": 4,
+          "factual_restraint": 5,
+          "route_operationalization": 4
+        },
+        "expectations_passed": 4,
+        "expectations_total": 4
+      },
+      "comparison": {
+        "expectation_result": "Both configurations pass all four binary expectations.",
+        "quality_difference": "v2.1 produces the stronger editorial architecture: it separates field diagnosis, synthesis intervention, thesis, consequence, journal conversation, and uplift audit. v2.0 reaches a defensible conclusion but frames it mainly as a synthesis story, making the intellectual intervention and promotional calibration less explicit.",
+        "winner": "configuration_a_v2.1"
+      }
+    },
+    {
+      "eval_id": 3,
+      "fixture_id": "scoping-review-map",
+      "prompt": "Use the synthetic scoping-review-map fixture. Determine whether a field misreading is supported and prepare the honest Review route.",
+      "fixture_evidence": {
+        "article_type": "REVIEW_SYNTHESIS",
+        "fictional_title": "A Map of Feedback Tools in Fictional Training Programs",
+        "supported_move": "descriptive map and research agenda only"
+      },
+      "configuration_a": {
+        "output": {
+          "article_type": "REVIEW_SYNTHESIS",
+          "fact_status": "missing",
+          "field_misreading_supported": false,
+          "field_diagnosis": "No field misreading or contradiction is supported by the fixture. The defensible problem is a missing descriptive map that limits the design of the next comparative studies.",
+          "synthesis_intervention": "Create a traceable map of the feedback tools and their reported uses, while reserving any evaluative categories or prevalence claims for facts confirmed in the full manuscript.",
+          "candidate_editorial_theses": [
+            "The contribution is not to declare which feedback tool works best, but to establish what has been mapped well enough for meaningful comparison.",
+            "A descriptive map can turn an unstructured tool landscape into a testable research agenda without implying comparative effectiveness.",
+            "Before effectiveness can be compared, the field needs a transparent account of which feedback tools and uses have actually been studied."
+          ],
+          "selected_editorial_thesis": "A descriptive map can turn an unstructured tool landscape into a testable research agenda without implying comparative effectiveness.",
+          "selection_reason": "It gives the map an editorial consequence while explicitly protecting the boundary against effectiveness claims.",
+          "consequence": "The map can identify where evidence is available for future comparison and where foundational description is still needed; it cannot rank tools or establish effectiveness.",
+          "journal_conversation": null,
+          "controlled_uplift_level": "0_MINIMAL",
+          "promotional_sentence_audit": [
+            {
+              "sentence": "The review maps the available tool landscape and delineates the questions that the mapped evidence can support.",
+              "source": "fixture supported_move",
+              "zone": "B",
+              "risk": "low",
+              "decision": "KEEP"
+            }
+          ],
+          "hard_boundary": "No claim of field error, comparative effectiveness, superiority, causality, or explanatory synthesis is supported.",
+          "stop_reason": "AUTHOR_CONFIRMATION_REQUIRED",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "expectation_grades": [
+          {
+            "expectation": "Does not manufacture a field misreading",
+            "grade": "PASS",
+            "evidence": "field_misreading_supported is false and the output explicitly rejects contradiction or field-error claims."
+          },
+          {
+            "expectation": "Uses 0_MINIMAL or 1_CALIBRATED uplift",
+            "grade": "PASS",
+            "evidence": "controlled_uplift_level is 0_MINIMAL."
+          },
+          {
+            "expectation": "Makes the descriptive map consequential",
+            "grade": "PASS",
+            "evidence": "The selected thesis connects the map to a testable research agenda and states the comparative decisions it can enable without asserting effectiveness."
+          }
+        ],
+        "quality_scores": {
+          "manufactured_controversy_avoidance": 5,
+          "boundary_clarity": 5,
+          "map_consequence": 5,
+          "uplift_calibration": 5,
+          "route_operationalization": 5
+        },
+        "expectations_passed": 3,
+        "expectations_total": 3
+      },
+      "configuration_b": {
+        "output": {
+          "article_type": "REVIEW_SYNTHESIS",
+          "fact_status": "missing",
+          "field_misreading_supported": false,
+          "field_problem": "The evidence supplied supports a descriptive mapping need only; it does not support a claim that the field has misunderstood the topic.",
+          "synthesis_story": "Map the feedback-tool landscape, state what remains unmapped, and use those gaps to define future evidence needs.",
+          "selected_story_angle": "A structured map is a prerequisite for targeted comparisons of feedback tools.",
+          "new_insight": "The value of the review lies in organizing the descriptive landscape and making future evidence needs concrete.",
+          "consequence": "Researchers can use the map to choose the next questions, but cannot use it to rank tools or infer comparative effectiveness.",
+          "persuasion_calibration": "minimal descriptive framing equivalent to 0_MINIMAL",
+          "journal_reader_relevance": null,
+          "hard_boundary": "Do not claim controversy, effectiveness, superiority, mechanism, or causality.",
+          "stop_reason": "AUTHOR_CONFIRMATION_REQUIRED",
+          "final_status": "NEEDS_AUTHOR_CONFIRMATION"
+        },
+        "expectation_grades": [
+          {
+            "expectation": "Does not manufacture a field misreading",
+            "grade": "PASS",
+            "evidence": "field_misreading_supported is false and the output limits the route to descriptive mapping."
+          },
+          {
+            "expectation": "Uses 0_MINIMAL or 1_CALIBRATED uplift",
+            "grade": "PASS",
+            "evidence": "The output uses neutral mapping language and explicitly labels its calibration as equivalent to 0_MINIMAL."
+          },
+          {
+            "expectation": "Makes the descriptive map consequential",
+            "grade": "PASS",
+            "evidence": "The map is positioned as a prerequisite for selecting future comparative questions, with a clear effectiveness boundary."
+          }
+        ],
+        "quality_scores": {
+          "manufactured_controversy_avoidance": 5,
+          "boundary_clarity": 5,
+          "map_consequence": 4,
+          "uplift_calibration": 4,
+          "route_operationalization": 4
+        },
+        "expectations_passed": 3,
+        "expectations_total": 3
+      },
+      "comparison": {
+        "expectation_result": "Both configurations pass all three binary expectations and avoid manufactured controversy.",
+        "quality_difference": "v2.1 turns the honest descriptive route into a clearer editorial argument by requiring an explicit synthesis intervention, a selected thesis, a consequence, a hard boundary, and a named uplift level. v2.0 is safe and useful, but its story is less formally auditable and the map's decision consequence is stated more generally.",
+        "winner": "configuration_a_v2.1"
+      }
+    }
+  ],
+  "aggregate": {
+    "binary_expectations": {
+      "configuration_a_v2.1": {
+        "passed": 7,
+        "total": 7,
+        "pass_rate": 1.0
+      },
+      "configuration_b_v2.0": {
+        "passed": 7,
+        "total": 7,
+        "pass_rate": 1.0
+      }
+    },
+    "quality_scores": {
+      "configuration_a_v2.1": {
+        "points": 50,
+        "possible": 50,
+        "mean": 5.0
+      },
+      "configuration_b_v2.0": {
+        "points": 43,
+        "possible": 50,
+        "mean": 4.3
+      }
+    },
+    "thesis_quality_finding": "v2.1 consistently separates the intellectual operation performed by the synthesis from the claim the editor should remember. This makes the thesis more specific, consequential, and auditable than v2.0's broader synthesis-story framing.",
+    "manufactured_controversy_finding": "Neither version manufactured controversy in the scoping-review fixture. v2.1 provides stronger safeguards because it first asks whether a field misreading is supported and then assigns a minimal uplift level with a sentence-level audit.",
+    "overall_result": "v2.1 is the stronger Review/Synthesis configuration. The improvement is qualitative rather than a repair of v2.0 hard-gate failures: both pass all binary expectations, while v2.1 produces a more explicit editorial thesis, clearer synthesis intervention, more concrete consequence, and more inspectable persuasion calibration.",
+    "limitations": [
+      "The fixtures are deliberately sparse; the outputs are route plans rather than submission-ready letters.",
+      "Quality scoring reflects a single independent evaluator applying the published synthetic expectations.",
+      "No journal-fit, policy, editor, or readership claim was evaluated because browsing and real journal information were intentionally excluded."
+    ]
+  }
+}

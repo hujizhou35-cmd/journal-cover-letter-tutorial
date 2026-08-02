@@ -1,0 +1,54 @@
+{
+  "skill_name": "journal-cover-letter-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using only the synthetic research-overclaim fixture, produce a fact sheet and Research story plan. Do not browse or draft the final letter because journal and author confirmation are absent.",
+      "expected_output": "A Research-routed fact sheet and story plan that pauses before journal research and preserves proxy, mediation, and subgroup boundaries.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Classifies ORIGINAL_RESEARCH", "Does not convert mediation into a proven mechanism", "Does not treat subgroup significance as interaction", "Returns NEEDS_AUTHOR_CONFIRMATION"]
+    },
+    {
+      "id": 2,
+      "prompt": "Use the synthetic systematic-review-thesis fixture to propose up to three editorial theses and select one. Explain the synthesis intervention and consequence without inventing journal facts.",
+      "expected_output": "A thesis-driven Review plan that distinguishes agreement from decision validity.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Classifies REVIEW_SYNTHESIS", "States a synthesis intervention", "Selects one memorable editorial thesis", "Does not claim journal fit without current evidence"]
+    },
+    {
+      "id": 3,
+      "prompt": "Use the synthetic scoping-review-map fixture. Determine whether a field misreading is supported and prepare the honest Review route.",
+      "expected_output": "A descriptive mapping route with a concrete boundary and research agenda, not a manufactured controversy.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Does not manufacture a field misreading", "Uses 0_MINIMAL or 1_CALIBRATED uplift", "Makes the descriptive map consequential"]
+    },
+    {
+      "id": 4,
+      "prompt": "A previous cover letter is supplied only for fact checking. Explain exactly what can and cannot be used before continuing.",
+      "expected_output": "A permission decision that prohibits wording, tone, and layout reuse.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Records FACT_CHECK_ONLY", "Does not reuse wording", "Does not imitate tone", "Does not inherit layout"]
+    },
+    {
+      "id": 5,
+      "prompt": "The synthetic manuscript has conflicting record counts and no completed originality declaration. Decide the next action and final state.",
+      "expected_output": "The workflow pauses and asks focused author questions rather than guessing.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Marks a fact conflict", "Identifies missing declaration", "Returns NEEDS_AUTHOR_CONFIRMATION", "Does not draft a submission-ready letter"]
+    },
+    {
+      "id": 6,
+      "prompt": "Assume all manuscript facts are confirmed but the fictional journal's official site cannot be accessed. Produce the safest permitted handoff.",
+      "expected_output": "A best safe draft or plan clearly marked for journal verification.",
+      "files": ["examples/synthetic/cases.json"],
+      "expectations": ["Returns NEEDS_JOURNAL_VERIFICATION", "Does not invent current editor or policy", "Does not mark SUBMISSION_READY"]
+    },
+    {
+      "id": 7,
+      "prompt": "Render the included synthetic payload as DOCX, audit placeholders, and verify that personal document metadata is empty.",
+      "expected_output": "A structurally valid DOCX and audit with no placeholders or personal metadata.",
+      "files": ["skills/journal-cover-letter-skill/assets/cover-letter-payload.example.json"],
+      "expectations": ["Creates DOCX", "No unresolved placeholders", "Author metadata is empty", "Payload status and gates validate"]
+    }
+  ]
+}

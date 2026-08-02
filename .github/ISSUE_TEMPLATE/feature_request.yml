@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose a new workflow, article type, language, or evaluation case
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Editorial problem
+      description: Describe the general problem without private submission material.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: synthetic
+    attributes:
+      label: Synthetic regression idea
+      description: Explain how the behavior could be tested without real confidential material.

@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT_EXTENSIONS = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".toml", ".cff"}
+TEXT_EXTENSIONS = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".toml", ".cff", ".html"}
 PATTERNS = {
     "credential": re.compile(r"(?:ghp_|github_pat_|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})"),
     "private email": re.compile(r"(?i)\b(?!contact@example\.invalid\b)[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b"),
@@ -42,7 +42,7 @@ def main() -> int:
                 patterns[f"local sensitive term {index + 1}"] = re.compile(re.escape(term.strip()), re.I)
     findings: list[str] = []
     for path in tracked_files():
-        if path == Path(__file__).resolve():
+        if path.name in {"privacy_scan.py", "privacy_scan_history.py"} and path.parent.name == "scripts":
             continue
         if path.suffix.lower() not in TEXT_EXTENSIONS or not path.exists():
             continue
