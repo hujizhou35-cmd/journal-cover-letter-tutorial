@@ -1,0 +1,14 @@
+{
+  "date": "2030-04-12",
+  "salutation": "Dear Editorial Team,",
+  "paragraphs": [
+    "Please consider our original research manuscript, “A Synthetic Study of Assessment Feedback,” for publication in the Fictional Journal of Learning Science.",
+    "Using a fully synthetic dataset, the study tests whether structured feedback improves calibration while preserving appropriate uncertainty.",
+    "The manuscript is original, is not under consideration elsewhere, and has been approved by all authors."
+  ],
+  "signoff": "Sincerely,",
+  "corresponding_author": "Alex Morgan",
+  "affiliation": "Example Institute for Learning Research",
+  "contact": "contact@example.invalid",
+  "status": "SUBMISSION_READY"
+}

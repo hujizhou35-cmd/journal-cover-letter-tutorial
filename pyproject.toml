@@ -1,0 +1,12 @@
+[project]
+name = "journal-cover-letter-skill"
+version = "1.0.0"
+description = "Deterministic utilities for an academic journal cover-letter Skill"
+requires-python = ">=3.10"
+dependencies = ["python-docx>=1.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

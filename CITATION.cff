@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "Journal Cover Letter Skill"
+type: software
+authors:
+  - family-names: "Hu"
+    given-names: "Jizhou"
+    affiliation: "China Medical University"
+repository-code: "https://github.com/hujizhou35-cmd/journal-cover-letter-skill"
+url: "https://github.com/hujizhou35-cmd/journal-cover-letter-skill"
+license: MIT
+version: 1.0.0
+date-released: 2026-08-03

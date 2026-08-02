@@ -1,0 +1,34 @@
+# Private manuscript and submission material
+manuscripts/
+private/
+local-only/
+real-world-tests/
+local-sensitive-terms.txt
+*.doc
+*.docx
+*.pdf
+*.rtf
+
+# Generated artifacts and temporary workspaces
+dist/
+build/
+tmp/
+.tmp/
+qa-render/
+*.png
+*.zip
+*.skill
+SHA256SUMS.txt
+
+# Python and tools
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

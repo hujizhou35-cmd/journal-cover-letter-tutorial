@@ -1,0 +1,23 @@
+{
+  "name": "journal-cover-letter-skill",
+  "version": "1.0.0",
+  "description": "A manuscript-grounded workflow for drafting academic journal cover letters.",
+  "author": {
+    "name": "Jizhou Hu",
+    "url": "https://github.com/hujizhou35-cmd"
+  },
+  "homepage": "https://github.com/hujizhou35-cmd/journal-cover-letter-skill",
+  "repository": "https://github.com/hujizhou35-cmd/journal-cover-letter-skill",
+  "license": "MIT",
+  "keywords": ["academic-writing", "cover-letter", "journal-submission", "research"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Journal Cover Letter",
+    "shortDescription": "Draft evidence-grounded academic journal cover letters.",
+    "longDescription": "Analyzes manuscript files, researches current journal requirements, and drafts an audited academic submission cover letter.",
+    "developerName": "Jizhou Hu",
+    "category": "Productivity",
+    "capabilities": ["Research", "Write"],
+    "defaultPrompt": "Analyze my manuscript files and help me prepare an evidence-grounded journal cover letter."
+  }
+}
