@@ -1,23 +1,28 @@
 # Contributing
 
-Thank you for helping improve academic cover-letter writing.
+Thank you for helping improve the project.
 
-## Safe contributions
+## Sharing examples safely
 
-Published articles and their related cover letters can help improve this project. Submit only materials you have the right to share publicly, and remove personal, confidential, and unpublished submission information before contributing.
+Published articles and their related cover letters can help us compare AI writing with expert writing. Only share materials that you have the right to publish.
 
-欢迎大家使用已发表的文章和相关 Cover Letter 一起对本项目进行升级。请仅提交你有权公开分享的材料，并在贡献前移除个人、保密和未公开投稿信息。
+Before contributing, remove:
 
-Prefer synthetic fixtures or carefully anonymized, already-public materials. Never submit unpublished manuscripts, active submission correspondence, private reviewer/editor messages, personal contact details, submission IDs, or confidential journal instructions.
+- names, email addresses, submission numbers, and other personal details;
+- unpublished manuscripts or results;
+- private messages from editors or reviewers;
+- confidential journal instructions;
+- hidden metadata in DOCX or PDF files.
 
-A published article and cover letter may be proposed as a human-authored benchmark only when you can demonstrate the right to redistribute both. The project will analyze editorial choices and claim boundaries; it will not treat any single letter as a gold standard.
+欢迎大家使用已发表的文章和相关 Cover Letter 一起改进本项目。请只提交你有权公开分享的材料，并提前移除个人信息、保密信息和未公开投稿信息。
 
-## Development
+We prefer fully fictional examples or carefully anonymized, already-public materials. An expert letter can be used for comparison, but it is never treated as a standard answer and its wording is not copied automatically.
 
-1. Open an issue describing the behavior or article type involved.
-2. Add or update a synthetic regression case.
-3. Keep semantic interpretation in Skill instructions and deterministic checks in scripts.
-4. Run the test, structure, plugin, skill, and privacy checks.
-5. Explain privacy review in the pull request.
+## Making a change
 
-Contributions are accepted under the repository's MIT License.
+1. Open an issue and describe the problem or article type.
+2. Add or update a fictional test example when possible.
+3. Run the tests and privacy checks.
+4. Explain what changed and how privacy was checked in the pull request.
+
+Contributions are accepted under the MIT License.

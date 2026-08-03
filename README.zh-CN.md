@@ -1,126 +1,107 @@
 # Journal Cover Letter Skill
 
-[English](README.md) · [迭代过程](docs/evolution.md) · [架构](docs/architecture.md) · [隐私](PRIVACY.md)
+[English](README.md) · [项目迭代过程](docs/evolution.zh-CN.md) · [隐私说明](PRIVACY.md)
 
-一个开源的 Codex Skill 与 Plugin：把手稿证据转化为面向编辑决策的学术期刊 Cover Letter。项目适用于通用学术投稿，并优先覆盖生物医学与生命科学场景。
+一个根据手稿文件撰写学术期刊 Cover Letter 的开源 Skill 和 Codex Plugin。
 
-> **当前推荐：**v2.1（清单版本 `2.1.0`）。v1.0 与 v2.0 作为 Legacy Releases 保留，用于复现和版本比较。
+上传手稿及相关文件后，它会核对文章事实，询问旧版 Cover Letter 可以怎样使用，查询目标期刊当前的官方要求，再为这次投稿撰写一封有针对性的信。
 
-## 它与模板生成器有什么不同
+项目适用于一般学术投稿，优先覆盖生物医学和生命科学研究。默认输出英文，也可以指定其他语言。
 
-模板只能排列段落，不能判断手稿事实是否可靠、结果能否支持因果或机制表述、编辑应该记住哪条故事，也不能判断稿件如何进入目标期刊正在进行的学术对话。
+> **推荐版本：**v2.1。早期版本继续保留，方便查看和复现项目的迭代过程。
 
-本项目把 Cover Letter 视为一份**编辑初筛决策简报**：
+## 可以得到什么
 
-1. 识别手稿、Title Page、补充材料和既往 Cover Letter；
-2. 建立带 `verified`、`conflict`、`missing` 状态的可追溯事实表；
-3. 确认文章类型、投稿分支、目标期刊、声明和使用权限；
-4. 检索目标期刊当前官方要求与近期相关学术对话；
-5. 选择 Research 故事或 Review 的 editorial thesis；
-6. 在证据边界内进行受控说服；
-7. 执行有界审计与自适应长度循环；
-8. 交付正文、可选 DOCX、审计、未解决事项和就绪状态。
+- 一份可用于投稿的 Cover Letter 草稿
+- 可选的 DOCX 文件
+- 简短的事实、期刊要求和论断强度检查
+- 仍需作者确认的事项
 
-默认输出英文，用户也可指定其他语言。
+如果手稿事实冲突、必要声明缺失，或无法核实期刊当前要求，Skill 不会把信件标记为已经可以投稿。
 
-## 两条编辑路线
+## 它怎样工作
 
-### Original Research
+1. 阅读手稿、Title Page、补充材料和旧版 Cover Letter。
+2. 向作者展示提取出的事实和主要亮点。
+3. 询问旧信可以用于事实核对、版式、语气、措辞保留，还是专家版本比较。
+4. 得到作者确认后，查询目标期刊当前的官方信息。
+5. 根据文章类型撰写 Cover Letter。
+6. 检查夸大论断、遗漏声明、过期期刊信息和未删除的占位符。
+7. 交付正文、可选 DOCX 和简短检查结果。
 
-> 重要问题 → 知识缺口 → 设计优势 → 核心发现 → 可辩护意义 → 期刊对话
+## Research 和 Review 的写法
 
-该路线围绕一条科学发现链讲故事。方法用于证明发现可信，而不是成为清单；同时检查因果、机制、亚组、代理指标和临床转化越界。
+对于 **Original Research**，Cover Letter 应讲清一条发现主线：研究解决了什么问题、设计上如何更进一步、最重要的发现是什么，以及为什么本刊读者会关心。
 
-### Review 与 Synthesis
+对于 **Review**，重点是说明把已有证据放在一起后，领域获得了什么新的理解。系统综述可以纠正误解或提出新的解释；描述性综述和范围综述则不应被强行包装成“发现了争议”。
 
-> 领域误读或未解决张力 → 综合干预 → editorial thesis → 改变的决策或研究议程 → 期刊对话 → 校准边界
+## 这个项目是怎样迭代出来的
 
-该路线强调综述如何改变领域对既有证据的理解。对于描述性或范围综述，系统不会强行制造争议。
+项目起点是把 AI 撰写的 Cover Letter 与一位有经验的学术专家撰写的版本进行比较。
 
-## 版本演进
+AI 版本通常事实完整、表达谨慎，但容易像缩短版摘要，有时也过于保守。专家版本更会取舍：只保留最能影响编辑判断的内容，围绕一个中心信息展开，并使用适度而克制的推广语言。
 
-| 公开版本 | 清单版本 | 状态 | 主要设计变化 |
-|---|---:|---|---|
-| v1.0 | `1.0.0` | Legacy | Fact Sheet、期刊检索、既往信权限、统一 `1-5-1-1` 迭代与审计 |
-| v2.0 | `2.0.0` | Legacy | Research/Review 分流、科学故事、说服力校准、有界状态循环 |
-| v2.1 | `2.1.0` | 推荐稳定版 | Review 领域诊断、`editorial_thesis`、受控营销、期刊对话、自适应长度 |
+后续迭代希望把两者的优点结合起来：
 
-项目会学习人类撰写 Cover Letter 的选择、节奏和推广判断，但不会把它当成不可质疑的范本：**匿名专家信是 benchmark，而非 gold standard**。任何事实和论断仍需通过手稿级核查。详见[完整迭代说明](docs/evolution.md)。
+- 保留 AI 的事实核对和一致性检查；
+- 学习专家的聚焦、故事感、节奏和编辑视角；
+- 继续严格控制因果、机制、亚组和临床意义的表述边界。
+
+专家版本是**比较基准，不是标准答案**。可以学习它的选择和表达，但每一项事实与论断仍要回到手稿核对。开发中使用过的真实手稿、Cover Letter、期刊信息和原始对话均不会出现在公开仓库中。
+
+| 版本 | 主要变化 | 状态 |
+|---|---|---|
+| v1.0 | 加入手稿事实核对、期刊检索、旧信使用权限和最终检查。 | 旧版 |
+| v2.0 | 明确 Research 往往需要讲一条发现故事，而 Review 不必硬讲故事，应说明综合证据后带来了什么新理解。 | 旧版 |
+| v2.1 | 重点优化 Review，使其能够提出清楚的新解释，同时不过度推断。 | 推荐版 |
+
+完整说明见[项目迭代过程](docs/evolution.zh-CN.md)。
+
+## 快速开始
+
+上传文件后，用自然语言提出要求即可：
+
+> 请阅读这些手稿文件，帮我为 [期刊名称] 撰写 Cover Letter。先向我展示你提取的事实和主要亮点，得到我的确认后再查询期刊并写最终版本。
+
+如果提供旧版 Cover Letter，请说明允许怎样使用：
+
+> 这封旧信只用于参考版式和语气。旧期刊信息和科学论断必须重新核对，不能直接沿用。
 
 ## 安装
 
-每个 Release 均提供：
+每个 GitHub Release 提供：
 
-- `journal-cover-letter-skill-vX.Y.skill`：独立 Skill 包；
-- `journal-cover-letter-plugin-vX.Y.zip`：完整 Plugin 包；
-- `SHA256SUMS.txt`：完整性校验值。
+- `journal-cover-letter-skill-vX.Y.skill`：独立 Skill 安装包
+- `journal-cover-letter-plugin-vX.Y.zip`：Codex Plugin 安装包
+- `SHA256SUMS.txt`：文件校验值
 
-若按仓库方式安装独立 Skill，可将解压后的目录放在项目级：
+如果按项目级方式安装独立 Skill，请解压到：
 
 ```text
 .agents/skills/journal-cover-letter-skill/
 ```
 
-或放在用户级 Agent Skills 目录。Plugin 包可解压后，在支持本地 Plugin 的 Codex 环境中安装或导入。文件布局遵循当前 [OpenAI Skill](https://developers.openai.com/codex/build-skills) 与 [Plugin](https://developers.openai.com/plugins/build/plugins) 文档。
+新用户通常选择 v2.1。不要混用不同版本的文件。
 
-请选择同一 Release 的组件，不要将 v1.0 Skill 与 v2.1 Plugin 清单混用。
+## 示例、测试和技术资料
 
-## 调用示例
+仓库中的例子全部为虚构内容，用于测试因果夸大、声明缺失、期刊信息无法核实和旧信误用等常见问题。
 
-上传相关文件后可以这样请求：
+- [虚构示例](examples/synthetic/README.md)
+- [版本比较结果](evals/benchmark.md)
+- [简明流程图](docs/architecture.md)
+- [详细版本规格](docs/specs/)
 
-> 请分析这些文件，为 Original Research 投稿准备 Cover Letter。先停在 Fact Sheet 和故事候选项，得到我的确认后再检索期刊。
+## 使用边界
 
-或者：
-
-> 这是一篇范围综述。只有证据确实支持时才提出 editorial thesis；否则请诚实呈现描述性地图与研究议程，不要制造争议。
-
-输出包括：
-
-- 最终 Cover Letter 正文；
-- 可选 DOCX；
-- 事实、期刊、权限、故事/命题和论断强度审计；
-- 仍需作者确认的事项；
-- `SUBMISSION_READY`、`NEEDS_AUTHOR_CONFIRMATION`、`NEEDS_JOURNAL_VERIFICATION` 或 `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS` 中的一种状态。
-
-## 仓库结构
-
-```text
-.codex-plugin/plugin.json            Plugin 清单
-skills/journal-cover-letter-skill/   可独立安装的 Skill
-docs/specs/                           脱敏后的版本规格
-examples/synthetic/                  仅包含虚构案例
-evals/                               行为评测与人工复核材料
-tests/                               确定性回归测试
-scripts/                             结构、隐私和发布工具
-```
-
-## 合成示例与评测
-
-公开测试覆盖：包含代理指标/中介/亚组风险的原始研究；可形成命题的系统综述；只支持描述性映射的范围综述；既往信权限；事实冲突或声明缺失；无法访问期刊官网；DOCX 生成。详见 [examples/synthetic](examples/synthetic/README.md)、[evals/evals.json](evals/evals.json) 与[静态人工复核页面](evals/review.html)。
-
-仓库不包含任何真实手稿、真实 Cover Letter、活跃投稿期刊、编辑身份或未公开投稿细节。
-
-## 局限
-
-- 项目不保证录用。
-- 期刊页面和政策会变化；必须核验当前官方信息才能标记就绪。
-- 科学解释仍属于模型辅助判断，必须由作者复核。
-- 作者对事实、声明、伦理、利益冲突和最终投稿合规负责。
-- DOCX 可以继承版式，但不得携带隐藏文字、修订、元数据或旧期刊信息。
-
-## 路线图
-
-- 在不削弱共同证据门槛的前提下加入更多学科分支；
-- 扩展多语言输出评测；
-- 增加更多已获公开授权的 benchmark 配对；
-- 完善可复现的人工版本比较；
-- 稳定公开使用后再考虑通用插件目录提交；当前不提交到通用目录。
+- 本项目不保证稿件被录用。
+- 期刊政策会变化，每次投稿都应重新查询。
+- 作者仍需对文章事实、声明、伦理、利益冲突和最终投稿负责。
 
 ## 参与贡献
 
-欢迎大家使用已发表的文章和相关 Cover Letter 一起对本项目进行升级。请仅提交你有权公开分享的材料，并在贡献前移除个人、保密和未公开投稿信息。详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+欢迎大家使用已发表的文章和相关 Cover Letter 一起改进本项目。请只提交你有权公开分享的材料，并提前移除个人信息、保密信息和未公开投稿信息。详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-## 作者、引用与许可
+## 作者与许可
 
 作者：**Jizhou Hu（China Medical University）**。引用信息见 [CITATION.cff](CITATION.cff)，项目采用 [MIT License](LICENSE)。

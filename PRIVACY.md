@@ -1,16 +1,17 @@
-# Privacy policy for repository contributions
+# Privacy
 
-This project processes academic submission material locally within the user's agent environment. The repository itself stores no manuscript content and provides no remote data service.
+The Skill works with academic submission files in the user's own agent environment. This repository does not provide a remote manuscript-storage service.
 
-## Never commit
+## Do not commit
 
-- unpublished or confidential manuscripts and supplements;
-- real cover letters or submission correspondence without explicit publication rights;
-- author contact details, submission identifiers, reviewer or editor messages;
-- target-journal research captured for a live unpublished submission;
-- API keys, session data, credentials, or local sensitive-term lists;
-- DOCX/PDF artifacts carrying personal metadata.
+- unpublished or confidential manuscripts;
+- real cover letters without permission to publish them;
+- author contact details or submission numbers;
+- private editor or reviewer messages;
+- live target-journal research for an unpublished submission;
+- passwords, API keys, session data, or other credentials;
+- DOCX or PDF files that still contain personal metadata.
 
-All repository examples must be synthetic or demonstrably public and contribution-safe. A human-authored letter may be analyzed as a benchmark only with the user's permission; it is evidence to learn from, not a gold standard and not automatically reusable text.
+Public examples must be fully fictional or clearly safe and lawful to share. Expert-authored letters may be studied only with permission. They are used for comparison, not copied as standard answers.
 
-Release preparation includes scanning tracked files, Git history, archives, and document metadata. Contributors remain responsible for having the right to share any submitted material.
+Before a release, the project scans current files, Git history, downloadable archives, and document metadata. Contributors are still responsible for having the right to share anything they submit.

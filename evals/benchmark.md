@@ -1,11 +1,13 @@
-# Synthetic version comparison
+# What improved across versions
 
-| Comparison | Binary expectations | Qualitative finding |
-|---|---:|---|
-| v1.0 vs no Skill | 100% vs 87.5% | v1.0 adds exact stop-state and traceable hard-gate discipline; the explicit fixture made scientific safety relatively easy for both. |
-| v2.0 vs v1.0 | 100% vs 100% | v2.0 scores 16/16 vs 13/16 because Research/Review routing and story selection are explicit and auditable. |
-| v2.1 vs v2.0 | 100% vs 100% | v2.1 scores 5.0/5 vs 4.3/5 for Review thesis structure, synthesis intervention, consequence, uplift, and sentence-level audit. |
+The tests use fictional manuscripts and journals. They check whether each version follows the intended workflow and avoids unsafe claims.
 
-These results are scoped regression evidence, not claims of general model superiority. Each comparison used two fully synthetic planning cases, one independent evaluator, no live journal browsing, and no real manuscript material. Timing and token use were not persisted.
+| Comparison | Result |
+|---|---|
+| v1.0 vs no Skill | v1.0 was more reliable when facts conflicted or author confirmation was required. |
+| v2.0 vs v1.0 | Both passed the basic safety checks, but v2.0 produced a clearer Research story and treated Reviews differently. |
+| v2.1 vs v2.0 | Both kept the Research safeguards; v2.1 gave Reviews a clearer central interpretation and stronger but controlled language. |
 
-The v1.0 comparison also revealed that some expectations are not sufficiently discriminating because the fixture itself states the intended safety boundary or terminal status. Future evaluations should require more evidence synthesis and withhold expected-state labels from inputs.
+These are small regression tests, not proof that one model or version is universally better. No real manuscript, cover letter, or live journal information was used.
+
+Machine-readable scores and individual runs remain available in this folder for reviewers who want the technical detail.

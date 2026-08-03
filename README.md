@@ -1,126 +1,107 @@
 # Journal Cover Letter Skill
 
-[简体中文](README.zh-CN.md) · [Evolution](docs/evolution.md) · [Architecture](docs/architecture.md) · [Privacy](PRIVACY.md)
+[简体中文](README.zh-CN.md) · [How the project evolved](docs/evolution.md) · [Privacy](PRIVACY.md)
 
-An open-source Codex Skill and Plugin that turns manuscript evidence into an editor-facing academic journal cover letter. It is designed for general scholarly publishing, with biomedical and life-science submissions as the first-class use case.
+An open-source Skill and Codex Plugin for writing academic journal cover letters from manuscript files.
 
-> **Current recommendation:** v2.1 (`2.1.0`). v1.0 and v2.0 remain available as Legacy releases for comparison and reproducibility.
+Upload your manuscript and related files. The Skill checks the facts, asks what it may reuse from an older cover letter, looks up the target journal's current official guidance, and drafts a letter for that submission.
 
-## Why this is different from a template generator
+It is designed for general academic publishing, with biomedical and life-science research as the main use case. English is the default output language, but you can request another language.
 
-A template can arrange paragraphs. It cannot decide which manuscript facts are reliable, whether a result supports causal or mechanistic language, what story an editor should remember, or how the work enters a journal's current scholarly conversation.
+> **Recommended version:** v2.1. Earlier versions are kept so the project's development can be reviewed and reproduced.
 
-This project therefore treats a cover letter as an **editorial decision brief**:
+## What you get
 
-1. identify manuscript, title-page, supplementary, and prior-letter files;
-2. build a traceable fact sheet with `verified`, `conflict`, and `missing` states;
-3. confirm article type, submission branch, target journal, declarations, and permissions;
-4. research current official journal requirements and recent relevant conversation;
-5. select a Research story or Review editorial thesis;
-6. write with controlled persuasion and evidence boundaries;
-7. run bounded audit and adaptive-length loops;
-8. deliver text, optional DOCX, an audit, unresolved items, and a readiness status.
+- A submission-ready cover letter draft
+- An optional DOCX file
+- A short check of the facts, journal requirements, and claim strength
+- A clear list of anything the author still needs to confirm
 
-The default output language is English. Users can request another language.
+The Skill will not mark a letter as ready when manuscript facts conflict, required statements are missing, or current journal guidance cannot be checked.
 
-## Two editorial routes
+## How it works
 
-### Original Research
+1. Reads the manuscript, title page, supplements, and any previous cover letter.
+2. Shows the author the facts and strongest contributions it found.
+3. Asks how an older cover letter may be used: for facts, layout, tone, wording, or expert comparison.
+4. After author confirmation, checks the target journal's current official information.
+5. Writes a letter suited to the article type.
+6. Checks for unsupported claims, missing statements, stale journal details, and unresolved placeholders.
+7. Returns the letter, optional DOCX, and a short review note.
 
-> Important problem → knowledge gap → design advantage → central finding → defensible meaning → journal conversation
+## Research and Review articles
 
-The route tells one scientific discovery story. Methods support credibility rather than becoming a list. It explicitly checks causal, mechanistic, subgroup, proxy-measure, and clinical-translation boundaries.
+For **Original Research**, the letter tells one clear discovery story: the problem, what the study did differently, the main finding, and why it matters to the journal's readers.
 
-### Review and Synthesis
+For **Reviews**, the letter explains what becomes clearer when the evidence is brought together. A systematic review may correct a misunderstanding or offer a new interpretation. A descriptive or scoping review is not forced to claim a controversy it cannot support.
 
-> Field misreading or unresolved tension → synthesis intervention → editorial thesis → changed decision or research agenda → journal conversation → calibrated boundary
+## How this project was developed
 
-The route asks what the review changes in the field's interpretation of existing evidence. It does not force controversy onto descriptive or scoping reviews.
+The project began after comparing AI-written cover letters with cover letters written by an experienced academic expert.
 
-## Version evolution
+The AI drafts were usually careful and complete, but they could read like short abstracts and sometimes sounded too cautious. The expert letters were more selective: they chose one main message, wrote from the editor's point of view, and used confident but measured promotion.
 
-| Public release | Manifest | Status | Main design change |
-|---|---:|---|---|
-| v1.0 | `1.0.0` | Legacy | Fact Sheet, journal research, previous-letter permissions, unified `1-5-1-1` iteration and audits |
-| v2.0 | `2.0.0` | Legacy | Research/Review routing, scientific story selection, persuasion calibration, bounded state loops |
-| v2.1 | `2.1.0` | Recommended stable | Review field diagnosis, `editorial_thesis`, controlled uplift, journal conversation, adaptive length |
+The Skill was revised to combine both strengths:
 
-The project learned from human-authored cover letters without treating them as unquestionable models. An expert letter is a **benchmark, not a gold standard**: its selection, rhythm, and promotional judgment may be useful, while every fact and claim still has to survive manuscript-level verification. See [the full evolution narrative](docs/evolution.md).
+- the AI's fact checking and consistency;
+- the expert's focus, story, rhythm, and editorial judgment;
+- clear limits on causal, mechanistic, subgroup, and clinical claims.
+
+An expert letter is used as a **benchmark, not an answer key**. Its writing choices can be studied, but its facts and claims must still be checked against the manuscript. Real manuscripts, letters, journals, and source conversations used during development are not included in this repository.
+
+| Version | What changed | Status |
+|---|---|---|
+| v1.0 | Added manuscript fact checking, journal research, permission rules for older letters, and final checks. | Legacy |
+| v2.0 | Recognized that Research often needs a discovery story, while a Review follows a different logic: it explains what the synthesis helps the field understand. | Legacy |
+| v2.1 | Improved the Review route so it can present a clear new interpretation without overstating the evidence. | Recommended |
+
+Read the [full, privacy-safe development story](docs/evolution.md).
+
+## Quick start
+
+Attach your files and ask in plain language:
+
+> Read these manuscript files and help me write a cover letter for [Journal]. First show me the facts and main selling points you found. Wait for my confirmation before checking the journal and drafting the final letter.
+
+If you have an older letter, state how it may be used:
+
+> Use this previous cover letter only as a guide to layout and tone. Do not reuse its journal details or scientific claims without checking them.
 
 ## Install
 
-Each Release contains two independently usable packages:
+Each GitHub Release provides:
 
-- `journal-cover-letter-skill-vX.Y.skill` — standalone Skill archive;
-- `journal-cover-letter-plugin-vX.Y.zip` — complete Plugin archive;
-- `SHA256SUMS.txt` — integrity hashes.
+- `journal-cover-letter-skill-vX.Y.skill` — standalone Skill package
+- `journal-cover-letter-plugin-vX.Y.zip` — Codex Plugin package
+- `SHA256SUMS.txt` — download checksums
 
-For a standalone repository installation, place the extracted skill directory at:
+For a project-level standalone installation, extract the Skill to:
 
 ```text
 .agents/skills/journal-cover-letter-skill/
 ```
 
-for a project, or in your user-level Agent Skills directory. For Plugin use, extract the Plugin archive and install/import the folder in a Codex surface that supports local plugins. The package layouts follow the current [OpenAI Skill](https://developers.openai.com/codex/build-skills) and [Plugin](https://developers.openai.com/plugins/build/plugins) documentation.
+New users should normally install v2.1. Do not mix files from different releases.
 
-Use the Release matching the behavior you want. Do not combine a v1.0 Skill with a v2.1 Plugin manifest.
+## Examples, tests, and technical details
 
-## Invoke
+All examples are fictional. They test common risks such as overstated causality, missing declarations, unverified journal information, and accidental reuse of an older letter.
 
-Attach the manuscript-related files and ask, for example:
+- [Synthetic examples](examples/synthetic/README.md)
+- [Version comparison](evals/benchmark.md)
+- [Simple workflow diagram](docs/architecture.md)
+- [Detailed version specifications](docs/specs/)
 
-> Analyze these files and help me prepare a cover letter for an original research submission. Stop after the fact sheet and story candidates so I can confirm them before you research the journal.
+## Limits
 
-or:
-
-> This is a scoping review. Build a truthful editorial thesis only if the evidence supports one; otherwise frame the descriptive map and research agenda without manufacturing controversy.
-
-Expected outputs:
-
-- final cover-letter text;
-- optional DOCX;
-- fact, journal, permission, story/thesis, and claim-strength audit;
-- items still requiring author confirmation;
-- one state: `SUBMISSION_READY`, `NEEDS_AUTHOR_CONFIRMATION`, `NEEDS_JOURNAL_VERIFICATION`, or `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS`.
-
-## Repository layout
-
-```text
-.codex-plugin/plugin.json            Plugin manifest
-skills/journal-cover-letter-skill/   Installable Skill
-docs/specs/                           Sanitized version specifications
-examples/synthetic/                  Fictional cases only
-evals/                               Behavioral evaluation set and review artifacts
-tests/                               Deterministic regression tests
-scripts/                             Structure, privacy, and release utilities
-```
-
-## Synthetic examples and evaluation
-
-The public test matrix covers original research with proxy/mediation/subgroup risks, a thesis-capable systematic review, a descriptive scoping review, prior-letter permission boundaries, conflicting facts or missing declarations, unavailable journal information, and DOCX generation. See [examples/synthetic](examples/synthetic/README.md), [evals/evals.json](evals/evals.json), and the [static human-review page](evals/review.html).
-
-No real manuscript, real cover letter, active target journal, editor identity, or unpublished submission detail is included.
-
-## Limitations
-
-- The project does not guarantee acceptance.
-- Journal pages and policies change; current official verification is required for readiness.
-- Scientific interpretation remains a model-assisted judgment and must be reviewed by the authors.
-- The author is responsible for facts, declarations, ethics, conflicts, and final submission compliance.
-- DOCX inheritance can reproduce layout, but it must not carry hidden text, tracked changes, metadata, or stale journal details.
-
-## Roadmap
-
-- Add discipline-specific branches without weakening the shared evidence gates.
-- Expand multilingual output evaluation.
-- Add more public, rights-cleared benchmark pairs.
-- Improve reproducible human review of version comparisons.
-- Consider wider plugin-directory submission only after stable public use; this repository is not currently submitted to a universal plugin directory.
+- The Skill cannot guarantee acceptance.
+- Journal policies change and must be checked again for each submission.
+- Authors remain responsible for the manuscript facts, declarations, ethics, conflicts of interest, and final submission.
 
 ## Contributing
 
-Published articles and their related cover letters can help improve this project. Submit only materials you have the right to share publicly, and remove personal, confidential, and unpublished submission information before contributing. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Published articles and their related cover letters can help improve the project. Submit only materials you have the right to share, and remove personal, confidential, and unpublished submission information first. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Author, citation, and license
+## Author and license
 
-Created by **Jizhou Hu (China Medical University)**. Cite the project using [CITATION.cff](CITATION.cff). Released under the [MIT License](LICENSE).
+Created by **Jizhou Hu (China Medical University)**. Citation information is in [CITATION.cff](CITATION.cff). Released under the [MIT License](LICENSE).

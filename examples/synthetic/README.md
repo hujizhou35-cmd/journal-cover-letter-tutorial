@@ -1,15 +1,15 @@
-# Synthetic examples
+# Fictional test examples
 
-Every case in this directory is fictional. Names, institutions, manuscript titles, data, journals, and policies are invented and must not be treated as factual journal information.
+Everything in this folder is invented, including names, institutions, manuscripts, results, journals, and journal policies.
 
-The cases exercise seven behaviors:
+The examples test whether the Skill can:
 
-1. Original Research with proxy, mediation, and subgroup overclaim risks.
-2. Systematic Review with a defensible field misreading and editorial thesis.
-3. Scoping Review that supports descriptive mapping but not manufactured controversy.
-4. Previous-letter permission boundaries.
-5. Fact conflict or missing declaration that must pause the workflow.
-6. Unavailable official journal information that requires journal verification.
-7. DOCX layout, metadata, and placeholder validation.
+1. Avoid turning associations, mediation results, subgroup findings, or proxy measures into stronger claims than the data support.
+2. Find a useful central interpretation for a systematic review.
+3. Keep a scoping review descriptive when it does not support a stronger claim.
+4. Respect the author's permission for using an older cover letter.
+5. Stop when manuscript facts conflict or required statements are missing.
+6. Say that journal verification is still needed when official information is unavailable.
+7. Create a clean DOCX without personal metadata or unfinished placeholders.
 
-See `cases.json` for the compact fixtures. They are intentionally short; evaluators should test workflow decisions rather than imitate their prose.
+The compact test data are stored in `cases.json`.

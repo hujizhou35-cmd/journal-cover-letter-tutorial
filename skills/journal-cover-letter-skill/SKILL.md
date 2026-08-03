@@ -1,6 +1,6 @@
 ---
 name: journal-cover-letter-skill
-description: Create, revise, or audit a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. Route original research through a scientific discovery story and reviews/syntheses through a field diagnosis and editorial thesis. Do not use for job applications, recommendation letters, or non-academic business correspondence.
+description: Create, revise, or check a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. For original research, organize the letter around one central finding; for reviews, explain what the synthesis helps the field understand. Do not use for job applications, recommendation letters, or non-academic business correspondence.
 ---
 
 # Journal Cover Letter Skill v2.1
