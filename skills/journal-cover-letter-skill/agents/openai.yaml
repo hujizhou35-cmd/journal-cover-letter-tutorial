@@ -1,4 +1,4 @@
 interface:
   display_name: "Journal Cover Letter"
-  short_description: "Draft and audit academic journal submission letters"
-  default_prompt: "Analyze my manuscript files, verify the target journal, and prepare an editor-facing cover letter."
+  short_description: "Write cover letters for Research and Reviews"
+  default_prompt: "Read my manuscript files, check the target journal, and help me write a cover letter."

@@ -1,7 +1,7 @@
 {
   "name": "journal-cover-letter-skill",
   "version": "2.0.0",
-  "description": "A manuscript-grounded workflow with Research and Review routes for academic journal cover letters.",
+  "description": "Reads manuscript files and writes academic cover letters with different approaches for Research and Reviews.",
   "author": {
     "name": "Jizhou Hu",
     "url": "https://github.com/hujizhou35-cmd"
@@ -13,11 +13,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Journal Cover Letter",
-    "shortDescription": "Draft evidence-grounded academic journal cover letters.",
-    "longDescription": "Analyzes manuscript files, researches current journal requirements, and drafts an audited academic submission cover letter.",
+    "shortDescription": "Draft journal cover letters for Research and Reviews.",
+    "longDescription": "Checks manuscript facts and journal requirements, then writes a Research discovery story or a Review synthesis letter.",
     "developerName": "Jizhou Hu",
     "category": "Productivity",
     "capabilities": ["Research", "Write"],
-    "defaultPrompt": "Analyze my manuscript files and help me prepare an evidence-grounded journal cover letter."
+    "defaultPrompt": "Read my manuscript files and help me prepare a cover letter for my target journal."
   }
 }
