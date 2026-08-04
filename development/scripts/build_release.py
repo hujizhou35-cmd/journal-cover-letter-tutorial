@@ -51,11 +51,11 @@ def sha256(path: Path) -> str:
 
 
 def build_portable_skill(skill_root: Path, ref: str, destination: Path) -> None:
-    main = (skill_root / "SKILL.md").read_text(encoding="utf-8").rstrip()
     if ref == "v2.2":
-        destination.write_text(main + "\n", encoding="utf-8")
+        destination.write_bytes((skill_root / "SKILL.md").read_bytes())
         return
 
+    main = (skill_root / "SKILL.md").read_text(encoding="utf-8").rstrip()
     sections = [
         main,
         "\n# Inlined reference material\n",
