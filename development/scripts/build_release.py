@@ -52,7 +52,8 @@ def sha256(path: Path) -> str:
 
 def build_portable_skill(skill_root: Path, ref: str, destination: Path) -> None:
     if ref == "v2.2":
-        destination.write_bytes((skill_root / "SKILL.md").read_bytes())
+        canonical = (skill_root / "SKILL.md").read_bytes().replace(b"\r\n", b"\n")
+        destination.write_bytes(canonical)
         return
 
     main = (skill_root / "SKILL.md").read_text(encoding="utf-8").rstrip()
