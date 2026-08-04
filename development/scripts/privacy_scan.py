@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 TEXT_EXTENSIONS = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".toml", ".cff", ".html"}
 PATTERNS = {
     "credential": re.compile(r"(?:ghp_|github_pat_|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})"),

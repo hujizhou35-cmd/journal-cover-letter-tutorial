@@ -10,7 +10,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 TEXT_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".toml", ".cff", ".html"}
 BUILT_INS = [
     ("credential", re.compile(rb"(?:ghp_|github_pat_|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})")),
@@ -38,7 +38,12 @@ def scan_blob(label: str, content: bytes, checks: list[tuple[str, re.Pattern[byt
 def scan_history(checks: list[tuple[str, re.Pattern[bytes]]]) -> list[str]:
     findings: list[str] = []
     refs = git("rev-list", "--all").decode("ascii").splitlines()
-    scanner_paths = {"scripts/privacy_scan.py", "scripts/privacy_scan_history.py"}
+    scanner_paths = {
+        "scripts/privacy_scan.py",
+        "scripts/privacy_scan_history.py",
+        "development/scripts/privacy_scan.py",
+        "development/scripts/privacy_scan_history.py",
+    }
     for ref in refs:
         names = git("ls-tree", "-r", "--name-only", ref).decode("utf-8", errors="replace").splitlines()
         for name in names:

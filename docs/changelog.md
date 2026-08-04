@@ -1,6 +1,14 @@
 # Changelog
 
-Git tags use v1.0, v2.0, and v2.1. Package files use 1.0.0, 2.0.0, and 2.1.0.
+Git tags use v1.0, v2.0, v2.1, and v2.2. Package manifests use 1.0.0, 2.0.0, 2.1.0, and 2.2.0.
+
+## 2.2.0 — 2026-08-05
+
+- Reworked Research letters around one editor-facing decision spine.
+- Put the scientific phenomenon and finding ahead of method complexity.
+- Translated methods into capabilities and results into one conclusion-level cluster.
+- Added omission discipline and benchmark-convergence checks.
+- Kept the v2.1 Review route and evidence boundaries unchanged.
 
 ## 2.1.0 — 2026-08-03
 

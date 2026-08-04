@@ -47,6 +47,7 @@ STOP_REASONS = {
     "JOURNAL_VERIFICATION_REQUIRED",
     "LOOP_LIMIT_WITH_UNRESOLVED_ITEMS",
     "DIMINISHING_RETURNS",
+    "BENCHMARK_CONVERGENCE_REACHED",
 }
 
 
@@ -75,8 +76,8 @@ def validate(payload: dict) -> list[str]:
         if not isinstance(payload.get(field), list):
             errors.append(f"{field} must be a list")
     article_type = payload.get("article_type")
-    if article_type == "ORIGINAL_RESEARCH" and not str(payload.get("selected_story_angle", "")).strip():
-        errors.append("selected_story_angle is required for ORIGINAL_RESEARCH")
+    if article_type == "ORIGINAL_RESEARCH" and not str(payload.get("research_decision_spine", "")).strip():
+        errors.append("research_decision_spine is required for ORIGINAL_RESEARCH")
     if article_type == "REVIEW_SYNTHESIS":
         if not str(payload.get("editorial_thesis", "")).strip():
             errors.append("editorial_thesis is required for REVIEW_SYNTHESIS")

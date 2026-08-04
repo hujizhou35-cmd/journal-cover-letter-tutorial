@@ -1,17 +1,17 @@
-[Date]
+[Date, only when appropriate]
 
-[Editor role or name, only if verified and appropriate]
+[Editor role or name, only if verified and useful]
 [Journal]
 
 Dear [Editor / Editor-in-Chief / Editorial Team],
 
-Please consider our [article type], “[Manuscript title],” for publication in [Journal]. [Central editorial problem and one-sentence manuscript response.]
+Please consider our [article type], “[Manuscript title],” for publication in [Journal].
 
-[Selective evidence/design credibility and up to five layered contributions.]
+[Specific stakes -> unresolved limitation -> study response expressed as capability, not a method inventory.]
 
-[Meaning, evidence boundary, and concrete relevance to the journal's readers or current scholarly conversation.]
+[One synthesized finding cluster -> one defensible consequence. Use selective supporting evidence only when it changes editorial judgment.]
 
-[Required originality, exclusive-submission, author-approval, conflicts, ethics, funding, preprint, data/code, and AI-use declarations as applicable.]
+[Concrete journal fit. Add only the declarations required for this journal and submission branch.]
 
 Sincerely,
 

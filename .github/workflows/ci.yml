@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e ".[test]"
-      - run: python scripts/validate_structure.py
-      - run: python scripts/privacy_scan.py
-      - run: python scripts/privacy_scan_history.py
-      - run: pytest -q
+      - run: pip install -e "development[test]"
+      - run: python development/scripts/validate_structure.py
+      - run: python development/scripts/privacy_scan.py
+      - run: python development/scripts/privacy_scan_history.py
+      - run: pytest -q development/tests

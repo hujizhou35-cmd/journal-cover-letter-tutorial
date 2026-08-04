@@ -1,125 +1,212 @@
 ---
 name: journal-cover-letter-skill
-description: Create, revise, or check a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides a manuscript and asks for a letter, or wants an existing academic cover letter improved. For original research, organize the letter around one central finding; for reviews, explain what the synthesis helps the field understand. Do not use for job applications, recommendation letters, or non-academic business correspondence.
+description: Create, revise, or check a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides manuscript materials and asks for a letter, or wants an existing academic cover letter improved. Route original research around one scientific finding and reviews around what the synthesis changes in the field's understanding. Do not use for job applications, recommendation letters, or business correspondence.
 ---
 
-# Journal Cover Letter Skill v2.1
+# Journal Cover Letter Skill v2.2
 
-Create an editor-facing submission argument from verified manuscript facts, current official journal information, and user-authorized benchmark material. Prioritize biomedical and life-science submissions while remaining discipline-general. Default to English unless the user requests another language.
+Turn verified manuscript facts into a clear, persuasive submission letter for an editor. Default to English unless the user requests another language. Prioritize biomedical and life-science submissions while remaining useful across disciplines.
 
-## Non-negotiable principles
+## Core rules
 
-- Treat manuscript files as the factual source of truth. Never invent titles, results, registrations, declarations, author details, or journal requirements.
-- Separate verified facts, conflicts, missing items, and interpretive claims.
-- Use the strongest wording the evidence permits. Factual discipline should sharpen persuasion, not flatten it.
-- Route original research and evidence synthesis through different editor-facing narratives.
-- A review cover letter must sell a new interpretation, not merely report that a synthesis was performed.
-- Treat a prior letter as user-controlled. Analyze or reuse only within the recorded permission.
-- Treat an expert-authored or human-authored benchmark as evidence about editorial choices, not a gold standard.
-- Research current journal information after human confirmation and distinguish official requirements from reasoned inferences.
-- Use bounded loops with explicit state and stop reasons. Loop exhaustion never means success.
-- Use scripts only for deterministic work. Keep scientific meaning, story selection, field diagnosis, and editorial thesis in model judgment.
+- Treat the manuscript and author-confirmed materials as the factual source of truth. Never invent titles, results, registrations, declarations, author details, editor names, or journal requirements.
+- Separate facts into `verified`, `conflict`, `missing`, and `not_applicable`. Separate factual claims from interpretation.
+- Use the strongest wording the evidence supports. Accuracy should sharpen the pitch, not make it timid.
+- Use different editorial logic for original research and evidence synthesis.
+- Treat previous letters as user-controlled. Reuse or analyze them only within explicit permission.
+- Treat an expert-authored letter as a benchmark for editorial choices, not a gold standard or factual authority.
+- Verify current journal information from official sources after the author confirms the factual foundation.
+- Use bounded revision loops. Reaching a loop limit is not success.
+- Use scripts for deterministic extraction, validation, auditing, and DOCX generation. Keep scientific meaning and editorial judgment in model reasoning.
 
-## Phase 1: Intake, routing, and permissions
+## 1. Intake and fact sheet
 
-Read `references/intake-and-fact-sheet.md`. Inventory the manuscript, title page, supplements, previous letter, correspondence, and user instructions. Build a source-traceable fact sheet with `verified`, `conflict`, `missing`, and `not_applicable` states.
+Inventory the manuscript, title page, supplements, correspondence, previous cover letters, and user instructions. Record each important item with its source:
+
+- exact manuscript title and article type;
+- study question, design, setting, population, sample size, and time frame;
+- primary methods and what each method allows the study to establish;
+- central findings, important null or mixed findings, sensitivity results, and stated limitations;
+- registrations, ethics, funding, conflicts, preprint, data/code, and AI-use statements when applicable;
+- authorship, corresponding-author details, and submission branch;
+- candidate contributions and claim-boundary risks.
 
 Set:
 
-- `article_type`: `ORIGINAL_RESEARCH`, `REVIEW_SYNTHESIS`, or `OTHER_OR_UNRESOLVED`;
-- `submission_branch`;
-- `fact_status`;
-- required declaration states.
+```text
+article_type: ORIGINAL_RESEARCH | REVIEW_SYNTHESIS | OTHER_OR_UNRESOLVED
+submission_branch: INITIAL | REVISION | RESUBMISSION | TRANSFER | OTHER
+fact_status: verified | conflict | missing
+previous_letter_permission: FORMAT_ONLY | FORMAT_AND_TONE | MAXIMUM_SUITABLE_WORDING | FACT_CHECK_ONLY | ANONYMOUS_EXPERT_BENCHMARK | NONE
+```
 
-Ask whether a previous cover letter exists and record exactly one `previous_letter_permission`: `FORMAT_ONLY`, `FORMAT_AND_TONE`, `MAXIMUM_SUITABLE_WORDING`, `FACT_CHECK_ONLY`, `ANONYMOUS_EXPERT_BENCHMARK`, or `NONE`.
+Never resolve conflicting values by guessing. Ask a focused question or mark the item unresolved.
 
-If benchmark analysis is allowed, read `references/human-benchmark-protocol.md`. Extract decisions and reasoning patterns without importing private facts, outdated journal details, or unsupported wording.
+## 2. Previous-letter permission
 
-## Phase 2: Human confirmation gate
+Ask whether a previous cover letter exists and how it may be used:
 
-Present:
+- `FORMAT_ONLY`: copy layout properties only;
+- `FORMAT_AND_TONE`: learn layout and general voice, not distinctive wording;
+- `MAXIMUM_SUITABLE_WORDING`: retain suitable language only after rechecking every fact and journal detail;
+- `FACT_CHECK_ONLY`: use solely to identify facts that must be verified elsewhere;
+- `ANONYMOUS_EXPERT_BENCHMARK`: compare editorial decisions without copying private facts or wording;
+- `NONE`: do not inspect or reuse it.
 
-- the fact sheet with sources and statuses;
+When benchmark analysis is allowed, compare problem foregrounding, gap definition, method abstraction, finding selection, implication, journal fit, omission discipline, claim strength, paragraph order, and required declarations. Learn transferable reasoning, not sentences. Never carry over names, titles, journal details, identifiers, metadata, or unsupported claims.
+
+## 3. Author confirmation gate
+
+Before journal research or final drafting, show the user:
+
+- the sourced fact sheet and unresolved items;
 - article type and submission branch;
 - up to six candidate contributions;
-- up to three candidate Research story angles or Review editorial theses;
-- declaration gaps and evidence-boundary risks;
-- the prior-letter permission and proposed use.
+- up to three possible Research decision spines or Review editorial theses;
+- declaration gaps and likely overclaim risks;
+- the recorded permission for prior material.
 
-Wait for the user to confirm or correct this foundation before researching the journal or drafting the final letter.
+Wait for confirmation or correction. Do not silently turn provisional extraction into final copy.
 
-## Phase 3: Current journal research
+## 4. Current journal research
 
-Read `references/journal-research-protocol.md`. Verify current official author instructions, aims/scope, readership, accepted article type, cover-letter requirements, required declarations, editor identity only when needed, and recent relevant content.
+After confirmation, check current official journal or publisher sources for:
 
-Build `journal_conversation`: what the journal's readers are currently discussing, where the conversation stops, and how this manuscript complements, challenges, reorganizes, or advances it. Cite direct official or journal sources in the working audit; do not use generic scope praise as fit.
+- aims, scope, readership, and accepted article type;
+- cover-letter instructions and submission-system constraints;
+- mandatory declarations;
+- editor identity only when useful and verified;
+- recent relevant articles or editorials that reveal the journal's current conversation.
 
-If current official information cannot be accessed, set `NEEDS_JOURNAL_VERIFICATION`. Never mark the output submission-ready.
+Keep `official_requirement` separate from `reasoned_fit_inference`. Build a concise `journal_conversation`: what readers are discussing, where that discussion stops, and how this manuscript advances, challenges, complements, or reorganizes it. Avoid generic praise such as “perfectly aligned.” If official information cannot be checked, return `NEEDS_JOURNAL_VERIFICATION`, not `SUBMISSION_READY`.
 
-## Phase 4A: Original Research route
+## 5A. Original Research route
 
-Read `references/research-playbook.md`. Select one `selected_story_angle`:
+Treat the letter as a rapid editorial decision aid, not a shortened abstract. Build one `research_decision_spine`:
 
-> Important problem -> knowledge gap -> design advantage -> central finding -> defensible meaning -> journal conversation
+> Stakes -> unresolved limitation -> study response -> synthesized finding -> consequence -> journal fit
 
-The design exists to make the finding credible; it is not the story by itself. Lead with one memorable discovery chain and use selective supporting results. Preserve causal, mechanistic, subgroup, proxy, and clinical boundaries.
+Apply these rules:
 
-## Phase 4B: Review/Synthesis route
+1. Start with the specific scientific, clinical, technical, environmental, or policy problem that makes the study worth attention.
+2. Define what current evidence, assumptions, measurements, or routine analyses cannot resolve. “Few studies exist” is rarely enough.
+3. Translate methods into capabilities. Explain what the design allowed the authors to distinguish or test; do not catalogue algorithms, software, instruments, or procedural steps unless the method itself is the innovation.
+4. State one memorable conclusion or coherent finding cluster. Include supporting results only when they answer the same editorial question.
+5. Explain one immediate, defensible consequence for understanding, measurement, practice, policy, or the next research decision.
+6. Connect the advance to a concrete journal readership need or current conversation.
 
-Read `references/review-playbook.md`. Diagnose whether the literature contains a genuine field misreading, unresolved tension, hidden pattern, inferential gap, or only a descriptive mapping need.
+Use contrast when supported:
+
+> Current evidence or routine analysis suggests X; this study reveals Y; therefore Z should be reconsidered, measured differently, or investigated next.
+
+Do not manufacture opposition. Report at conclusion level rather than listing effect sizes. Include a number only when it carries the editorial argument or prevents ambiguity. Audit all null, mixed, sensitivity, subgroup, and exploratory results internally; include them only when omitting them would mislead the pitch.
+
+Preserve boundaries through accurate verbs rather than routine limitation paragraphs:
+
+- association is not causation;
+- statistical mediation is not a proven biological mechanism;
+- a proxy is not direct measurement;
+- significance in one subgroup and non-significance in another is not proof of interaction;
+- exploratory importance is not an individualized intervention or regulatory target.
+
+If removing a technical detail does not change editorial judgment, remove it.
+
+## 5B. Review and synthesis route
+
+A Review letter should explain what becomes clearer when the evidence is brought together. Diagnose whether the literature contains:
+
+- a genuine field misreading or conceptual confusion;
+- an unresolved tension or contradictory pattern;
+- a hidden cross-study pattern;
+- an inferential gap;
+- or only a descriptive mapping need.
 
 Set:
 
-- `synthesis_intervention`: what the review does to existing evidence;
-- `editorial_thesis`: the memorable, evidence-supported interpretation the editor should retain;
-- `journal_conversation`: the discussion this thesis enters and advances.
+```text
+synthesis_intervention: what the review does to existing evidence
+editorial_thesis: the memorable, evidence-supported interpretation
+journal_conversation: the discussion the thesis advances
+```
 
-Use:
+Build the letter around:
 
-> Field misreading or unresolved tension -> synthesis intervention -> editorial thesis -> changed decision or research agenda -> journal conversation -> calibrated boundary
+> Field problem -> synthesis intervention -> editorial thesis -> changed decision or research agenda -> journal conversation -> calibrated boundary
 
-Do not manufacture controversy for a scoping or descriptive review. When the evidence supports mapping only, make the map, boundary, and research agenda concrete.
+Use methods, registration, search coverage, and quality appraisal to prove the synthesis is credible; do not make them the principal selling point. Prefer contributions that reorganize evidence, explain contradictions, clarify inference, create a useful taxonomy or framework, or change the field's decision logic. Do not manufacture controversy for a scoping or descriptive review. When mapping is all the evidence supports, make the map, boundary, and research agenda concrete.
 
-## Phase 5: Controlled editorial uplift
+## 6. Persuasion without overclaiming
 
-Read `references/controlled-uplift.md`. Set `controlled_uplift_level` and separate three zones:
+Use three zones:
 
-- Zone A, scientific facts: no uplift;
-- Zone B, synthesis or study interpretation: calibrated strengthening with direct evidence support;
-- Zone C, editorial significance: the strongest reasonable language about changed understanding, decisions, or agenda.
+- scientific facts: no promotional uplift;
+- study or synthesis interpretation: measured strengthening tied to evidence;
+- editorial significance: the strongest reasonable statement about changed understanding, decisions, or research direction.
 
-For every high-promotional sentence, record the source, zone, risk, and keep/strengthen/weaken decision. Do not self-award "groundbreaking," "definitive," "authoritative," or "perfectly aligned."
+Prefer precise verbs such as `identifies`, `reveals`, `clarifies`, `reframes`, or `establishes a research agenda` when supported. Avoid self-awarded labels such as `groundbreaking`, `definitive`, `authoritative`, and `perfectly aligned`. Do not weaken every claim with repetitive `may`, `might`, and `potentially`; choose the strongest accurate rung.
 
-## Phase 6: Bounded draft and audit loops
+## 7. Declarations
 
-Read `references/loop-controller.md`. Maintain all state fields and run:
+Verify declarations during intake, but include one in the letter only when:
 
-1. intake/fact loop until hard facts and routing stabilize;
-2. candidate story/thesis loop with at most three alternatives;
-3. draft-audit-targeted-revision loop with at most three rounds;
-4. adaptive-length loop with at most two rounds after content stabilizes.
+1. the journal explicitly requires it there;
+2. it is standard and decision-relevant for the submission branch, including originality, exclusive consideration, author approval, or competing interests;
+3. the user requests it; or
+4. an unusual circumstance must be disclosed to the editor.
 
-Revise failed dimensions only. Length priority is: explicit journal rule, explicit user request, submission-system limit, evidence-based journal convention, then the shortest length that completes the editorial job. Compress because of redundancy or diluted decision value, not an arbitrary universal word count.
+Do not automatically insert funding, ethics, consent, data/code, preprint, or AI-use statements merely because they were verified. Never invent missing declarations.
 
-## Phase 7: Final gates and delivery
+## 8. Bounded revision loops
 
-Run the deterministic validators and perform semantic gates:
+Maintain at least:
 
-- fact and declaration traceability;
-- current official journal verification;
-- article-route fit;
-- Research story clarity or Review thesis quality;
-- claim strength and controlled uplift;
-- specific journal-conversation value;
-- permission compliance for prior material;
-- editorial reading efficiency and non-duplication of the abstract.
+```text
+article_type
+submission_branch
+fact_status
+previous_letter_permission
+research_decision_spine or editorial_thesis
+synthesis_intervention
+journal_conversation
+controlled_uplift_level
+hard_gate_failures
+quality_gate_failures
+draft_round
+length_round
+stop_reason
+```
 
-Read `references/output-and-docx.md`. Deliver:
+Run:
 
-1. final cover-letter text;
+1. an intake loop until facts and routing stabilize;
+2. a route-selection loop with no more than three alternatives;
+3. a draft-audit-targeted-revision loop with no more than three rounds;
+4. an omission and length loop with no more than two rounds after content stabilizes.
+
+Revise failed dimensions only. With an authorized benchmark, compare editorial effects and revise the transferable rule responsible for a material difference, then regenerate from the manuscript. Do not patch only the test letter or imitate wording. Stop when hard gates pass and further editing changes taste rather than decision value.
+
+Apply length constraints in this order: explicit journal rule, user request, submission-system limit, evidence-based journal convention, then the shortest length that performs every editorial function. A focused one-page letter is a useful default for ordinary Research submissions when no contrary instruction exists, not a universal limit.
+
+## 9. Final gates and delivery
+
+Before delivery, check:
+
+- every factual statement is traceable;
+- current official journal information was verified;
+- the selected route matches the article type;
+- the Research decision spine or Review thesis is memorable;
+- claim strength remains within the design;
+- journal fit is specific;
+- previous material was used only as permitted;
+- required declarations are complete;
+- no placeholders, stale journal details, repeated claims, or abstract-like lists remain.
+
+Deliver:
+
+1. clean final cover-letter text;
 2. DOCX when requested or feasible;
-3. concise fact, journal, permission, story/thesis, and claim-strength audit;
-4. remaining author-confirmation items;
+3. a separate concise audit of facts, journal evidence, permission, central route, and claim strength;
+4. items still requiring author confirmation;
 5. exactly one final status.
 
 Allowed statuses:
@@ -129,16 +216,16 @@ Allowed statuses:
 - `NEEDS_JOURNAL_VERIFICATION`;
 - `BEST_SAFE_DRAFT_WITH_UNRESOLVED_ITEMS`.
 
-Never set `SUBMISSION_READY` if current journal information was unavailable, a fact conflict remains, declarations are incomplete, the article type is unresolved, or prior-letter use exceeded permission.
+Never use `SUBMISSION_READY` when official journal information was unavailable, a fact conflict remains, declarations are incomplete, the article type is unresolved, or prior-letter use exceeded permission.
 
-## Resource routing
+## Bundled tools and optional detail
 
-- Facts and conflicts: `references/intake-and-fact-sheet.md`
-- Current journal evidence: `references/journal-research-protocol.md`
-- Research route: `references/research-playbook.md`
-- Review route and editorial thesis: `references/review-playbook.md`
-- Controlled persuasion: `references/controlled-uplift.md`
-- Human benchmark analysis: `references/human-benchmark-protocol.md`
-- State and stop conditions: `references/loop-controller.md`
-- Branches and declarations: `references/submission-branches-and-declarations.md`
-- Text, audit, and DOCX output: `references/output-and-docx.md`
+The rules above are sufficient for the writing and decision workflow. Use the bundled resources when available:
+
+- `references/` provides expanded rubrics, schemas, and examples;
+- `scripts/extract_docx_content.py` extracts DOCX text;
+- `scripts/validate_payload.py` validates structured output;
+- `scripts/audit_cover_letter.py` checks placeholders and risky wording;
+- `scripts/generate_audit_report.py` creates the separate audit;
+- `scripts/render_cover_letter_docx.py` produces a metadata-scrubbed DOCX;
+- `assets/` contains the output template and example payload.

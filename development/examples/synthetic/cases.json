@@ -6,6 +6,15 @@
     "risk": ["proxy_is_not_direct_measurement", "mediation_is_not_proven_mechanism", "subgroup_significance_is_not_interaction"]
   },
   {
+    "id": "research-method-dominance",
+    "article_type": "ORIGINAL_RESEARCH",
+    "fictional_title": "Joint Signals in a Fully Synthetic Population",
+    "stakes": "Routine single-factor summaries can hide a coherent joint pattern.",
+    "study_response": "The synthetic design separates independent, cumulative, and interactive associations.",
+    "supported_finding": "The joint pattern is the conclusion; individual model names are supporting details.",
+    "expected": ["phenomenon_first", "methods_as_capabilities", "one_finding_cluster", "omission_discipline"]
+  },
+  {
     "id": "systematic-review-thesis",
     "article_type": "REVIEW_SYNTHESIS",
     "fictional_title": "From Agreement to Decision Validity: A Synthetic Evidence Review",

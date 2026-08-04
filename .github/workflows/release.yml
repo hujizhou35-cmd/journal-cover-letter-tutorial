@@ -6,13 +6,14 @@ on:
       - "v1.0"
       - "v2.0"
       - "v2.1"
+      - "v2.2"
   workflow_dispatch:
     inputs:
       release_ref:
         description: "Public release label"
         required: true
         type: choice
-        options: ["v1.0", "v2.0", "v2.1"]
+        options: ["v1.0", "v2.0", "v2.1", "v2.2"]
 
 jobs:
   package:
@@ -28,9 +29,12 @@ jobs:
         id: release
         shell: bash
         run: echo "ref=${{ inputs.release_ref || github.ref_name }}" >> "$GITHUB_OUTPUT"
-      - run: python scripts/build_release.py --ref "${{ steps.release.outputs.ref }}"
-      - run: python scripts/privacy_scan_history.py --archives dist
+      - run: python development/scripts/build_release.py --ref "${{ steps.release.outputs.ref }}"
+      - run: python development/scripts/privacy_scan_history.py --archives dist
       - uses: actions/upload-artifact@v4
         with:
           name: journal-cover-letter-${{ steps.release.outputs.ref }}
-          path: dist/*${{ steps.release.outputs.ref }}*
+          path: |
+            dist/journal-cover-letter-skill-${{ steps.release.outputs.ref }}.skill
+            dist/journal-cover-letter-plugin-${{ steps.release.outputs.ref }}.zip
+            dist/SKILL.md

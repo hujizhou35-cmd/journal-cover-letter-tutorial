@@ -11,5 +11,6 @@ The examples test whether the Skill can:
 5. Stop when manuscript facts conflict or required statements are missing.
 6. Say that journal verification is still needed when official information is unavailable.
 7. Create a clean DOCX without personal metadata or unfinished placeholders.
+8. Keep the scientific phenomenon and conclusion ahead of method complexity in Research letters.
 
 The compact test data are stored in `cases.json`.

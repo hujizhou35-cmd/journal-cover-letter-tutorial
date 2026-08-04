@@ -2,62 +2,38 @@
 
 [简体中文](evolution.zh-CN.md)
 
-This page explains the design lessons without publishing the real manuscripts, cover letters, journals, or source conversations used during development.
+This project improves through a repeatable private testing loop:
 
-## The starting point
+> Current Skill → manuscript materials → AI-generated letter → expert-authored letter → comparison → transferable lessons → Skill revision → retest → release
 
-The first AI drafts were accurate and detailed, but they often tried to mention everything. The result could sound like a shortened abstract rather than a letter written to help an editor make a quick decision.
-
-We compared these drafts with cover letters written by an experienced academic expert. The expert versions made different choices:
-
-- They selected one central message instead of listing every result.
-- They explained why the manuscript mattered before describing details.
-- They wrote for an editor and the journal's readers, not only for the authors.
-- They used confident, mildly promotional language without relying on empty praise.
-
-The expert letters were not automatically better in every respect. Strong compression can blur scientific distinctions, and persuasive language can go beyond what the evidence supports. The goal therefore became to combine expert judgment with AI-assisted fact checking.
+The comparison is not about copying an expert's sentences. It asks why two letters create different editorial effects: what they foreground, what they omit, how they order the argument, and how strongly they state the contribution. The expert letter is a benchmark, not a gold standard. The manuscript remains the source of truth.
 
 ## v1.0: make the letter reliable
 
-The first version focused on accuracy. It extracted facts from the manuscript, asked the author to resolve conflicts, checked current journal information, and asked permission before learning from an older cover letter.
+The first version focused on preventing fact drift. It created a sourced fact sheet, paused for author confirmation, checked current official journal guidance, asked permission before using an older letter, and audited the final draft.
 
-This made the process safer, but the same writing approach was used for all article types. The letters could still feel complete but flat.
+## v2.0: separate Research from Review
 
-## v2.0: write Research and Reviews differently
+A public-database Research comparison revealed that the first workflow was safe but too uniform. Original Research often needs one scientific discovery story. A Review has a different job: explain what the field understands differently after evidence is combined or reorganized.
 
-A later comparison used an Original Research case based on public databases. It showed that a research letter needs a clear discovery story, while a Review needs to explain the value of bringing evidence together.
+Version 2.0 split the routes and strengthened persuasion without weakening causal, mechanistic, subgroup, proxy, or clinical boundaries.
 
-This was the turning point from v1.0 to v2.0: **Research and Reviews should not be written with the same logic.** Original Research often benefits from a story because the editor needs to follow a discovery from problem to finding. A Review does not need to imitate that story. Its task is to show what changes when existing evidence is combined, reorganized, or reinterpreted.
+## v2.1: help Reviews make a clear argument
 
-Version 2.0 therefore separated the two routes:
+A medical-education Review comparison showed that an expert letter did more than report the search and included studies. It diagnosed how the field was interpreting the evidence, then explained what the synthesis changed.
 
-- **Original Research:** one scientific story, supported by the study design and main finding.
-- **Review:** a different logic based on the evidence base, the new synthesis, and what the field can understand or do differently.
+Version 2.1 added field diagnosis, a memorable editorial thesis, measured promotion, concrete journal-conversation fit, and flexible length. Descriptive reviews remain descriptive when the evidence does not support a stronger interpretation.
 
-The language also became more confident. The Skill now aims for the strongest wording the evidence can support, rather than automatically choosing the safest-sounding wording.
+## v2.2: put the scientific finding back at the center
 
-## v2.1: make Reviews more insightful
+A new Research comparison showed that AI drafts could make sophisticated methods the main character. The expert letter instead foregrounded the scientific phenomenon, translated methods into what they allowed the study to establish, merged results into one conclusion-level finding, and omitted details that did not change editorial judgment.
 
-The Review route was then tested against an expert letter from a medical-education context. The expert version did not simply say that the literature was incomplete. It identified how the field was misreading the evidence and showed how the review changed that interpretation.
+Version 2.2 therefore uses:
 
-Version 2.1 learned this deeper approach. It asks:
+> Stakes → unresolved limitation → study response → synthesized finding → consequence → journal fit
 
-- What is unclear, confused, or unresolved in the field?
-- What becomes visible after the evidence is reorganized?
-- What should researchers, educators, clinicians, or editors now judge differently?
+It also formalizes the iteration loop: compare editorial effects, revise a transferable rule, regenerate from the manuscript, and stop when further changes would reflect taste rather than a general improvement.
 
-This is not a rule to manufacture controversy. If a scoping or descriptive review only maps the literature, the letter should say that plainly and explain why the map is useful.
+## Privacy
 
-Version 2.1 also stopped enforcing one fixed word count. The letter should be as short as possible while still doing its job, unless the journal or user sets a limit.
-
-## What was learned from the expert letters
-
-The project keeps five general lessons:
-
-1. Choose the message an editor should remember.
-2. Explain the importance of that message, not every manuscript detail.
-3. Use article-type-specific writing: a discovery story for Research and a new understanding for Reviews.
-4. Allow measured promotion when the evidence supports it.
-5. Check every fact and scientific claim independently.
-
-An expert-authored letter is a benchmark, not an answer key. Expertise improves selection and expression; the manuscript remains the source of truth.
+The private materials used to develop the workflow are not published. This repository includes only general rules and fully synthetic examples. Public descriptions identify only the broad settings of medical education and public-database research.

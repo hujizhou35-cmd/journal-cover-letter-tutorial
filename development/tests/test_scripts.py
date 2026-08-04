@@ -4,7 +4,7 @@ import importlib.util
 import zipfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_DIR = ROOT / "skills" / "journal-cover-letter-skill" / "scripts"
 
 
@@ -27,7 +27,7 @@ def test_valid_payload():
         "submission_branch": "INITIAL_SUBMISSION",
         "fact_status": "verified",
         "previous_letter_permission": "NONE",
-        "selected_story_angle": "A synthetic story angle.",
+        "research_decision_spine": "Synthetic stakes -> limitation -> response -> finding -> consequence -> fit.",
         "journal_conversation": "A synthetic journal conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
         "hard_gate_failures": [],
@@ -94,7 +94,7 @@ def test_submission_ready_rejects_unresolved_hard_gate():
         "submission_branch": "INITIAL_SUBMISSION",
         "fact_status": "conflict",
         "previous_letter_permission": "NONE",
-        "selected_story_angle": "Synthetic angle.",
+        "research_decision_spine": "Synthetic stakes -> limitation -> response -> finding -> consequence -> fit.",
         "journal_conversation": "Synthetic conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
         "hard_gate_failures": ["sample size conflict"],
@@ -132,3 +132,33 @@ def test_docx_build_scrubs_metadata_and_uses_business_letter_geometry(tmp_path):
     assert round(section.top_margin.inches, 3) == 1.0
     assert round(section.page_width.inches, 3) == 8.5
     assert doc.styles["Normal"].font.name == "Calibri"
+
+
+def test_v22_research_route_is_present_and_review_route_is_retained():
+    skill = (ROOT / "skills" / "journal-cover-letter-skill" / "SKILL.md").read_text(encoding="utf-8")
+    assert "research_decision_spine" in skill
+    assert "Translate methods into capabilities" in skill
+    assert "one memorable conclusion or coherent finding cluster" in skill
+    assert "Review and synthesis route" in skill
+    assert "Do not manufacture controversy" in skill
+
+
+def test_original_research_requires_decision_spine():
+    validator = load("validate_payload")
+    payload = {
+        "salutation": "Dear Editorial Team,",
+        "paragraphs": ["Synthetic research."],
+        "signoff": "Sincerely,",
+        "corresponding_author": "Alex Morgan",
+        "article_type": "ORIGINAL_RESEARCH",
+        "submission_branch": "INITIAL",
+        "fact_status": "verified",
+        "previous_letter_permission": "NONE",
+        "journal_conversation": "Synthetic conversation.",
+        "controlled_uplift_level": "1_CALIBRATED",
+        "hard_gate_failures": [],
+        "quality_gate_failures": [],
+        "stop_reason": "ALL_GATES_PASSED",
+        "status": "SUBMISSION_READY",
+    }
+    assert "research_decision_spine is required for ORIGINAL_RESEARCH" in validator.validate(payload)
