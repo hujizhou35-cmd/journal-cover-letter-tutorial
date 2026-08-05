@@ -202,3 +202,11 @@ def test_bibliometrics_requires_route_specific_fields():
     errors = validator.validate(payload)
     assert "bibliometric_mode is required and must be valid for BIBLIOMETRICS" in errors
     assert "mapping_thesis is required for BIBLIOMETRICS" in errors
+
+
+def test_v31_preserves_bibliometric_specificity_and_blind_benchmarking():
+    skill = (ROOT / "skills" / "journal-cover-letter-skill" / "SKILL.md").read_text(encoding="utf-8")
+    assert "bibliometric_signature_packet" in skill
+    assert "authorial_specificity_floor" in skill
+    assert "benchmark_selection_granularity" in skill
+    assert "blind-benchmark-loop.md" in skill

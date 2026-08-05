@@ -1,4 +1,4 @@
-# Human-authored benchmark protocol v3.0
+# Human-authored benchmark protocol v3.1
 
 A previous or expert-authored cover letter can be analyzed only with explicit permission. It is evidence about editorial judgment, not a gold standard and not a factual source for the current submission.
 
@@ -24,7 +24,15 @@ Record this as `benchmark_empirical_signal`.
 
 Record this as `benchmark_editorial_logic`.
 
-A strong optimized letter combines the best empirical signal with the best defensible editorial logic. It must not leave strong facts uninterpreted or replace evidence with free-floating abstraction.
+### 3. Selection granularity and authorial fingerprint
+
+- Did the human retain a named taxonomy, exact frontier terms, a specific contrast, or another manuscript-native pattern?
+- Which level of detail is necessary for the paper to remain identifiable without turning the letter into an abstract?
+- Would replacing the detail with a generic phrase materially weaken the author's genuine scientific signal?
+
+Record this as `benchmark_selection_granularity`.
+
+A strong optimized letter combines the best empirical signal, the necessary selection granularity, and the best defensible editorial logic. It must not replace concrete author insight with free-floating abstraction, and it must not leave strong facts uninterpreted.
 
 ## Route-specific benchmark analysis
 
@@ -38,7 +46,7 @@ Compare field problem, synthesis intervention, cross-study pattern selection, ed
 
 ### Bibliometrics
 
-Compare field-orientation problem, corpus boundary, chosen map-level pattern, mapping thesis, research-coordination consequence, and metric calibration. Do not reward keyword, country, or institution lists unless they carry the thesis.
+Compare field-orientation problem, corpus boundary, chosen map-level pattern, bibliometric signature packet, mapping thesis, research-coordination consequence, and metric calibration. Do not reward keyword, country, or institution lists unless they carry the thesis or preserve the paper's principal empirical fingerprint.
 
 ## Benchmark convergence
 
@@ -54,9 +62,12 @@ Evaluate editorial effects rather than wording:
 8. journal-fit directness;
 9. omission discipline;
 10. claim calibration;
-11. administrative completeness.
+11. administrative completeness;
+12. authorial empirical fingerprint.
 
-Factual errors, unsupported declarations, and overclaims in the benchmark are excluded from the comparison target. Revise the transferable rule responsible for a material difference. Do not patch only the test letter or imitate wording.
+For a blind benchmark, score each dimension from 0 to 5. Convergence requires no core dimension below 4 and an overall effect score of at least 85%. Factual errors, unsupported declarations, and overclaims in the benchmark are excluded from the convergence target.
+
+Revise the transferable rule responsible for a material difference, then regenerate from the manuscript and revised skill only. Do not patch only the test letter or imitate wording.
 
 ## Permission boundaries
 

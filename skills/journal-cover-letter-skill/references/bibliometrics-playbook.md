@@ -1,4 +1,4 @@
-# Bibliometrics playbook: field-map route v3.0
+# Bibliometrics playbook: field-map route v3.1
 
 ## Editorial purpose
 
@@ -38,6 +38,8 @@ mapping_thesis: string
 editorial_meaning: string
 research_coordination_consequence: string
 metric_boundary: string
+bibliometric_signature_packet: string
+authorial_specificity_floor: string
 bibliometric_decision_spine: string
 ```
 
@@ -119,6 +121,27 @@ Retain the boundary that matters most:
 Place the boundary after the contribution is clear. It should calibrate the claim, not erase it.
 
 
+## Bibliometric signature packet
+
+A field-level thesis must remain visibly attached to the manuscript's own empirical identity. Construct a compact signature packet from up to three components:
+
+1. `structural_map`: a central taxonomy, cluster structure, or collaboration pattern;
+2. `frontier_signal`: two or three exact recently intensifying terms or themes;
+3. `directional_transition`: a supported movement from one research orientation to another.
+
+Retain at least two components when the manuscript supports them. Do not substitute generic phrases such as “multiple themes” or “emerging topics” when the named categories or terms are the paper's principal result.
+
+A taxonomy may be listed when all of the following are true:
+
+- it contains three to six domains;
+- the domains are clinically or conceptually interpretable;
+- the taxonomy is a principal result rather than a software artifact;
+- compressed parallel syntax keeps the paragraph readable.
+
+This is an empirical-specificity rule, not permission to reproduce every cluster, country, institution, or keyword.
+
+`authorial_specificity_floor` requires at least one named or quantified manuscript-native result beyond corpus size. The editor should be able to distinguish the submission from another bibliometric paper on the same topic after one reading.
+
 ## Bibliometric claim ladder
 
 1. `describes` publication activity;
@@ -142,13 +165,14 @@ Replace unsupported formulations:
 
 ## Omission discipline
 
-Remove any country, institution, journal, keyword, cluster, centrality value, or software detail that does not change the mapping thesis, the consequence, or the credibility boundary.
+Remove any country, institution, journal, keyword, cluster, centrality value, or software detail that does not change the mapping thesis, the consequence, the credibility boundary, or the authorial empirical fingerprint. Omission is not a virtue when it erases the principal taxonomy, frontier terms, or directional transition that makes the paper distinctive.
 
 ## Self-audit
 
 - Is the official article type recorded separately from the bibliometric route?
 - Is there one field-orientation problem rather than a generic growth statement?
 - Does the letter contain one concrete map-level anchor?
+- Does it retain a bibliometric signature packet and meet the authorial-specificity floor?
 - Does it explain what the map changes, rather than list outputs?
 - Are performance analysis and science mapping used accurately?
 - Are ranking, quality, leadership, and forecasting claims calibrated?

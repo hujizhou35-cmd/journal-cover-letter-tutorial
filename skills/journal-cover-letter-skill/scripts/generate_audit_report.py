@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert a validated v3.0 payload and deterministic letter audit into Markdown."""
+"""Convert a validated v3.1 payload and deterministic letter audit into Markdown."""
 
 from __future__ import annotations
 

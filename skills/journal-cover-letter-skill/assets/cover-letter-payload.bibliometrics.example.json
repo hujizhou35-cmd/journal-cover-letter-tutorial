@@ -33,5 +33,7 @@
   "hard_gate_failures": [],
   "quality_gate_failures": [],
   "stop_reason": "ALL_GATES_PASSED",
-  "status": "SUBMISSION_READY"
+  "status": "SUBMISSION_READY",
+  "bibliometric_signature_packet": "Structural map: transition toward multimodal validation; frontier signal: implementation-oriented research; directional transition: isolated algorithms toward coordinated validation.",
+  "authorial_specificity_floor": "Names multimodal validation and weak implementation connectivity beyond the corpus size."
 }

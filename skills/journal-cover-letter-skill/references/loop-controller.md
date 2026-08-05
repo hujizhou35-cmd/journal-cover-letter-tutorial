@@ -1,4 +1,4 @@
-# Bounded loop controller v3.0
+# Bounded loop controller v3.1
 
 Maintain at least this state:
 
@@ -26,6 +26,11 @@ journal_fit_basis: ARTICLE_TYPE_CRITERION | READERSHIP_NEED | CURRENT_CONVERSATI
 controlled_uplift_level: 0_MINIMAL | 1_CALIBRATED | 2_ASSERTIVE
 benchmark_empirical_signal: string | null
 benchmark_editorial_logic: string | null
+benchmark_selection_granularity: string | null
+authorial_empirical_fingerprint: string | null
+bibliometric_signature_packet: string | null
+authorial_specificity_floor: string | null
+blind_benchmark_mode: true | false
 benchmark_dimensions: {}
 hard_gate_failures: []
 quality_gate_failures: []
@@ -34,6 +39,20 @@ length_round: 0
 stop_reason: null
 ```
 
+
+## Loop 0: blind baseline for skill benchmarking
+
+Use only when the user requests a benchmark test.
+
+1. Create an allowlist of manuscript, skill, and official journal sources.
+2. Exclude the human benchmark from the generation context and file inputs.
+3. Generate and freeze the baseline draft with a hash or immutable copy.
+4. Reveal the benchmark only after freezing.
+5. Compare editorial effects, empirical selection, selection granularity, and factual accuracy.
+6. Convert each material difference into a transferable rule.
+7. Regenerate from the original manuscript plus revised skill only; do not feed benchmark wording into the new draft.
+
+In a conversation where the same model has already seen the benchmark, label the run `FILE_LEVEL_BLIND_ONLY`; do not claim cognitive isolation. Strict cognitive isolation requires a separate model session or external agent.
 
 ## Loop A: fact and route stability
 
@@ -47,13 +66,13 @@ Generate at most three candidates. Each candidate must pair one `empirical_ancho
 - Review candidates pair a synthesis intervention, thesis, and contrast.
 - Bibliometric candidates pair a mapping intervention, mapping thesis, decision spine, and metric boundary.
 
-Score manuscript centrality, evidential support, distinctiveness, editorial consequence, and journal relevance. Reject a candidate with a strong interpretation but weak factual anchor, or a strong fact with no changed decision.
+Score manuscript centrality, evidential support, distinctiveness, authorial empirical fingerprint, editorial consequence, and journal relevance. Reject a candidate with a strong interpretation but weak factual anchor, or a strong fact with no changed decision.
 
 ## Loop C: draft, audit, targeted revision
 
 Maximum three rounds. Hard gates include factual conflicts, permission violations, unverified official requirements, claim overreach, unresolved official type or route, metric overinterpretation, and missing mandatory declarations.
 
-When a human benchmark is authorized, preserve the strongest transferable empirical signal, then improve the editorial logic. Do not imitate wording.
+When a human benchmark is authorized, preserve the strongest transferable empirical signal and necessary selection granularity, then improve the editorial logic. Do not imitate wording. In blind mode, the regenerated draft must not receive benchmark text.
 
 ## Loop D: omission and length
 
@@ -73,6 +92,9 @@ Compress when the anchor is obscured, meaning is repeated, methods/results becom
 - `AUTHOR_CONFIRMATION_REQUIRED`;
 - `JOURNAL_VERIFICATION_REQUIRED`;
 - `LOOP_LIMIT_WITH_UNRESOLVED_ITEMS`;
-- `DIMINISHING_RETURNS`.
+- `DIMINISHING_RETURNS`;
+- `BENCHMARK_CONVERGENCE_REACHED`.
+
+Benchmark convergence requires no core effect dimension below 4/5 and an overall effect score of at least 85%, excluding factual errors or unsupported claims in the benchmark.
 
 Never map unresolved hard gates to `SUBMISSION_READY`.

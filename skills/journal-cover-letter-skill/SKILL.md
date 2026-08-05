@@ -3,7 +3,7 @@ name: journal-cover-letter-skill
 description: Create, revise, benchmark, or check a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides manuscript materials and asks for a letter, wants an existing academic cover letter improved, or submits a bibliometric/science-mapping manuscript. Route empirical research around one finding, evidence syntheses around what the synthesis changes in understanding, and bibliometric studies around what the map reveals about a field's structure or evolution. Do not use for job applications, recommendation letters, or business correspondence.
 ---
 
-# Journal Cover Letter Skill v3.0
+# Journal Cover Letter Skill v3.1
 
 Turn verified manuscript facts into a clear editorial decision aid. Default to English unless the user requests another language. Prioritize biomedical and life-science submissions while remaining useful across disciplines.
 
@@ -14,7 +14,9 @@ Every persuasive claim must contain both parts:
 - `empirical_anchor`: the concrete, manuscript-traceable observation selected for the editor;
 - `editorial_meaning`: what that observation changes in understanding, interpretation, coordination, practice, or the next research decision.
 
-A letter fails when it offers facts without meaning or meaning without a traceable factual anchor. This is the central v3.0 rule.
+For manuscripts with a distinctive empirical taxonomy, trend set, or named result pattern, also preserve an `authorial_empirical_fingerprint`: the minimum manuscript-native detail that lets an editor distinguish this paper from another paper on the same topic.
+
+A letter fails when it offers facts without meaning, meaning without a traceable factual anchor, or a polished abstraction that erases the manuscript's empirical fingerprint. This is the central v3.1 rule.
 
 ## Core rules
 
@@ -24,6 +26,7 @@ A letter fails when it offers facts without meaning or meaning without a traceab
 - Separate the journal's official submission label from the manuscript's intellectual route. They may differ.
 - Treat previous letters as user-controlled. Reuse or analyze them only within explicit permission.
 - Treat an expert-authored letter as evidence of selection and editorial judgment, not as a gold standard or factual authority.
+- When testing a skill against a human benchmark, freeze a blind baseline before revealing the benchmark, compare editorial effects rather than wording, and modify transferable rules rather than patching a single draft.
 - Verify current journal information from official sources after the factual foundation is stable.
 - Use bounded revision loops. Reaching a loop limit is not success.
 - Use scripts for deterministic extraction, validation, auditing, and DOCX generation. Keep scientific meaning and editorial judgment in model reasoning.
@@ -69,7 +72,11 @@ When benchmark analysis is allowed, extract two independent strengths:
 
 1. `benchmark_empirical_signal`: which concrete manuscript facts, trends, or contrasts the human considered worth foregrounding;
 2. `benchmark_editorial_logic`: how the letter converted selected evidence into a reason for editorial action.
-Do not reduce benchmark analysis to sentence length, tone, or lexical similarity. Learn the human's selection intelligence and editorial reasoning. Combine the strongest factual signal with the clearest defensible meaning.
+3. `benchmark_selection_granularity`: how much manuscript-native specificity was retained (for example, a six-domain taxonomy, three frontier terms, or a directional transition).
+
+Do not reduce benchmark analysis to sentence length, tone, or lexical similarity. Learn the human's selection intelligence, selection granularity, and editorial reasoning. The optimized letter should preserve the strongest factual signal at the minimum granularity needed to retain the manuscript's identity while supplying the clearest defensible meaning.
+
+For a blind benchmark test, follow `references/blind-benchmark-loop.md`. The benchmark must be inaccessible during baseline drafting and may be revealed only after the baseline is frozen.
 
 Never carry over names, titles, journal details, identifiers, metadata, declarations, or unsupported claims.
 
@@ -145,6 +152,8 @@ Set:
 bibliometric_mode: PERFORMANCE_ANALYSIS | SCIENCE_MAPPING | BOTH
 mapping_intervention: what previously invisible field structure or evolution the analysis makes visible
 mapping_thesis: the one memorable field-level interpretation
+bibliometric_signature_packet: the minimum manuscript-native combination of structural map, frontier signal, and/or directional transition that preserves the paper's empirical identity
+authorial_specificity_floor: at least one named or quantified manuscript-native result beyond corpus size
 bibliometric_decision_spine: field-scale uncertainty -> bounded corpus -> mapping capability -> empirical anchor -> mapping thesis -> coordination or research consequence -> journal fit -> metric boundary
 metric_boundary: the database, time, metric, and inferential limits that constrain the interpretation
 ```
@@ -156,7 +165,7 @@ The letter should answer four questions:
 3. Why does that pattern change research coordination, validation priorities, collaboration, or topic selection?
 4. Which metric boundary must be retained so that the map is not mistaken for quality, causality, or prediction?
 
-Use one primary map-level conclusion and at most two supporting patterns. Publication counts, software names, centrality values, and country rankings remain credibility details unless they directly carry the interpretation.
+Use one primary map-level conclusion and at most two supporting patterns. However, do not compress away the paper's empirical fingerprint. Build a `bibliometric_signature_packet` from up to three components: (1) a structural taxonomy or cluster map, (2) a temporal/frontier signal, and (3) a directional transition. Retain two components when they are central. If a taxonomy of three to six clinically meaningful domains is itself a principal result, name the domains in compressed parallel syntax rather than replacing them with 'several themes.' Publication counts, software names, centrality values, and country rankings remain credibility details unless they directly carry the interpretation.
 
 Do not equate:
 
@@ -169,7 +178,7 @@ Do not equate:
 
 Prefer `maps`, `shows concentration`, `identifies a thematic transition`, `reveals fragmentation`, `indicates emerging attention`, or `defines a coordination gap`. Use `predicts`, `proves`, `dominates`, `most influential`, or `future direction` only when the manuscript and metric design directly justify them.
 
-A bibliometric letter fails when it is only a catalogue of databases, software, countries, institutions, journals, clusters, or keywords. The map must be converted into a field-level decision.
+A bibliometric letter fails when it is only a catalogue of databases, software, countries, institutions, journals, clusters, or keywords. It also fails when abstract interpretation makes the manuscript empirically interchangeable with any other bibliometric paper. The map must be converted into a field-level decision while retaining at least one named or quantified manuscript-native result.
 
 ## 6. Evidence-to-meaning gate
 
@@ -237,7 +246,7 @@ Run:
 3. a draft-audit-targeted-revision loop with no more than three rounds;
 4. an omission and length loop with no more than two rounds.
 
-Revise failed dimensions only. With an authorized benchmark, preserve the strongest `benchmark_empirical_signal`, then improve the transferable editorial rule responsible for any material weakness. Do not imitate wording.
+Revise failed dimensions only. With an authorized benchmark, preserve the strongest `benchmark_empirical_signal` and its necessary `benchmark_selection_granularity`, then improve the transferable editorial rule responsible for any material weakness. Do not imitate wording. In blind mode, regenerate from the manuscript and revised skill only; do not place benchmark wording in the generation prompt.
 
 ## 10. Final gates and delivery
 
@@ -248,6 +257,7 @@ Before delivery, check:
 - `official_article_type` is exact and does not conflict with the submission system;
 - the intellectual route matches the primary evidence object;
 - the empirical anchor and editorial meaning are both recoverable after one reading;
+- the authorial empirical fingerprint remains visible and the draft is not interchangeable with another paper on the same topic;
 - route-specific spine or thesis is coherent;
 - claim strength remains within the design or metric;
 - journal fit maps a verified criterion or readership need to the contribution;
@@ -274,7 +284,7 @@ Never use `SUBMISSION_READY` when official journal information was unavailable, 
 
 ## Bundled tools and optional detail
 
-- `references/` provides route playbooks, benchmark rules, and audit rubrics;
+- `references/` provides route playbooks, blind-benchmark rules, benchmark rules, and audit rubrics;
 - `scripts/extract_docx_content.py` extracts DOCX text;
 - `scripts/validate_payload.py` validates structured output;
 - `scripts/audit_cover_letter.py` checks placeholders and risky wording;

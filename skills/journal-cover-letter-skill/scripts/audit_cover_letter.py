@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic structural and risk-language checks for a v3.0 draft letter."""
+"""Deterministic structural and risk-language checks for a v3.1 draft letter."""
 
 from __future__ import annotations
 

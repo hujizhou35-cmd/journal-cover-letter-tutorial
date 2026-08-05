@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate v3.0 structured cover-letter payloads without judging scientific meaning."""
+"""Validate v3.1 structured cover-letter payloads without judging scientific meaning."""
 
 from __future__ import annotations
 
@@ -90,7 +90,7 @@ def validate(payload: dict) -> list[str]:
     if route == "BIBLIOMETRICS":
         if payload.get("bibliometric_mode") not in BIBLIOMETRIC_MODES:
             errors.append("bibliometric_mode is required and must be valid for BIBLIOMETRICS")
-        for field in ("mapping_intervention", "mapping_thesis", "bibliometric_decision_spine", "metric_boundary"):
+        for field in ("mapping_intervention", "mapping_thesis", "bibliometric_signature_packet", "authorial_specificity_floor", "bibliometric_decision_spine", "metric_boundary"):
             if not nonempty(payload.get(field)):
                 errors.append(f"{field} is required for BIBLIOMETRICS")
 

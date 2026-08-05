@@ -9,13 +9,14 @@ on:
       - "v2.2"
       - "v2.3"
       - "v3.0"
+      - "v3.1"
   workflow_dispatch:
     inputs:
       release_ref:
         description: "Public release label"
         required: true
         type: choice
-        options: ["v1.0", "v2.0", "v2.1", "v2.2", "v2.3", "v3.0"]
+        options: ["v1.0", "v2.0", "v2.1", "v2.2", "v2.3", "v3.0", "v3.1"]
 
 jobs:
   package:
