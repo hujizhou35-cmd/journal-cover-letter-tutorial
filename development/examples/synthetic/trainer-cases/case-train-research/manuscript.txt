@@ -1,0 +1,14 @@
+Fictional title: Joint Sensor Patterns and Recovery Alerts in a Synthetic Cohort
+
+Article type: Original Research.
+
+Problem: Routine summaries of one sensor at a time may miss a joint recovery pattern relevant to early warning.
+
+Design: A fictional retrospective cohort measured three synthetic signals. Complementary analyses were used to distinguish independent, cumulative, and interactive patterns. The design does not establish causality.
+
+Findings: Individual adjusted estimates were mixed. Across joint analyses, a coherent high-variability pattern was associated with delayed recovery. Fictional Marker Q was the most consistent component, but it is a proxy and not a direct biological measurement. An exploratory subgroup pattern was observed, but the interaction test was not significant.
+
+Implication: Future prospective work should test whether joint monitoring improves warning decisions. The current study does not validate a clinical intervention.
+
+Confirmed declarations: original work, not under consideration elsewhere, all authors approved, no competing interests.
+

@@ -21,6 +21,7 @@ PUBLIC_TO_SEMVER = {
     "v2.3": "2.3.0",
     "v3.0": "3.0.0",
     "v3.1": "3.1.0",
+    "v3.2": "3.2.0",
 }
 FIXED_TIME = (2026, 1, 1, 0, 0, 0)
 
@@ -54,7 +55,7 @@ def sha256(path: Path) -> str:
 
 
 def build_portable_skill(skill_root: Path, ref: str, destination: Path) -> None:
-    if ref in {"v2.2", "v2.3", "v3.0", "v3.1"}:
+    if ref == "v2.2":
         canonical = (skill_root / "SKILL.md").read_bytes().replace(b"\r\n", b"\n")
         destination.write_bytes(canonical)
         return
@@ -67,6 +68,8 @@ def build_portable_skill(skill_root: Path, ref: str, destination: Path) -> None:
         "Executable DOCX and audit tools remain available only in the installation packages.\n",
     ]
     for reference in sorted((skill_root / "references").glob("*.md")):
+        if reference.name.startswith("migration-"):
+            continue
         sections.append(f"\n---\n\n## Reference: {reference.name}\n")
         sections.append(reference.read_text(encoding="utf-8").rstrip() + "\n")
     destination.write_text("\n".join(sections), encoding="utf-8")
@@ -109,7 +112,7 @@ def main() -> int:
             plugin_out,
             [
                 (source / ".codex-plugin", ".codex-plugin"),
-                (source / "skills", "skills"),
+                (skill_root, "skills/journal-cover-letter-skill"),
             ],
         )
         build_portable_skill(skill_root, args.ref, portable_out)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert a validated v3.1 payload and deterministic letter audit into Markdown."""
+"""Convert a validated v3.2 payload and deterministic letter audit into Markdown."""
 
 from __future__ import annotations
 
@@ -32,6 +32,7 @@ def main() -> int:
     add(lines, "Empirical anchor", payload.get("empirical_anchor"))
     add(lines, "Editorial meaning", payload.get("editorial_meaning"))
     add(lines, "Journal-fit basis", payload.get("journal_fit_basis"))
+    add(lines, "Journal-fit bridge", payload.get("journal_fit_bridge"))
     add(lines, "Controlled uplift", payload.get("controlled_uplift_level", "UNKNOWN"))
     add(lines, "Stop reason", payload.get("stop_reason", "UNKNOWN"))
     if payload.get("intellectual_route") == "BIBLIOMETRICS":

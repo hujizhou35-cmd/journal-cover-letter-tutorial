@@ -1,107 +1,149 @@
 # Journal Cover Letter Skill｜投稿信撰写教程
 
-[简体中文](docs/README.zh-CN.md) · [Latest release](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/latest) · [Privacy](docs/privacy.md)
+[简体中文](docs/README.zh-CN.md)
 
-Upload your manuscript, name the target journal, and let the Skill turn the paper's strongest contribution into a clear, checked cover letter.
+Write a journal cover letter from manuscript files—or improve the Skill with manuscript and expert-letter examples.
 
-**Recommended version: v2.2**
+## Start here
 
-## Download
+| I want to... | Use | What it does |
+|---|---|---|
+| Write a cover letter | **Journal Cover Letter Skill v3.2** | Reads the manuscript, checks the journal, writes the letter, and audits the result |
+| Improve the Skill | **Cover Letter Skill Trainer v0.2.0** | Compares a blind AI draft with a permitted expert letter and turns useful lessons into a tested Skill update |
 
-- [Codex Skill (.skill)](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/latest/download/journal-cover-letter-skill-v2.2.skill)
-- [Codex Plugin (.zip)](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/latest/download/journal-cover-letter-plugin-v2.2.zip)
-- [Portable SKILL.md for other AI tools](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/latest/download/SKILL.md)
+### Write a cover letter
 
-| Choose this | If you want to... |
+- [Download the Codex Skill](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-skill-v3.2.skill)
+- [Download the Codex Plugin](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-plugin-v3.2.zip)
+- [Download SKILL.md for another AI](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/SKILL.md)
+
+### Improve the Skill
+
+- [Download the Trainer Skill](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/trainer-v0.2.0/journal-cover-letter-skill-trainer-v0.2.0.skill)
+- [Download the Trainer Plugin](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/trainer-v0.2.0/journal-cover-letter-skill-trainer-plugin-v0.2.0.zip)
+- [Download the portable Trainer SKILL.md](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/trainer-v0.2.0/SKILL.md)
+
+### Which file should I choose?
+
+| File | Choose it when... |
 |---|---|
-| `.skill` | Install the standalone Skill in Codex or another Agent Skills-compatible tool |
-| Plugin `.zip` | Install the complete Codex Plugin |
-| `SKILL.md` | Give the full writing and decision workflow to another AI |
+| `.skill` | You want to install one Skill in Codex |
+| Plugin `.zip` | You want the complete Codex package |
+| `SKILL.md` | Your AI can read an instruction file but cannot install Codex packages |
 
-The single Markdown file contains the complete writing logic. Automated DOCX creation and script-based checks require the Skill or Plugin package.
+## Write a letter in three steps
 
-## Start in three steps
+1. Upload the manuscript and any title page or supplement.
+2. Tell the Skill the target journal. If an older cover letter exists, choose whether it may be used for facts, format, tone, or expert comparison.
+3. Confirm any missing facts. The Skill checks current journal guidance, writes the letter, and returns a separate audit.
 
-1. Download one of the three files above.
-2. Upload your manuscript, title page, and any related material you want the AI to use.
-3. Name the target journal and ask the AI to prepare a cover letter.
+The default output is English. You can request another language.
 
-Example prompt:
+## Three papers need three different letters
 
-> Read these manuscript files and help me write a cover letter for [Journal]. First show me the facts and main selling points you found. Wait for my confirmation before researching the journal and drafting the final letter.
+| Route | The letter should answer |
+|---|---|
+| **Research** | What scientific problem was studied, what was found, and why does the finding matter? |
+| **Review** | What new understanding appears when the existing evidence is brought together? |
+| **Bibliometrics** | What does the publication map reveal about the field's structure, growth, fragmentation, collaboration, or direction of travel? |
 
-If you provide an older letter, say whether it may be used for facts, layout, tone, wording, or expert comparison. The Skill will not assume permission.
+## Why Bibliometrics needs its own route
 
-## What the Skill does
+A bibliometric paper studies publications, citations, keywords, authors, institutions, and networks. Its main result is a map of a research field—not a treatment effect, mechanism, or ordinary summary of study findings.
 
-1. Checks the manuscript facts and flags conflicts or missing information.
-2. Confirms the article type, strongest contribution, and any previous-letter permission with you.
-3. Checks the target journal's current official guidance.
-4. Writes the letter using the right logic for the article type.
-5. Checks claims, declarations, journal details, and unresolved placeholders.
-6. Returns the final letter, an optional DOCX, a short audit, and anything you still need to confirm.
+A useful bibliometric cover letter asks:
 
-It will not call a letter submission-ready when facts conflict, required statements are missing, or current journal information cannot be verified.
+1. What literature was mapped?
+2. What previously unclear structure or change became visible?
+3. Which topics, collaborations, or research directions are changing?
+4. Why does that change matter to this journal's readers?
+5. What cannot be concluded from publication counts, citations, or network position alone?
 
-## Research and Review need different letters
+The journal may label the paper `Review` or `Original Research`. The Skill keeps that official label while still using the Bibliometrics writing route.
 
-**Original Research** usually needs one scientific story: why the problem matters, what current work cannot resolve, what the study found, and what that finding changes.
+## Train the Skill with expert examples
 
-**Review or Synthesis** follows a different logic. It should explain what becomes clearer when the evidence is brought together, reorganized, or reinterpreted. A descriptive review is not forced to invent a controversy.
+The Trainer removes the need to repeat the improvement process by hand:
 
-## How I improve this skill
+```text
+Current Skill
+→ manuscript materials
+→ blind AI cover letter
+→ permitted expert cover letter
+→ compare the two decisions
+→ extract reusable reasoning
+→ revise the Skill
+→ test again in a fresh context
+→ release only after review
+```
 
-> Current Skill → privately provide manuscript materials → generate an AI letter → add an expert-authored letter → compare the two → extract the expert's reasoning → update the Skill → test again → release a new version
+The Trainer learns how the expert selected facts, ordered the argument, and made the work relevant to an editor. It does not copy the expert's wording. The manuscript remains the source of truth, because an expert letter can still contain an older title, number, journal detail, or declaration.
 
-In practice:
+A clean first draft is not enough for a blind improvement loop. After the expert letter is revealed, every candidate must be generated in a new context that has not received the expert material. See the [beginner Trainer guide](docs/trainer-guide.md).
 
-1. I use the current version to generate a cover letter from manuscript materials.
-2. I then provide a cover letter written by an experienced academic expert.
-3. I compare what each letter selects, omits, emphasizes, and places first.
-4. I study why the expert's choices may help an editor decide faster, without copying the wording.
-5. I turn reusable lessons into general Skill rules.
-6. I regenerate the letter with the same materials and compare again.
-7. I repeat the generate–compare–extract–revise–test loop until the improvement is stable.
+## How I improve this project
 
-The expert letter is a **benchmark, not a gold standard**. Every fact and claim still has to be checked against the manuscript. Private manuscripts and real letters used in this process are never added to this repository.
+1. Ask the current Skill to write from a manuscript.
+2. Add a permitted expert-authored letter after the AI draft is sealed.
+3. Compare what each letter selected, omitted, ordered, and emphasized.
+4. Explain why the stronger choices help an editor; do not copy sentences.
+5. Turn the reusable idea into a general Skill rule.
+6. Generate again from the same manuscript in a fresh context.
+7. Check the changed route and the routes that were not changed.
+8. Publish when the improvement is useful beyond one example.
+
+An expert letter is a benchmark, not a gold standard. Persuasion never overrides factual accuracy or evidence boundaries. Private manuscripts and real letters stay outside this repository.
 
 ## How the versions evolved
 
 | Version | What the comparison revealed | What changed |
 |---|---|---|
-| v1.0 | A persuasive letter is still unsafe if its facts drift | Added fact checking, journal research, previous-letter permission, and final checks |
-| v2.0 | Research and Review should not use the same writing logic | Research gained a scientific story; Review focused on what the synthesis helps the field understand |
-| v2.1 | A Review should not merely say what it reviewed | Added field diagnosis, a clear new interpretation, measured promotion, and journal-conversation fit |
-| v2.2 | Complex methods can hide the actual scientific finding in Research letters | Put the phenomenon and finding first, translated methods into capabilities, and removed details that do not change editorial judgment |
+| v1.0 | A useful letter must first keep titles, numbers, authors, declarations, and journal rules accurate | Added a manuscript fact sheet, journal checks, permission for older letters, and a final audit |
+| v2.0 | Research and Review should not use the same argument | Research tells one scientific discovery story; Review explains the new understanding created by synthesis |
+| v2.1 | Review letters often report what was reviewed without saying what changed | Added field diagnosis, a memorable interpretation, measured promotion, and direct reader relevance |
+| v2.2 | Research letters can let complex methods and result lists hide the discovery | Put the scientific finding first and describe methods by the credibility they add |
+| v2.3 | Review conclusions could still be broad and the workflow could repeat questions already answered | Added a clear “old reading → synthesis finding → changed decision” contrast, a fast path for complete evidence, and stronger checks against empty promotion |
+| **v3.0** | **Bibliometrics is neither ordinary Research nor a traditional Review** | **Added a third Bibliometrics route and separated the journal's official article label from the way the letter should argue** |
+| v3.1 | A polished bibliometric letter can become so abstract that it loses the paper's own results | Required a manuscript-specific map, frontier signal, or directional shift and added blind benchmark testing |
+| **v3.2** | Expert letters can contain stale facts, and bibliometric letters can overfocus on rankings or keywords | Keeps manuscript facts authoritative, joins performance analysis with science mapping, makes journal fit specific, and removes submission-system-only details |
 
-Read the short [development story](docs/evolution.md).
+Trainer development:
+
+| Version | What changed |
+|---|---|
+| Trainer v0.1.0 | Added blind baseline generation, expert comparison, reusable rule extraction, candidate building, and regression checks |
+| Trainer v0.2.0 | Requires a fresh expert-free context for every candidate round and records the real isolation level |
+
+See [the full development story](docs/evolution.md) and [Trainer changes](docs/trainer-changelog.md).
 
 ## Privacy and limits
 
-- Real manuscripts, cover letters, journals, editors, and source conversations are not published here.
-- Public examples are fully synthetic.
+- Real manuscripts and expert letters are not published here.
+- Public examples are fictional.
+- Previous letters are used only with permission.
 - The project does not guarantee acceptance.
-- Journal policies can change and should be checked for every submission.
-- Authors remain responsible for facts, declarations, ethics, conflicts, and the final submission.
+- Authors remain responsible for the final facts, declarations, and submission rules.
 
 See the [privacy policy](docs/privacy.md).
 
 ## Contributing
 
-Published papers and their related cover letters can help improve the project. Share only material you have the right to make public, and remove personal, confidential, and unpublished submission information first. See [Contributing](.github/CONTRIBUTING.md).
+Published papers and their cover letters can help improve this project. Share only material you have the right to disclose, and remove personal, confidential, and unpublished submission information first. See [CONTRIBUTING](.github/CONTRIBUTING.md).
 
 ## Repository guide
 
-Ordinary users can ignore the technical folders and download a Release directly.
+Most users can ignore the folders below and download a Release directly.
 
 | Path | Purpose |
 |---|---|
-| `skills/` | Current v2.2 Skill source |
-| `docs/` | Chinese homepage, development story, privacy, and changes |
-| `development/` | Synthetic examples, tests, evaluation data, and release tools |
-| `.codex-plugin/` | Codex Plugin manifest |
-| `.github/` | Automated checks and contribution templates |
+| `skills/` | Current Writer and Trainer source |
+| `docs/` | Chinese homepage, beginner guides, privacy, and version story |
+| `development/` | Fictional examples, tests, and package builders |
+| `.codex-plugin/` | Writer Plugin metadata |
+| `.github/` | Automated checks and contribution forms |
 
 ## Author, citation, and license
 
-Created by **Jizhou Hu (China Medical University)**. Citation information is in [CITATION.cff](CITATION.cff). Released under the [MIT License](LICENSE).
+Created by **Jizhou Hu, China Medical University**.
+
+Licensed under the [MIT License](LICENSE). Citation metadata is available in [CITATION.cff](CITATION.cff).

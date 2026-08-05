@@ -1,6 +1,10 @@
-# Human-authored benchmark protocol v3.1
+# Human-authored benchmark protocol v3.2
 
 A previous or expert-authored cover letter can be analyzed only with explicit permission. It is evidence about editorial judgment, not a gold standard and not a factual source for the current submission.
+
+## Isolate benchmark fact conflicts
+
+Before learning from a benchmark, compare its title, numbers, dates, article label, journal details, authors, and declarations with the current manuscript and author-confirmed materials. Classify each benchmark item as `MATCHED`, `STALE`, `CONFLICTING`, or `UNVERIFIED`. Learn selection and editorial logic from all useful items, but carry factual content forward only from `MATCHED` items. Never replace a current manuscript fact with an older expert-letter value.
 
 ## Extract the two pure strengths
 
@@ -47,6 +51,8 @@ Compare field problem, synthesis intervention, cross-study pattern selection, ed
 ### Bibliometrics
 
 Compare field-orientation problem, corpus boundary, chosen map-level pattern, bibliometric signature packet, mapping thesis, research-coordination consequence, and metric calibration. Do not reward keyword, country, or institution lists unless they carry the thesis or preserve the paper's principal empirical fingerprint.
+
+For `BOTH`, check that the human or AI letter selects at least one performance-analysis signal and one science-mapping signal, and that both support one thesis. Also check that journal fit connects a verified reader need to a specific mapped contribution.
 
 ## Benchmark convergence
 

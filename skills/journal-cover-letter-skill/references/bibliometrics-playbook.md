@@ -1,4 +1,4 @@
-# Bibliometrics playbook: field-map route v3.1
+# Bibliometrics playbook: field-map route v3.2
 
 ## Editorial purpose
 
@@ -29,6 +29,8 @@ The official submission label is separate. Record the exact journal label even w
 
 ```yaml
 bibliometric_mode: PERFORMANCE_ANALYSIS | SCIENCE_MAPPING | BOTH
+performance_analysis_signal: string | null
+science_mapping_signal: string | null
 field_orientation_problem: string
 corpus_boundary: string
 mapping_capability: string
@@ -41,11 +43,14 @@ metric_boundary: string
 bibliometric_signature_packet: string
 authorial_specificity_floor: string
 bibliometric_decision_spine: string
+journal_fit_bridge: string
 ```
 
 ## Decision spine
 
 > Field-scale uncertainty -> bounded corpus -> mapping capability -> empirical anchor -> mapping thesis -> coordination or research consequence -> journal fit -> metric boundary
+
+When `bibliometric_mode` is `BOTH`, select one performance-analysis signal and one science-mapping signal. The first can show distribution, concentration, productivity, or citation activity; the second must show conceptual, intellectual, or social structure. Both must support one mapping thesis rather than becoming two unrelated result lists.
 
 ### 1. Field-scale uncertainty
 
@@ -120,6 +125,14 @@ Retain the boundary that matters most:
 
 Place the boundary after the contribution is clear. It should calibrate the claim, not erase it.
 
+## Journal-fit bridge
+
+Build one direct bridge:
+
+> verified journal scope or readership need -> specific mapped contribution -> reader decision or new understanding
+
+Do not substitute generic statements such as “this topic fits the journal” or “readers will be interested.”
+
 
 ## Bibliometric signature packet
 
@@ -175,6 +188,8 @@ Remove any country, institution, journal, keyword, cluster, centrality value, or
 - Does it retain a bibliometric signature packet and meet the authorial-specificity floor?
 - Does it explain what the map changes, rather than list outputs?
 - Are performance analysis and science mapping used accurately?
+- If the mode is `BOTH`, does one signal from each family support the same thesis?
 - Are ranking, quality, leadership, and forecasting claims calibrated?
 - Is the database and metric boundary explicit enough to prevent misinterpretation?
 - Does journal fit connect the map to a readership decision?
+- Is the journal-fit bridge specific rather than generic?

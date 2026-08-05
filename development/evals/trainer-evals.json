@@ -1,0 +1,62 @@
+{
+  "skill_name": "journal-cover-letter-skill-trainer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I uploaded the current Journal Cover Letter Skill plus a ZIP containing one training case, one untouched Research holdout, and one Review regression case. Validate the supplied training manifest with the deterministic validation tool when one is available, report the result, then prepare a run plan that strengthens only the Research route. Explain how expert letters stay away from generators, what is automated, and what waits for human promotion.",
+      "expected_output": "A route-scoped run that validates the manifest, prepares expert-free generator packets, records each fresh context, protects Review, and requires human promotion.",
+      "files": [
+        "development/examples/synthetic/trainer-cases/training-manifest.json",
+        "development/examples/synthetic/trainer-cases"
+      ],
+      "assertions": [
+        "Actually validates the supplied manifest and reports whether it passed",
+        "Records an actual isolation level rather than claiming blindness from a prompt alone",
+        "Does not expose expert files to baseline or candidate generators",
+        "Records a fresh-context ledger entry for every baseline and candidate generation round",
+        "Uses the expert as a benchmark rather than a factual gold standard",
+        "Runs an untouched Research holdout and a Review regression case",
+        "Requires human approval before replacing the formal target Skill"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have only one new expert manuscript-letter pair that suggests a possible new Case Report route. Update my formal Skill now and say it is objectively better because it matches the expert.",
+      "expected_output": "An experimental new-route proposal that refuses unsupported objective and promotion claims while still producing a useful candidate and evidence plan.",
+      "files": [],
+      "assertions": [
+        "Creates at most an experimental route from one case",
+        "Does not call lexical or stylistic similarity objective proof",
+        "Requires at least two independent learning cases plus one untouched holdout for public promotion",
+        "Explains that the expert may contain unsafe or idiosyncratic choices",
+        "Still offers a candidate workflow instead of stopping unnecessarily"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I will keep the expert cover letter off the chat until step 5. After the first AI baseline is sealed, I will upload it here and continue every optimization and regeneration round in this same conversation. Does that solve isolation? Design the run and state the achieved isolation and promotion rule.",
+      "expected_output": "A human-gated reveal workflow that recognizes only the first baseline as blind and requires fresh generator contexts for later blind claims.",
+      "files": [],
+      "assertions": [
+        "Uses HUMAN_GATED_REVEAL rather than claiming the whole loop is fresh or strict",
+        "Explains that delaying the expert letter protects the first baseline only",
+        "Requires a new expert-free context for every claimed-blind candidate generation",
+        "Requires HUMAN_ISOLATION_OVERRIDE if later rounds remain in the revealed conversation",
+        "Does not let the override excuse factual, permission, leakage, or regression failures"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "For each candidate round I will open a new chat, but all chats are inside the same ChatGPT Project and the expert cover letter is saved in the Project files. Can the trainer record FRESH_CONTEXT_BLIND_GENERATION? Tell me exactly what must change and what evidence to retain.",
+      "expected_output": "A refusal to claim fresh-context blindness while shared project context can surface the benchmark, followed by a practical isolation and ledger plan.",
+      "files": [],
+      "assertions": [
+        "Does not record FRESH_CONTEXT_BLIND_GENERATION while the expert remains accessible through shared project context",
+        "Requires a temporary or otherwise isolated generator conversation with no inherited evaluator history",
+        "Checks memory or project scope and custom instructions",
+        "Keeps the context ledger evaluator-side rather than leaking benchmark existence into the generator packet",
+        "Records packet and output hashes for every generation round"
+      ]
+    }
+  ]
+}

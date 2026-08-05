@@ -3,7 +3,7 @@ name: journal-cover-letter-skill
 description: Create, revise, benchmark, or check a cover letter for an academic journal submission from manuscript files. Use whenever a user wants a journal submission letter, asks to tailor a cover letter to a target journal, provides manuscript materials and asks for a letter, wants an existing academic cover letter improved, or submits a bibliometric/science-mapping manuscript. Route empirical research around one finding, evidence syntheses around what the synthesis changes in understanding, and bibliometric studies around what the map reveals about a field's structure or evolution. Do not use for job applications, recommendation letters, or business correspondence.
 ---
 
-# Journal Cover Letter Skill v3.1
+# Journal Cover Letter Skill v3.2
 
 Turn verified manuscript facts into a clear editorial decision aid. Default to English unless the user requests another language. Prioritize biomedical and life-science submissions while remaining useful across disciplines.
 
@@ -78,7 +78,7 @@ Do not reduce benchmark analysis to sentence length, tone, or lexical similarity
 
 For a blind benchmark test, follow `references/blind-benchmark-loop.md`. The benchmark must be inaccessible during baseline drafting and may be revealed only after the baseline is frozen.
 
-Never carry over names, titles, journal details, identifiers, metadata, declarations, or unsupported claims.
+Never carry over names, titles, journal details, identifiers, metadata, declarations, or unsupported claims. Treat the manuscript and author-confirmed materials as the fact authority even when the benchmark was written by an expert. When a benchmark title, number, date, article label, or declaration conflicts with the current manuscript, record the conflict, learn only the selection logic, and use the verified current fact.
 
 ## 3. Author confirmation gate
 
@@ -105,7 +105,7 @@ After the factual foundation is stable, check current official journal or publis
 - editor identity only when useful and verified;
 - recent relevant articles or editorials when they materially sharpen fit.
 
-Keep `official_requirement` separate from `reasoned_fit_inference`. Do not rename the submission type to match the intellectual route. Build journal fit in this order: (1) explicit article-type or editorial-priority criterion, (2) concrete readership need, then (3) current journal conversation when useful.
+Keep `official_requirement` separate from `reasoned_fit_inference`. Do not rename the submission type to match the intellectual route. Build journal fit in this order: (1) explicit article-type or editorial-priority criterion, (2) concrete readership need, then (3) current journal conversation when useful. Complete a `journal_fit_bridge`: connect one verified scope or readership need to one specific manuscript contribution and explain the decision or understanding this gives the journal's readers. Generic fit language does not pass.
 
 If official information cannot be checked, return `NEEDS_JOURNAL_VERIFICATION`, not `SUBMISSION_READY`.
 
@@ -150,6 +150,8 @@ Set:
 
 ```text
 bibliometric_mode: PERFORMANCE_ANALYSIS | SCIENCE_MAPPING | BOTH
+performance_analysis_signal: the one output, distribution, concentration, or impact pattern that matters
+science_mapping_signal: the one conceptual, intellectual, or collaboration structure that matters
 mapping_intervention: what previously invisible field structure or evolution the analysis makes visible
 mapping_thesis: the one memorable field-level interpretation
 bibliometric_signature_packet: the minimum manuscript-native combination of structural map, frontier signal, and/or directional transition that preserves the paper's empirical identity
@@ -165,7 +167,7 @@ The letter should answer four questions:
 3. Why does that pattern change research coordination, validation priorities, collaboration, or topic selection?
 4. Which metric boundary must be retained so that the map is not mistaken for quality, causality, or prediction?
 
-Use one primary map-level conclusion and at most two supporting patterns. However, do not compress away the paper's empirical fingerprint. Build a `bibliometric_signature_packet` from up to three components: (1) a structural taxonomy or cluster map, (2) a temporal/frontier signal, and (3) a directional transition. Retain two components when they are central. If a taxonomy of three to six clinically meaningful domains is itself a principal result, name the domains in compressed parallel syntax rather than replacing them with 'several themes.' Publication counts, software names, centrality values, and country rankings remain credibility details unless they directly carry the interpretation.
+Use one primary map-level conclusion and at most two supporting patterns. For `BOTH`, retain at least one performance-analysis signal and one science-mapping signal, and make both support the same mapping thesis. Do not let a country ranking become the thesis, and do not abstract away the map. Build a `bibliometric_signature_packet` from up to three components: (1) a structural taxonomy or cluster map, (2) a temporal/frontier signal, and (3) a directional transition. Retain two components when they are central. If a taxonomy of three to six clinically meaningful domains is itself a principal result, name the domains in compressed parallel syntax rather than replacing them with 'several themes.' Publication counts, software names, centrality values, and country rankings remain credibility details unless they directly carry the interpretation.
 
 Do not equate:
 
@@ -211,7 +213,7 @@ Verify declarations during intake, but include one in the letter only when:
 3. the user requests it; or
 4. an unusual circumstance must be disclosed.
 
-Do not automatically insert funding, ethics, consent, data/code, preprint, or AI-use statements merely because they were verified. Never invent missing declarations.
+Do not automatically insert funding, ethics, consent, data/code, preprint, or AI-use statements merely because they were verified. Keep APC or publication-fee willingness, open-peer-review choices, reviewer suggestions, and routine submission-system confirmations out of the letter unless the journal explicitly requires them in the cover letter. Never invent missing declarations.
 
 ## 9. Bounded revision loops
 
@@ -228,9 +230,10 @@ empirical_anchor
 editorial_meaning
 research_decision_spine or editorial_thesis or mapping_thesis
 synthesis_intervention and synthesis_contrast for Review
-bibliometric_mode, mapping_intervention, bibliometric_decision_spine, and metric_boundary for Bibliometrics
+bibliometric_mode, performance_analysis_signal, science_mapping_signal, mapping_intervention, bibliometric_decision_spine, and metric_boundary for Bibliometrics
 journal_conversation
 journal_fit_basis
+journal_fit_bridge
 controlled_uplift_level
 hard_gate_failures
 quality_gate_failures

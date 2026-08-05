@@ -1,4 +1,4 @@
 interface:
   display_name: "Journal Cover Letter"
-  short_description: "Write research, review, and bibliometric cover letters with blind benchmarking"
-  default_prompt: "Read my manuscript files, verify the target journal and exact article type, select the correct intellectual route, and help me write a cover letter."
+  short_description: "Write research, review, and bibliometric cover letters"
+  default_prompt: "Use $journal-cover-letter-skill to read my manuscript, check the target journal, and draft a cover letter."

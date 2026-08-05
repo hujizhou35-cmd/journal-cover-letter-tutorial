@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic structural and risk-language checks for a v3.1 draft letter."""
+"""Deterministic structural and risk-language checks for a v3.2 draft letter."""
 
 from __future__ import annotations
 
@@ -21,6 +21,7 @@ HIGH_RISK = {
     "bibliometric_forecast": r"\b(?:will dominate|will become|definitive future direction|certain future trend|predicts? the future)\b",
     "bibliometric_completeness": r"\b(?:complete landscape|complete map|entire field|all research in the field)\b",
     "bibliometric_causality": r"\b(?:centrality (?:causes?|drives?)|collaboration (?:causes?|proves?))\b",
+    "submission_system_only": r"\b(?:agree to pay (?:the )?(?:apc|article processing charge)|opt(?:ing)? for open peer review|suggested reviewers?|publication fee willingness)\b",
 }
 
 

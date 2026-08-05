@@ -2,6 +2,8 @@
 manuscripts/
 private/
 local-only/
+trainer-corpus/
+trainer-workspace/
 real-world-tests/
 local-sensitive-terms.txt
 *.doc

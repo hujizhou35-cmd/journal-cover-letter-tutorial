@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "run_id": "synthetic-research-route-001",
+  "expected_entries": [
+    {
+      "round_id": "baseline-r0",
+      "case_id": "synthetic-train-research"
+    }
+  ],
+  "rounds": [
+    {
+      "round_id": "baseline-r0",
+      "case_id": "synthetic-train-research",
+      "generator_context_id": "temporary-chat-opaque-001",
+      "context_mode": "FRESH_TEMPORARY_CONVERSATION",
+      "memory_or_project_boundary": "DISABLED_OR_SEPARATE_SCOPE",
+      "custom_instructions_checked": true,
+      "inherited_evaluator_history": false,
+      "benchmark_material_present": false,
+      "generator_packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "output_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "sealed_at": "2026-08-06T00:00:00Z",
+      "verified_by": "human-or-host"
+    }
+  ]
+}

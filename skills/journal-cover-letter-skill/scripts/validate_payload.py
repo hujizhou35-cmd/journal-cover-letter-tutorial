@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate v3.1 structured cover-letter payloads without judging scientific meaning."""
+"""Validate v3.2 structured cover-letter payloads without judging scientific meaning."""
 
 from __future__ import annotations
 
@@ -93,6 +93,13 @@ def validate(payload: dict) -> list[str]:
         for field in ("mapping_intervention", "mapping_thesis", "bibliometric_signature_packet", "authorial_specificity_floor", "bibliometric_decision_spine", "metric_boundary"):
             if not nonempty(payload.get(field)):
                 errors.append(f"{field} is required for BIBLIOMETRICS")
+        mode = payload.get("bibliometric_mode")
+        if mode in {"PERFORMANCE_ANALYSIS", "BOTH"} and not nonempty(payload.get("performance_analysis_signal")):
+            errors.append("performance_analysis_signal is required for PERFORMANCE_ANALYSIS or BOTH")
+        if mode in {"SCIENCE_MAPPING", "BOTH"} and not nonempty(payload.get("science_mapping_signal")):
+            errors.append("science_mapping_signal is required for SCIENCE_MAPPING or BOTH")
+        if not nonempty(payload.get("journal_fit_bridge")):
+            errors.append("journal_fit_bridge is required for BIBLIOMETRICS")
 
     if payload.get("status") == "SUBMISSION_READY":
         if payload.get("fact_status") != "verified":

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import zipfile
 from pathlib import Path
 
@@ -50,11 +51,12 @@ def test_missing_payload_fields():
 
 def test_audit_detects_placeholder_and_risky_language():
     audit = load("audit_cover_letter")
-    result = audit.audit("Dear Editor,\nThis groundbreaking study causes [OUTCOME].\nSincerely,")
+    result = audit.audit("Dear Editor,\nThis groundbreaking study causes [OUTCOME]. We agree to pay the APC.\nSincerely,")
     assert not result["pass"]
     assert result["placeholders"]
     assert "causal" in result["high_risk_language_for_semantic_review"]
     assert "marketing" in result["high_risk_language_for_semantic_review"]
+    assert "submission_system_only" in result["high_risk_language_for_semantic_review"]
 
 
 def test_clean_synthetic_letter_passes_structure():
@@ -202,6 +204,7 @@ def test_bibliometrics_requires_route_specific_fields():
     errors = validator.validate(payload)
     assert "bibliometric_mode is required and must be valid for BIBLIOMETRICS" in errors
     assert "mapping_thesis is required for BIBLIOMETRICS" in errors
+    assert "journal_fit_bridge is required for BIBLIOMETRICS" in errors
 
 
 def test_v31_preserves_bibliometric_specificity_and_blind_benchmarking():
@@ -210,3 +213,20 @@ def test_v31_preserves_bibliometric_specificity_and_blind_benchmarking():
     assert "authorial_specificity_floor" in skill
     assert "benchmark_selection_granularity" in skill
     assert "blind-benchmark-loop.md" in skill
+
+
+def test_v32_protects_benchmark_facts_and_requires_dual_bibliometric_evidence():
+    skill = (ROOT / "skills" / "journal-cover-letter-skill" / "SKILL.md").read_text(encoding="utf-8")
+    assert "Treat the manuscript and author-confirmed materials as the fact authority" in skill
+    assert "performance_analysis_signal" in skill
+    assert "science_mapping_signal" in skill
+    assert "journal_fit_bridge" in skill
+    assert "APC or publication-fee willingness" in skill
+
+
+def test_bibliometric_example_passes_v32_contract():
+    validator = load("validate_payload")
+    payload = json.loads(
+        (ROOT / "skills" / "journal-cover-letter-skill" / "assets" / "cover-letter-payload.bibliometrics.example.json").read_text(encoding="utf-8")
+    )
+    assert validator.validate(payload) == []

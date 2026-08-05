@@ -1,4 +1,4 @@
-# Journal research protocol v3.0
+# Journal research protocol v3.2
 
 Research current information at the time of use. Prioritize:
 
@@ -31,3 +31,5 @@ intellectual_route: BIBLIOMETRICS
 ```
 
 Build fit evidence in descending priority: explicit criterion, concrete readership need, then recent journal conversation. Avoid generic praise. If official pages cannot be accessed or appear stale, use `NEEDS_JOURNAL_VERIFICATION`.
+
+Complete a `journal_fit_bridge` by connecting one verified journal criterion or readership need to one specific manuscript contribution and the decision or understanding it offers readers. A scope match without that bridge is incomplete.

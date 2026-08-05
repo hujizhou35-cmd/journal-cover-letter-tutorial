@@ -1,6 +1,6 @@
 {
   "name": "journal-cover-letter-skill",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Writes journal cover letters with separate Research, Review, and Bibliometrics workflows.",
   "author": {
     "name": "Jizhou Hu",

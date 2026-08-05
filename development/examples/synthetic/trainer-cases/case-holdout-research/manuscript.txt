@@ -1,0 +1,14 @@
+Fictional title: Combined Maintenance Signals and Synthetic Outcome R
+
+Article type: Original Research.
+
+Problem: Separate maintenance indicators provide inconsistent warnings when equipment stress occurs as a combined pattern.
+
+Design: A fictional longitudinal equipment dataset compared individual indicators with a prespecified joint-pattern analysis. No intervention was tested.
+
+Findings: The joint stress pattern preceded Synthetic Outcome R more consistently than any individual indicator. Results varied by equipment class, and no formal between-class difference was established.
+
+Implication: The result supports prospective validation of combined indicators for maintenance planning; it does not establish that changing the indicators prevents failure.
+
+Confirmed declarations: original work and author approval.
+

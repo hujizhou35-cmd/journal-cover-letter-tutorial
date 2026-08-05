@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cover Letter Skill Trainer"
+  short_description: "Improve the Cover Letter Skill from expert examples"
+  default_prompt: "Use $journal-cover-letter-skill-trainer with my current Skill, manuscript materials, and permitted expert letter to create and test an improved version."

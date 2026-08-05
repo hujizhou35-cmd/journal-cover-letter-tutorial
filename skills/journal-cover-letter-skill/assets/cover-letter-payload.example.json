@@ -28,6 +28,7 @@
   "bibliometric_decision_spine": null,
   "metric_boundary": null,
   "journal_fit_basis": "READERSHIP_NEED",
+  "journal_fit_bridge": "The journal's focus on trustworthy feedback research is connected to the manuscript's calibration finding and its value for interpreting feedback decisions.",
   "journal_conversation": "The fictional journal's readership is discussing trustworthy feedback design.",
   "controlled_uplift_level": "1_CALIBRATED",
   "hard_gate_failures": [],

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.1",
+  "run_id": "synthetic-research-route-001",
+  "target_skill": {
+    "name": "journal-cover-letter-skill",
+    "version": "2.2.0",
+    "path": "target-skill"
+  },
+  "training_intent": "STRENGTHEN_EXISTING_ROUTE",
+  "target_route": "ORIGINAL_RESEARCH",
+  "storage_mode": "SESSION_ONLY",
+  "requested_isolation": "FRESH_CONTEXT_BLIND_GENERATION",
+  "context_memory_policy": "DISABLED_OR_SEPARATE_SCOPE",
+  "promotion_policy": "HUMAN_APPROVAL",
+  "cases": [
+    {
+      "id": "synthetic-train-research",
+      "role": "TRAIN",
+      "article_type": "ORIGINAL_RESEARCH",
+      "manuscript_paths": ["cases/synthetic-train-research/manuscript/manuscript.txt"],
+      "expert_letter_path": "cases/synthetic-train-research/expert/expert-letter.txt",
+      "benchmark_permission": "ANONYMOUS_EXPERT_BENCHMARK",
+      "journal_context_mode": "NOT_SCORED",
+      "journal_context_paths": [],
+      "author_confirmations": {
+        "facts_confirmed": true,
+        "originality_confirmed": true
+      },
+      "sensitive_terms": ["Fictional Marker Q"]
+    },
+    {
+      "id": "synthetic-holdout-research",
+      "role": "HOLDOUT",
+      "article_type": "ORIGINAL_RESEARCH",
+      "manuscript_paths": ["cases/synthetic-holdout-research/manuscript/manuscript.txt"],
+      "expert_letter_path": "cases/synthetic-holdout-research/expert/expert-letter.txt",
+      "benchmark_permission": "ANONYMOUS_EXPERT_BENCHMARK",
+      "journal_context_mode": "NOT_SCORED",
+      "journal_context_paths": [],
+      "author_confirmations": {
+        "facts_confirmed": true,
+        "originality_confirmed": true
+      },
+      "sensitive_terms": ["Synthetic Outcome R"]
+    },
+    {
+      "id": "synthetic-regression-review",
+      "role": "REGRESSION",
+      "article_type": "REVIEW_SYNTHESIS",
+      "manuscript_paths": ["cases/synthetic-regression-review/manuscript/manuscript.txt"],
+      "expert_letter_path": null,
+      "benchmark_permission": null,
+      "journal_context_mode": "NOT_SCORED",
+      "journal_context_paths": [],
+      "author_confirmations": {
+        "facts_confirmed": true
+      },
+      "sensitive_terms": []
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Bounded loop controller v3.1
+# Bounded loop controller v3.2
 
 Maintain at least this state:
 
@@ -17,12 +17,15 @@ editorial_thesis: string | null
 synthesis_intervention: string | null
 synthesis_contrast: string | null
 bibliometric_mode: PERFORMANCE_ANALYSIS | SCIENCE_MAPPING | BOTH | null
+performance_analysis_signal: string | null
+science_mapping_signal: string | null
 mapping_intervention: string | null
 mapping_thesis: string | null
 bibliometric_decision_spine: string | null
 metric_boundary: string | null
 journal_conversation: string | null
 journal_fit_basis: ARTICLE_TYPE_CRITERION | READERSHIP_NEED | CURRENT_CONVERSATION | UNVERIFIED
+journal_fit_bridge: string | null
 controlled_uplift_level: 0_MINIMAL | 1_CALIBRATED | 2_ASSERTIVE
 benchmark_empirical_signal: string | null
 benchmark_editorial_logic: string | null
@@ -58,6 +61,8 @@ In a conversation where the same model has already seen the benchmark, label the
 
 Resolve conflicts by checking supplied sources or asking focused questions. Confirm exact official article type separately from intellectual route. Stop for author confirmation when a hard conflict, missing mandatory declaration, unresolved official label, unresolved route, or permission ambiguity remains.
 
+When a benchmark conflicts with the manuscript, keep the manuscript value and record the benchmark item as stale, conflicting, or unverified. The benchmark may influence selection logic but not the fact sheet.
+
 ## Loop B: anchor and thesis selection
 
 Generate at most three candidates. Each candidate must pair one `empirical_anchor` with one `editorial_meaning`.
@@ -65,6 +70,8 @@ Generate at most three candidates. Each candidate must pair one `empirical_ancho
 - Research candidates use a decision spine.
 - Review candidates pair a synthesis intervention, thesis, and contrast.
 - Bibliometric candidates pair a mapping intervention, mapping thesis, decision spine, and metric boundary.
+
+For `BOTH`, reject a candidate unless one performance-analysis signal and one science-mapping signal support the same mapping thesis.
 
 Score manuscript centrality, evidential support, distinctiveness, authorial empirical fingerprint, editorial consequence, and journal relevance. Reject a candidate with a strong interpretation but weak factual anchor, or a strong fact with no changed decision.
 
