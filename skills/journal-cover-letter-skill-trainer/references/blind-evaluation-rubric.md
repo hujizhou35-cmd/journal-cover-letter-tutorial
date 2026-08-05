@@ -59,4 +59,3 @@ Candidate parity with the expert means comparable editorial decision value, not 
 ## Objective-claim boundary
 
 Call the result a structured, blinded evaluation. Do not call it an objective proof that one letter or Skill is universally better. Model judges share biases; expert examples may be idiosyncratic; small case sets have high variance.
-

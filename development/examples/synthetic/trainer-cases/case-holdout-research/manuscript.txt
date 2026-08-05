@@ -11,4 +11,3 @@ Findings: The joint stress pattern preceded Synthetic Outcome R more consistentl
 Implication: The result supports prospective validation of combined indicators for maintenance planning; it does not establish that changing the indicators prevents failure.
 
 Confirmed declarations: original work and author approval.
-
