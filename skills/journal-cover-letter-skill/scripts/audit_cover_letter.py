@@ -18,7 +18,9 @@ HIGH_RISK = {
     "causal": r"\b(?:causes?|causal effect|proves? causality)\b",
     "mechanism": r"\b(?:proves?|establishes?|confirms?) (?:the )?mechanism\b",
     "clinical": r"\b(?:should be implemented|clinical guidance|guarantees?)\b",
-    "marketing": r"\b(?:groundbreaking|revolutionary|perfectly aligned|authoritative)\b",
+    "marketing": r"\b(?:groundbreaking|revolutionary|perfectly aligned|aligns perfectly|authoritative|ideal(?:ly)? suited)\b",
+    "priority_claim": r"\b(?:the first|first-ever|only review|most comprehensive|unprecedented)\b",
+    "generic_self_praise": r"\b(?:comprehensive synthesis|timely and authoritative|highly relevant)\b",
 }
 
 

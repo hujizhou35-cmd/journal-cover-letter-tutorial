@@ -25,6 +25,8 @@ def main() -> int:
         f"- Submission branch: `{payload.get('submission_branch', 'UNKNOWN')}`",
         f"- Fact status: `{payload.get('fact_status', 'UNKNOWN')}`",
         f"- Previous-letter permission: `{payload.get('previous_letter_permission', 'UNKNOWN')}`",
+        f"- Confirmation mode: `{payload.get('confirmation_mode', 'NOT_RECORDED')}`",
+        f"- Journal-fit basis: `{payload.get('journal_fit_basis', 'NOT_RECORDED')}`",
         f"- Controlled uplift: `{payload.get('controlled_uplift_level', 'UNKNOWN')}`",
         f"- Stop reason: `{payload.get('stop_reason', 'UNKNOWN')}`",
         "",

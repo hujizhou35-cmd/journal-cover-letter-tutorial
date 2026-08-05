@@ -1,4 +1,4 @@
-# Bounded loop controller v2.2
+# Bounded loop controller v2.3
 
 Maintain at least this state:
 
@@ -7,11 +7,14 @@ article_type: ORIGINAL_RESEARCH | REVIEW_SYNTHESIS | OTHER_OR_UNRESOLVED
 submission_branch: string
 fact_status: verified | conflict | missing
 previous_letter_permission: string
+confirmation_mode: EXPLICIT_CONFIRMATION | EVIDENCE_COMPLETE_FAST_PATH | PENDING
 selected_story_angle: string | null
 research_decision_spine: string | null
 editorial_thesis: string | null
 synthesis_intervention: string | null
+synthesis_contrast: string | null
 journal_conversation: string | null
+journal_fit_basis: ARTICLE_TYPE_CRITERION | READERSHIP_NEED | CURRENT_CONVERSATION | UNVERIFIED
 controlled_uplift_level: 0_MINIMAL | 1_CALIBRATED | 2_ASSERTIVE
 benchmark_dimensions: {}
 hard_gate_failures: []
@@ -23,15 +26,21 @@ stop_reason: null
 
 ## Loop A: intake and fact stability
 
-Resolve conflicts by checking supplied sources or asking focused questions. Stop for author confirmation when a hard conflict, missing mandatory declaration, or unresolved article type remains.
+Resolve conflicts by checking supplied sources or asking focused questions. Use `EVIDENCE_COMPLETE_FAST_PATH` when the user's instructions and source files already verify every decision-changing fact; record assumptions in the audit. Stop for author confirmation when a hard conflict, missing mandatory declaration, unresolved article type, or permission ambiguity remains.
 
 ## Loop B: story or thesis selection
 
-Generate at most three distinct candidates. Research candidates use decision spines; Review candidates use editorial theses paired with synthesis interventions. Score manuscript centrality, evidential support, distinctiveness, editorial consequence, and journal-conversation relevance. Select one coherent route.
+Generate at most three distinct candidates. Research candidates use decision spines; Review candidates pair a synthesis intervention with one editorial thesis and one synthesis contrast. Score manuscript centrality, evidential support, distinctiveness, editorial consequence, and journal-fit relevance. Select one coherent route.
 
 For original research, the selected route must be expressible as:
 
 > Stakes -> unresolved limitation -> study response -> synthesized finding -> consequence -> journal fit
+
+For Review, the selected route must be expressible as:
+
+> Field problem -> synthesis intervention -> editorial thesis -> changed decision or research agenda -> journal fit -> calibrated boundary
+
+The Review draft may use at most two supporting cross-study patterns.
 
 ## Loop C: draft, audit, and targeted rule revision
 

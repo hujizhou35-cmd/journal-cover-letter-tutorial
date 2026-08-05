@@ -1,8 +1,8 @@
-# Review and synthesis playbook: thesis-driven route
+# Review and synthesis playbook: thesis-driven route v2.3
 
 ## Editorial purpose
 
-A review cover letter should sell an interpretation, not merely report a synthesis. Show how the review changes the field's reading of existing evidence and what decision or research agenda follows.
+A review cover letter should sell an interpretation, not merely report a synthesis. Show what becomes less defensible, newly visible, or newly actionable when the evidence is brought together.
 
 ## Step 1: Diagnose the field honestly
 
@@ -31,9 +31,17 @@ State what the review does to the literature, for example:
 
 Methods establish the credibility of this intervention. Database counts, dates, and appraisal tools are not the intellectual intervention by themselves.
 
-## Step 3: Write candidate editorial theses
+## Step 3: Build the synthesis contrast
 
-Generate no more than three. A strong `editorial_thesis` is:
+Write one sentence internally:
+
+> The field commonly reads the evidence as X; the synthesis shows Y; therefore claim, practice, or research decision Z must be bounded or redirected.
+
+Use this only when the manuscript supports both the prevailing reading and the contrasting synthesis. For framework-based reviews, prefer the cross-domain imbalance and its consequence over a list of domain counts.
+
+## Step 4: Write candidate editorial theses
+
+Generate no more than three, then select one. A strong `editorial_thesis` is:
 
 - faithful to the synthesis;
 - memorable in one sentence;
@@ -44,14 +52,35 @@ Generate no more than three. A strong `editorial_thesis` is:
 
 Reject candidates that merely say the literature is heterogeneous, more research is needed, or the review is comprehensive.
 
-## Step 4: Connect thesis to consequence
+## Step 5: Compress supporting evidence
+
+Use at most two cross-study patterns to support the thesis. A pattern earns space only when it establishes credibility, explains the contrast, or changes the consequence. Do not enumerate every framework cell, database, method, or finding. Numerical detail belongs only when it carries the editorial argument or prevents ambiguity.
+
+## Step 6: Connect thesis to consequence
 
 Explain what changes if the editor accepts the thesis: a construct must be measured differently, an inference should be downgraded, a research program needs another validation step, a classification should replace an older one, or a practice claim should be bounded.
 
-## Step 5: Enter the journal conversation
+## Step 7: Establish journal fit
 
-Identify current journal content or editorial priorities related to the thesis. Explain specifically whether the review complements, challenges, reorganizes, or extends that conversation. Avoid generic aims-and-scope matching.
+Use this hierarchy:
 
-## Step 6: Calibrate the boundary
+1. the journal's explicit criterion for the verified article type;
+2. a concrete need of the journal's readership;
+3. a current journal conversation when it materially sharpens the fit.
+
+Map the criterion to the synthesis intervention. Do not use self-praise such as “perfectly aligned,” “authoritative,” or “comprehensive” as a substitute for fit.
+
+## Step 8: Calibrate the boundary
 
 Place the boundary after the contribution is clear. Distinguish missing evidence from negative evidence, and descriptive maps from explanatory syntheses. The boundary should make the claim more credible, not erase it.
+
+## Paragraph functions
+
+A typical Review letter uses four functions:
+
+1. verified submission identity, exact article-type label, and field problem;
+2. synthesis intervention, one thesis, and no more than two supporting patterns;
+3. changed decision or research agenda plus criterion-based journal fit;
+4. required declarations and close.
+
+If the letter can be summarized only as “a comprehensive review of an important topic,” rebuild the thesis. If removing a detail does not change editorial judgment, remove it.

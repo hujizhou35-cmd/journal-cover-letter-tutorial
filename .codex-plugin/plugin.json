@@ -1,6 +1,6 @@
 {
   "name": "journal-cover-letter-skill",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Reads manuscript files, checks journal requirements, and drafts academic journal cover letters.",
   "author": {
     "name": "Jizhou Hu",

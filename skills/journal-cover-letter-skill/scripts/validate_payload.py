@@ -41,6 +41,9 @@ PERMISSIONS = {
 }
 FACT_STATUSES = {"verified", "conflict", "missing"}
 UPLIFT_LEVELS = {"0_MINIMAL", "1_CALIBRATED", "2_ASSERTIVE"}
+CONFIRMATION_MODES = {"EXPLICIT_CONFIRMATION", "EVIDENCE_COMPLETE_FAST_PATH", "PENDING"}
+JOURNAL_FIT_BASES = {"ARTICLE_TYPE_CRITERION", "READERSHIP_NEED", "CURRENT_CONVERSATION", "UNVERIFIED"}
+
 STOP_REASONS = {
     "ALL_GATES_PASSED",
     "AUTHOR_CONFIRMATION_REQUIRED",
@@ -72,6 +75,10 @@ def validate(payload: dict) -> list[str]:
         errors.append("controlled_uplift_level is invalid")
     if payload.get("stop_reason") not in STOP_REASONS:
         errors.append("stop_reason is invalid")
+    if "confirmation_mode" in payload and payload.get("confirmation_mode") not in CONFIRMATION_MODES:
+        errors.append("confirmation_mode is invalid")
+    if "journal_fit_basis" in payload and payload.get("journal_fit_basis") not in JOURNAL_FIT_BASES:
+        errors.append("journal_fit_basis is invalid")
     for field in ("hard_gate_failures", "quality_gate_failures"):
         if not isinstance(payload.get(field), list):
             errors.append(f"{field} must be a list")

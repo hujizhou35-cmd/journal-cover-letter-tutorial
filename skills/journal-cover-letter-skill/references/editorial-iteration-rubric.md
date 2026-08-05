@@ -1,4 +1,4 @@
-# Editorial iteration rubric: v2.2
+# Editorial iteration rubric: v2.3
 
 ## Research decision model
 
@@ -10,29 +10,32 @@ The editor should be able to recover this spine after one reading.
 
 ## Review decision model
 
-For review or synthesis manuscripts, use one central problem, no more than five layered contributions, one bounded implication, and one reader-specific journal-fit claim.
+For review or synthesis manuscripts, use one central field problem, one synthesis intervention, one recoverable editorial thesis, at most two supporting cross-study patterns, one bounded consequence, and one criterion-based journal-fit claim.
 
-## Research editorial-effect rubric
+The Review route fails when it reads as a methods inventory, framework-cell catalogue, or generic claim of comprehensiveness. The editor should be able to recover the synthesis contrast after one reading.
+
+## Editorial-effect rubric
 
 Score each dimension from 1 to 5:
 
 1. **Decision-spine clarity**: one coherent scientific argument is recoverable.
 2. **Gap quality**: the gap identifies an unresolved inference, limitation, or decision.
-3. **Method abstraction**: methods are translated into capability rather than listed.
-4. **Finding synthesis**: results form one memorable conclusion-level cluster.
-5. **Editorial consequence**: the letter states what changes and why it matters.
-6. **Journal specificity**: fit is concrete and evidence-based.
-7. **Omission discipline**: no detail survives unless it changes editorial judgment.
-8. **Claim calibration**: language reaches the strongest supported rung without overclaim.
-9. **Submission completeness**: required branch-specific declarations and contact details are present.
+3. **Route reasoning**: Research follows a decision spine; Review states a synthesis intervention and contrast.
+4. **Method abstraction**: methods are translated into capability or synthesis credibility rather than listed.
+5. **Selection and synthesis**: results form one memorable finding cluster or Review thesis with no more than two supporting patterns.
+6. **Editorial consequence**: the letter states what changes and why it matters.
+7. **Journal specificity**: fit maps a verified journal criterion or readership need to the contribution.
+8. **Omission discipline**: no detail survives unless it changes editorial judgment.
+9. **Claim calibration**: language reaches the strongest supported rung without overclaim or unverified priority claims.
+10. **Submission completeness**: required branch-specific declarations and contact details are present.
 
-A benchmark-convergence test passes when there are no high-impact differences on dimensions 1-7, no claim-strength violation on dimension 8, and no missing mandatory item on dimension 9. Exact wording and length need not match.
+A benchmark-convergence test passes when there are no high-impact differences on dimensions 1-8, no claim-strength violation on dimension 9, and no missing mandatory item on dimension 10. Exact wording and length need not match.
 
 ## Revision loop
 
 Generate a first draft, audit it, and revise the transferable rule responsible for each failed dimension. Maximum: three draft-audit rounds and two compression rounds. Stop when hard gates pass and additional editing changes only taste, cadence, or wording rather than decision value.
 
-Do not repair a general skill by adding manuscript-specific instructions. A successful revision should improve the route for other original research manuscripts with different designs and disciplines.
+Do not repair a general skill by adding manuscript-specific instructions. A successful revision should improve the route for other manuscripts in the changed route with different topics, methods, and disciplines.
 
 ## Claim-strength ladder
 
