@@ -1,4 +1,4 @@
-# Journal research protocol
+# Journal research protocol v3.0
 
 Research current information at the time of use. Prioritize:
 
@@ -7,14 +7,27 @@ Research current information at the time of use. Prioritize:
 3. current journal editorial pages and recent journal articles;
 4. reputable indexing or society pages only as secondary confirmation.
 
-Capture the page title, direct URL, access date, finding, and category:
+Capture page title, direct URL, access date, finding, and category:
 
-- `REQUIREMENT`: explicitly required by the journal or publisher;
-- `OBSERVED_PREFERENCE`: a cautious inference from current editorial material or recent publications;
+- `REQUIREMENT`: explicitly required;
+- `OBSERVED_PREFERENCE`: cautious inference from current editorial material or recent publications;
 - `GENERAL_PRACTICE`: not journal-specific.
 
-Verify accepted article type, the journal's exact article-type label, article-type-specific editorial criteria, cover-letter requirements, word or page constraints if any, required declarations, current editor name only when the letter needs it, readership, scope, and relevant recent conversation. Do not infer a mandatory rule from a third-party template.
+Verify:
 
-Build fit evidence in descending priority: explicit article-type or editorial-priority criterion, concrete readership need, then recent journal conversation. Recent content is optional when the official criterion already yields a specific criterion-to-contribution mapping. Journal fit should explain how the manuscript satisfies or advances that criterion; it should not merely praise the journal. Avoid generic claims such as “perfectly aligned,” “authoritative,” or “ideal for the journal.”
+- the exact article-type label available in the target journal and section;
+- article-type-specific criteria and formatting;
+- cover-letter requirements and submission constraints;
+- required declarations;
+- readership and scope;
+- editor identity only when useful;
+- relevant current journal conversation when it sharpens fit.
 
-If official pages cannot be accessed or appear stale, report the limitation and use `NEEDS_JOURNAL_VERIFICATION`.
+Record the exact journal label as `official_article_type`. Do not force it to match `intellectual_route`. For example, a bibliometric manuscript may legitimately have:
+
+```yaml
+official_article_type: Original Research
+intellectual_route: BIBLIOMETRICS
+```
+
+Build fit evidence in descending priority: explicit criterion, concrete readership need, then recent journal conversation. Avoid generic praise. If official pages cannot be accessed or appear stale, use `NEEDS_JOURNAL_VERIFICATION`.

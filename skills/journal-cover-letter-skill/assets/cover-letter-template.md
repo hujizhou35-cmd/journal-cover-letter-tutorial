@@ -5,13 +5,13 @@
 
 Dear [Editor / Editor-in-Chief / Editorial Team],
 
-Please consider our [article type], “[Manuscript title],” for publication in [Journal].
+Please consider our [exact official article type], “[Manuscript title],” for publication in [Journal].
 
-[Specific stakes -> unresolved limitation -> study response expressed as capability, not a method inventory.]
+[Route-specific problem -> capability or synthesis/mapping intervention -> concrete empirical anchor.]
 
-[One synthesized finding cluster -> one defensible consequence. Use selective supporting evidence only when it changes editorial judgment.]
+[One synthesized finding, editorial thesis, or mapping thesis -> one defensible editorial meaning or decision consequence.]
 
-[Concrete journal fit. Add only the declarations required for this journal and submission branch.]
+[Concrete journal fit. Add only declarations required for this journal and submission branch. For Bibliometrics, retain the single metric boundary needed to prevent misinterpretation.]
 
 Sincerely,
 

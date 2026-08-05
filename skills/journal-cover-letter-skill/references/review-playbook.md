@@ -1,4 +1,4 @@
-# Review and synthesis playbook: thesis-driven route v2.3
+# Review and synthesis playbook: thesis-driven route v3.0
 
 ## Editorial purpose
 
@@ -84,3 +84,8 @@ A typical Review letter uses four functions:
 4. required declarations and close.
 
 If the letter can be summarized only as “a comprehensive review of an important topic,” rebuild the thesis. If removing a detail does not change editorial judgment, remove it.
+
+
+## v3.0 evidence-to-meaning gate
+
+Select one cross-study `empirical_anchor` before finalizing the thesis. The thesis must interpret that anchor; it cannot float above the evidence. When a bibliometric map is the principal contribution rather than a supporting method, route to `BIBLIOMETRICS` instead.

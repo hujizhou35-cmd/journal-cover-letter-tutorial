@@ -1,43 +1,62 @@
-# Human-authored benchmark protocol
+# Human-authored benchmark protocol v3.0
 
-A previous or expert-authored cover letter can be analyzed only with explicit permission. It is evidence about editorial decision-making, not a gold standard and not a factual source for the current submission.
+A previous or expert-authored cover letter can be analyzed only with explicit permission. It is evidence about editorial judgment, not a gold standard and not a factual source for the current submission.
 
-## Extract the benchmark's decision grammar
+## Extract the two pure strengths
 
-Analyze separately:
+Do not begin with sentence length, elegance, or lexical similarity. Extract:
 
-- what problem the human chose to foreground;
-- what contrast or tension drives the letter;
-- how the gap is defined;
-- how methods are translated into design capabilities;
-- which findings are selected, merged, or omitted;
-- at what level findings are reported: statistics, result statements, or synthesized conclusions;
-- how novelty and reader value were framed;
-- which implication is elevated and which are left out;
-- how claim strength is calibrated;
-- what information is deliberately excluded from the scientific pitch;
-- paragraph order, rhythm, tone, and document layout;
-- how administrative declarations are separated from persuasion.
+### 1. Empirical selection intelligence
 
-Transfer the reasoning pattern only when it fits the current manuscript and journal. Never carry over names, titles, journal details, submission branch, identifiers, declarations, hidden metadata, or unsupported claims.
+- Which concrete facts, trends, contrasts, or results did the human foreground?
+- Which manuscript details were omitted despite being available?
+- What observation appears to carry the author's genuine conviction about the work?
+- Is the selected fact directly traceable and central?
+
+Record this as `benchmark_empirical_signal`.
+
+### 2. Editorial interpretation intelligence
+
+- What decision problem does the letter create for the editor?
+- How is the selected evidence converted into a change in understanding, practice, coordination, or research agenda?
+- Is the implication recoverable after one reading?
+- Is the journal fit criterion-specific?
+
+Record this as `benchmark_editorial_logic`.
+
+A strong optimized letter combines the best empirical signal with the best defensible editorial logic. It must not leave strong facts uninterpreted or replace evidence with free-floating abstraction.
+
+## Route-specific benchmark analysis
+
+### Original Research
+
+Compare problem foregrounding, design capability, finding selection, consequence, claim strength, and journal fit.
+
+### Review/Synthesis
+
+Compare field problem, synthesis intervention, cross-study pattern selection, editorial thesis, boundary, and changed research decision.
+
+### Bibliometrics
+
+Compare field-orientation problem, corpus boundary, chosen map-level pattern, mapping thesis, research-coordination consequence, and metric calibration. Do not reward keyword, country, or institution lists unless they carry the thesis.
 
 ## Benchmark convergence
 
-When the user requests optimization against a benchmark, compare editorial effects rather than lexical similarity. Evaluate:
+Evaluate editorial effects rather than wording:
 
-1. problem foregrounding;
-2. contrast and gap mechanics;
-3. method abstraction;
-4. finding selection and synthesis;
-5. implication level;
-6. journal-fit directness;
-7. omission discipline and reading speed;
-8. claim calibration;
-9. administrative completeness.
+1. empirical-anchor fidelity;
+2. editorial-meaning clarity;
+3. gap or field-orientation quality;
+4. route reasoning;
+5. method abstraction;
+6. selection and synthesis;
+7. consequence;
+8. journal-fit directness;
+9. omission discipline;
+10. claim calibration;
+11. administrative completeness.
 
-Revise the transferable rule that caused a material difference, then regenerate from the manuscript. Do not patch only the test letter. Repeat within the loop limit until no high-impact editorial difference remains or further changes would overfit the benchmark.
-
-Similarity means that both letters guide the editor toward a comparable decision with comparable effort. It does not require similar wording, sentence order, or promotional intensity.
+Factual errors, unsupported declarations, and overclaims in the benchmark are excluded from the comparison target. Revise the transferable rule responsible for a material difference. Do not patch only the test letter or imitate wording.
 
 ## Permission boundaries
 

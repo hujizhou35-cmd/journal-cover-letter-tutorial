@@ -1,4 +1,4 @@
-# Original research playbook
+# Original research playbook v3.0
 
 ## Editorial task
 
@@ -10,7 +10,7 @@ The letter should create one coherent scientific argument rather than display th
 
 Build the scientific case around this sequence:
 
-> Stakes -> unresolved limitation -> study response -> synthesized finding -> consequence -> journal fit
+> Stakes -> unresolved limitation -> study response -> empirical anchor -> synthesized finding -> editorial meaning -> journal fit
 
 The sequence is conceptual, not a rigid sentence template.
 
@@ -135,3 +135,8 @@ Before delivery, answer:
 - Is the implication specific and no stronger than the design permits?
 - Is journal fit explicit and concrete?
 - Does the letter read as a pitch to an editor rather than an abstract, discussion section, or audit memo?
+
+
+## v3.0 evidence-to-meaning gate
+
+Before drafting, record one `empirical_anchor` and one `editorial_meaning`. The anchor is the concrete result selected from the manuscript; the meaning is the decision-level consequence. Reject a draft that substitutes method sophistication for an anchor or uses an implication that cannot be traced to the selected result.

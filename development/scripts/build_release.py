@@ -19,6 +19,7 @@ PUBLIC_TO_SEMVER = {
     "v2.1": "2.1.0",
     "v2.2": "2.2.0",
     "v2.3": "2.3.0",
+    "v3.0": "3.0.0",
 }
 FIXED_TIME = (2026, 1, 1, 0, 0, 0)
 
@@ -52,7 +53,7 @@ def sha256(path: Path) -> str:
 
 
 def build_portable_skill(skill_root: Path, ref: str, destination: Path) -> None:
-    if ref in {"v2.2", "v2.3"}:
+    if ref in {"v2.2", "v2.3", "v3.0"}:
         canonical = (skill_root / "SKILL.md").read_bytes().replace(b"\r\n", b"\n")
         destination.write_bytes(canonical)
         return

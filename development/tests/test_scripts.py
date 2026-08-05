@@ -23,10 +23,13 @@ def test_valid_payload():
         "paragraphs": ["Synthetic content."],
         "signoff": "Sincerely,",
         "corresponding_author": "Alex Morgan",
-        "article_type": "ORIGINAL_RESEARCH",
+        "official_article_type": "Original Research",
+        "intellectual_route": "ORIGINAL_RESEARCH",
         "submission_branch": "INITIAL_SUBMISSION",
         "fact_status": "verified",
         "previous_letter_permission": "NONE",
+        "empirical_anchor": "A synthetic calibration pattern.",
+        "editorial_meaning": "The pattern supports a clearer interpretation.",
         "research_decision_spine": "Synthetic stakes -> limitation -> response -> finding -> consequence -> fit.",
         "journal_conversation": "A synthetic journal conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
@@ -67,10 +70,13 @@ def test_review_requires_thesis_and_intervention():
         "paragraphs": ["Synthetic review."],
         "signoff": "Sincerely,",
         "corresponding_author": "Alex Morgan",
-        "article_type": "REVIEW_SYNTHESIS",
+        "official_article_type": "Review",
+        "intellectual_route": "REVIEW_SYNTHESIS",
         "submission_branch": "INITIAL_SUBMISSION",
         "fact_status": "verified",
         "previous_letter_permission": "NONE",
+        "empirical_anchor": "A synthetic cross-study pattern.",
+        "editorial_meaning": "The synthesis changes the research decision.",
         "journal_conversation": "Synthetic conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
         "hard_gate_failures": [],
@@ -90,10 +96,13 @@ def test_submission_ready_rejects_unresolved_hard_gate():
         "paragraphs": ["Synthetic draft."],
         "signoff": "Sincerely,",
         "corresponding_author": "Alex Morgan",
-        "article_type": "ORIGINAL_RESEARCH",
+        "official_article_type": "Original Research",
+        "intellectual_route": "ORIGINAL_RESEARCH",
         "submission_branch": "INITIAL_SUBMISSION",
         "fact_status": "conflict",
         "previous_letter_permission": "NONE",
+        "empirical_anchor": "A synthetic calibration pattern.",
+        "editorial_meaning": "The pattern supports a clearer interpretation.",
         "research_decision_spine": "Synthetic stakes -> limitation -> response -> finding -> consequence -> fit.",
         "journal_conversation": "Synthetic conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
@@ -134,13 +143,15 @@ def test_docx_build_scrubs_metadata_and_uses_business_letter_geometry(tmp_path):
     assert doc.styles["Normal"].font.name == "Calibri"
 
 
-def test_v22_research_route_is_present_and_review_route_is_retained():
+def test_v30_keeps_research_and_review_and_adds_bibliometrics():
     skill = (ROOT / "skills" / "journal-cover-letter-skill" / "SKILL.md").read_text(encoding="utf-8")
     assert "research_decision_spine" in skill
     assert "Translate methods into capabilities" in skill
-    assert "one memorable conclusion or coherent finding cluster" in skill
     assert "Review and synthesis route" in skill
     assert "Do not manufacture controversy" in skill
+    assert "## 5C. Bibliometrics route" in skill
+    assert "official_article_type" in skill
+    assert "intellectual_route" in skill
 
 
 def test_original_research_requires_decision_spine():
@@ -150,10 +161,13 @@ def test_original_research_requires_decision_spine():
         "paragraphs": ["Synthetic research."],
         "signoff": "Sincerely,",
         "corresponding_author": "Alex Morgan",
-        "article_type": "ORIGINAL_RESEARCH",
+        "official_article_type": "Original Research",
+        "intellectual_route": "ORIGINAL_RESEARCH",
         "submission_branch": "INITIAL",
         "fact_status": "verified",
         "previous_letter_permission": "NONE",
+        "empirical_anchor": "A synthetic calibration pattern.",
+        "editorial_meaning": "The pattern supports a clearer interpretation.",
         "journal_conversation": "Synthetic conversation.",
         "controlled_uplift_level": "1_CALIBRATED",
         "hard_gate_failures": [],
@@ -162,3 +176,29 @@ def test_original_research_requires_decision_spine():
         "status": "SUBMISSION_READY",
     }
     assert "research_decision_spine is required for ORIGINAL_RESEARCH" in validator.validate(payload)
+
+
+def test_bibliometrics_requires_route_specific_fields():
+    validator = load("validate_payload")
+    payload = {
+        "salutation": "Dear Editorial Team,",
+        "paragraphs": ["Synthetic bibliometric study."],
+        "signoff": "Sincerely,",
+        "corresponding_author": "Alex Morgan",
+        "official_article_type": "Review",
+        "intellectual_route": "BIBLIOMETRICS",
+        "submission_branch": "INITIAL",
+        "fact_status": "verified",
+        "previous_letter_permission": "NONE",
+        "empirical_anchor": "A synthetic field transition.",
+        "editorial_meaning": "The field needs stronger coordination.",
+        "journal_conversation": "Synthetic conversation.",
+        "controlled_uplift_level": "1_CALIBRATED",
+        "hard_gate_failures": [],
+        "quality_gate_failures": [],
+        "stop_reason": "ALL_GATES_PASSED",
+        "status": "SUBMISSION_READY",
+    }
+    errors = validator.validate(payload)
+    assert "bibliometric_mode is required and must be valid for BIBLIOMETRICS" in errors
+    assert "mapping_thesis is required for BIBLIOMETRICS" in errors

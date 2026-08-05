@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic structural and risk-language checks for a draft letter."""
+"""Deterministic structural and risk-language checks for a v3.0 draft letter."""
 
 from __future__ import annotations
 
@@ -9,11 +9,7 @@ import re
 import sys
 from pathlib import Path
 
-PLACEHOLDER_PATTERNS = [
-    r"\[[A-Za-z][^\]\n]{0,80}\]",
-    r"\{\{[^}\n]+\}\}",
-    r"\b(?:TODO|TBD|TK)\b",
-]
+PLACEHOLDER_PATTERNS = [r"\[[A-Za-z][^\]\n]{0,80}\]", r"\{\{[^}\n]+\}\}", r"\b(?:TODO|TBD|TK)\b"]
 HIGH_RISK = {
     "causal": r"\b(?:causes?|causal effect|proves? causality)\b",
     "mechanism": r"\b(?:proves?|establishes?|confirms?) (?:the )?mechanism\b",
@@ -21,15 +17,16 @@ HIGH_RISK = {
     "marketing": r"\b(?:groundbreaking|revolutionary|perfectly aligned|aligns perfectly|authoritative|ideal(?:ly)? suited)\b",
     "priority_claim": r"\b(?:the first|first-ever|only review|most comprehensive|unprecedented)\b",
     "generic_self_praise": r"\b(?:comprehensive synthesis|timely and authoritative|highly relevant)\b",
+    "bibliometric_quality_equivalence": r"\b(?:highest quality|best research|most influential|scientific leadership|clinical leadership)\b",
+    "bibliometric_forecast": r"\b(?:will dominate|will become|definitive future direction|certain future trend|predicts? the future)\b",
+    "bibliometric_completeness": r"\b(?:complete landscape|complete map|entire field|all research in the field)\b",
+    "bibliometric_causality": r"\b(?:centrality (?:causes?|drives?)|collaboration (?:causes?|proves?))\b",
 }
 
 
 def audit(text: str) -> dict:
-    placeholders = sorted({match.group(0) for pattern in PLACEHOLDER_PATTERNS for match in re.finditer(pattern, text, re.I)})
-    risks = {
-        label: sorted({match.group(0) for match in re.finditer(pattern, text, re.I)})
-        for label, pattern in HIGH_RISK.items()
-    }
+    placeholders = sorted({m.group(0) for p in PLACEHOLDER_PATTERNS for m in re.finditer(p, text, re.I)})
+    risks = {label: sorted({m.group(0) for m in re.finditer(pattern, text, re.I)}) for label, pattern in HIGH_RISK.items()}
     risks = {label: matches for label, matches in risks.items() if matches}
     structural = []
     if not re.search(r"\bDear\b", text, re.I):

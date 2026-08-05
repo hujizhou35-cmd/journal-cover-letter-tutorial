@@ -1,26 +1,33 @@
-# Persuasion calibration
+# Persuasion calibration v3.0
 
 ## Principle
 
-Use the strongest defensible formulation, not the safest-sounding one. Preserve a clear reason for editorial attention while keeping fact and inference boundaries intact.
+Use the strongest defensible formulation. Preserve a clear reason for editorial attention while keeping fact, interpretation, and metric boundaries intact.
 
 ## Claim-strength ladder
 
-1. maps or describes;
-2. identifies an association or pattern;
+1. describes or maps;
+2. identifies an association, pattern, concentration, or transition;
 3. supports or challenges an interpretation;
-4. strengthens causal or mechanistic inference;
-5. establishes causality or mechanism only with direct and adequate evidence.
+4. strengthens causal, mechanistic, or predictive inference when the design permits;
+5. establishes causality, mechanism, or forecast only with direct and adequate evidence.
 
-## Persuasion preservation gate
+## Evidence-to-meaning gate
 
-Before delivery, ask:
+For every promotional sentence, ask:
 
-- Is there one memorable story?
-- Is the novelty stated explicitly and concretely?
-- Is it clear why the work matters now?
-- Is reader value specific?
-- Has repeated `may`, `might`, or `potentially` weakened statements that could be firmer?
-- Are limitations placed after the contribution rather than used as the opening frame?
+- What is the empirical anchor?
+- What editorial meaning follows from it?
+- Is the verb appropriate to the route and evidence?
+- Would a reasonable reader mistake a metric for quality, causality, or prediction?
 
-Avoid unsupported self-awards such as “groundbreaking,” “definitive,” or “authoritative.” Strong verbs are useful when tied to an observable intellectual operation: distinguishes, reveals, reframes, integrates, quantifies, or establishes a research agenda.
+## Bibliometric calibration
+
+- Citation counts are indicators under a defined database and time window, not direct measures of quality.
+- Publication output is not scientific leadership by itself.
+- Network centrality is positional, not causal.
+- Co-occurrence is relational, not proof of conceptual validity.
+- Burst or temporal growth indicates intensifying attention, not certain future direction.
+- A map is bounded by data coverage, cleaning, thresholds, normalization, and clustering choices.
+
+Avoid unsupported self-awards such as `groundbreaking`, `definitive`, `authoritative`, `complete landscape`, `most influential`, or `perfectly aligned`. Strong verbs are useful when tied to an observable operation: `distinguishes`, `reveals`, `reframes`, `maps`, `integrates`, `quantifies`, or `defines a research agenda`.

@@ -1,7 +1,7 @@
 {
   "name": "journal-cover-letter-skill",
-  "version": "2.3.0",
-  "description": "Reads manuscript files, checks journal requirements, and drafts academic journal cover letters.",
+  "version": "3.0.0",
+  "description": "Writes journal cover letters with separate Research, Review, and Bibliometrics workflows.",
   "author": {
     "name": "Jizhou Hu",
     "url": "https://github.com/hujizhou35-cmd"
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial",
   "repository": "https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial",
   "license": "MIT",
-  "keywords": ["academic-writing", "cover-letter", "journal-submission", "research"],
+  "keywords": ["academic-writing", "bibliometrics", "cover-letter", "journal-submission", "research"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Journal Cover Letter",
