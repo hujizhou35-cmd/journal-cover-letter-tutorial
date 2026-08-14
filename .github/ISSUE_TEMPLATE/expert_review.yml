@@ -1,0 +1,103 @@
+name: Expert review
+description: Request or offer focused expert input on journal fit, medical content, evaluation design, or project methodology
+title: "[Expert review]: "
+labels: ["help wanted", "expert review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a focused, answerable review request. Do not upload unpublished manuscripts, real cover letters, submission identifiers, private correspondence, personal data, credentials, or files containing hidden metadata. Use only public, synthetic, or safely anonymized material.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area under review
+      description: Select the primary area. Maintainers may add more specific labels after triage.
+      options:
+        - Journal fit and editorial conventions
+        - Medical or domain accuracy
+        - Evaluation design and regression testing
+        - Privacy and confidentiality
+        - Workflow or documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why expert input is needed
+      description: Explain why ordinary bug triage or documentation review is insufficient.
+      placeholder: "Example: This decision requires editorial judgment about how official journal guidance should be weighted against conventions observed in published papers."
+    validations:
+      required: true
+
+  - type: textarea
+    id: questions
+    attributes:
+      label: Exact questions
+      description: List a small number of specific questions that can be answered independently.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Expected contribution
+      description: Select one or more forms of contribution that would resolve this issue.
+      multiple: true
+      options:
+        - Written expert opinion
+        - Review of proposed rules or criteria
+        - Review of synthetic examples or fixtures
+        - Evaluation or test-design feedback
+        - Documentation or wording review
+        - Pull request with a narrowly scoped change
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: State what the reviewer is not being asked to do.
+      placeholder: "Example: No review of an unpublished manuscript; no full-project maintenance; no access to private submission material."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      description: Confirm every statement before submitting.
+      options:
+        - label: I used only public, synthetic, or safely anonymized material.
+          required: true
+        - label: I did not include unpublished manuscripts, real cover letters, private editor or reviewer correspondence, author contact details, submission identifiers, credentials, or identifying file metadata.
+          required: true
+        - label: I have the right to share every link, excerpt, and attachment included in this issue.
+          required: true
+
+  - type: dropdown
+    id: credit
+    attributes:
+      label: Credit preference
+      description: Select the default public-credit preference. Do not enter private contact details here.
+      options:
+        - Credit my GitHub username in the issue or pull request
+        - Credit my GitHub username in release notes or acknowledgements
+        - No public credit
+        - Discuss attribution before publication
+    validations:
+      required: true
+
+  - type: textarea
+    id: public_context
+    attributes:
+      label: Public context or references
+      description: Add public links or synthetic examples needed to answer the questions. Do not attach private submission material.
+      placeholder: "Optional: links to public documentation, issues, commits, or synthetic fixtures."
