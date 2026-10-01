@@ -2,6 +2,10 @@
 
 [简体中文](docs/README.zh-CN.md)
 
+[![Available free on Agensi](https://img.shields.io/badge/Agensi-Free%20download-167F87?style=for-the-badge)](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics)
+
+**Writer v3.2 is now live on [Agensi](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics).** Get the free ZIP, explore the illustrated walkthrough, and see a complete fictional cover letter with its evidence audit. The project remains open source under the MIT License.
+
 Write a journal cover letter from manuscript files—or improve the Skill with manuscript and expert-letter examples.
 
 ## Start here
@@ -13,6 +17,7 @@ Write a journal cover letter from manuscript files—or improve the Skill with m
 
 ### Write a cover letter
 
+- [Get the free Writer ZIP on Agensi](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics) — includes a visual walkthrough and a complete fictional demonstration
 - [Download the Codex Skill](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-skill-v3.2.skill)
 - [Download the Codex Plugin](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-plugin-v3.2.zip)
 - [Download SKILL.md for another AI](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/SKILL.md)

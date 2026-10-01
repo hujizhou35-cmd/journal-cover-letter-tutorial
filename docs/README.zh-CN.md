@@ -2,6 +2,10 @@
 
 [English](../README.md)
 
+[![Available free on Agensi](https://img.shields.io/badge/Agensi-Free%20download-167F87?style=for-the-badge)](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics)
+
+**Writer v3.2 已在 [Agensi 免费上架](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics)。** 可以直接下载 ZIP、查看图文使用说明，以及完整的虚构投稿信与独立审计演示。项目继续保留 MIT 开源许可。
+
 根据稿件材料撰写投稿信，也可以使用“稿件＋专家投稿信”继续训练这个 Skill。
 
 ## 从这里开始
@@ -13,6 +17,7 @@
 
 ### 撰写投稿信
 
+- [在 Agensi 免费下载 Writer ZIP](https://www.agensi.io/skills/journal-cover-letter-research-review-bibliometrics) — 同时查看图文说明和完整虚构演示
 - [下载 Codex Skill](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-skill-v3.2.skill)
 - [下载 Codex Plugin](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/journal-cover-letter-plugin-v3.2.zip)
 - [下载供其他 AI 读取的 SKILL.md](https://github.com/hujizhou35-cmd/journal-cover-letter-tutorial/releases/download/v3.2/SKILL.md)
